@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TransitionCondition" load_steps=2 format=3 uid="uid://cda7rsyj2hrtt"]
+
+[ext_resource type="Script" path="res://characters/transition_expression.gd" id="1_1s5gt"]
+
+[resource]
+script = ExtResource("1_1s5gt")
+value = "(
+	current_state != self
+	and (
+		input.get_dual_axis(\"move_left\", \"move_right\", \"move_up\", \"move_down\") != Vector2(0, 0)
+		or character.get_real_velocity() != character.get_platform_velocity()
+	)
+)"

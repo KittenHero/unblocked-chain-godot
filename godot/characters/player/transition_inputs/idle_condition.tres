@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransitionCondition" load_steps=2 format=3 uid="uid://b8r56rftv6xnj"]
+
+[ext_resource type="Script" path="res://characters/transition_expression.gd" id="1_tivx7"]
+
+[resource]
+script = ExtResource("1_tivx7")
+value = "(
+		current_state != self
+		and input.empty()
+		and character.get_real_velocity() ==  character.get_platform_velocity()
+)"

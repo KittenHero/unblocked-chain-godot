@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TransitionInput" load_steps=4 format=3 uid="uid://d2wxoxvj5ek10"]
+
+[ext_resource type="Resource" uid="uid://b8r56rftv6xnj" path="res://characters/player/transition_inputs/idle_condition.tres" id="1_oc2tg"]
+[ext_resource type="Script" path="res://characters/input_state.gd" id="2_306a8"]
+[ext_resource type="Script" path="res://characters/transition_input.gd" id="3_pefja"]
+
+[resource]
+script = ExtResource("3_pefja")
+from_anim = &"player/move"
+anim_state = 0
+input_combo = Array[ExtResource("2_306a8")]([])
+condition = ExtResource("1_oc2tg")

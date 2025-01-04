@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TransitionInput" load_steps=4 format=3 uid="uid://bfvpq3rdhnr1e"]
+
+[ext_resource type="Script" path="res://characters/input_state.gd" id="1_w67q7"]
+[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_yoks5"]
+[ext_resource type="Resource" uid="uid://cda7rsyj2hrtt" path="res://characters/player/transition_inputs/move_condition.tres" id="3_7btp1"]
+
+[resource]
+script = ExtResource("2_yoks5")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("1_w67q7")]([])
+condition = ExtResource("3_7btp1")
