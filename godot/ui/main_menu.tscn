@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo2gc8qxhcln0"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
+
+[sub_resource type="Gradient" id="Gradient_t5dnr"]
+colors = PackedColorArray(0, 0, 0.290196, 1, 0.227451, 0.6, 0.839216, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_holui"]
+gradient = SubResource("Gradient_t5dnr")
+fill_from = Vector2(0.171171, 0.882883)
+fill_to = Vector2(0.963964, 0.0945946)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_40rt2")
+main_scene = "res://levels/pactice_room.tscn"
+
+[node name="Control" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_holui")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "start"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+value = 50.0
+
+[node name="ErrorDialog" type="AcceptDialog" parent="MarginContainer"]
+unique_name_in_owner = true
+title = "Error"
+initial_position = 2
+dialog_text = "There was an error loading the game"
+
+[connection signal="pressed" from="MarginContainer/Start" to="." method="_start"]
+[connection signal="confirmed" from="MarginContainer/ErrorDialog" to="." method="_quit"]
