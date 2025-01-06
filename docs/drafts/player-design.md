@@ -11,7 +11,6 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 - **Spin attack parry** 
 - **Ranged weapons**
 - **Physical empowerment**
-- **Gacha ability enhancement**
 
 ## UI
 

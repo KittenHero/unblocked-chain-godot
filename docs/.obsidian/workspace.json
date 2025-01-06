@@ -1,0 +1,173 @@
+{
+  "main": {
+    "id": "f389f1da5d488c1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0f8b8e8173863f45",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "07ea5f6b66829cd8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "drafts/base-boss.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "base-boss"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ef9e8ae2791818f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "1da99cfac08abcec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1c68b7287c6ae30f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1e1ac40b74adcf3e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b47ac71cb77fdf4e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f0331f76ba6114cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "8fe25e28c3140d2a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5cef5f01afa853d2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "drafts/base-boss.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for base-boss"
+            }
+          },
+          {
+            "id": "f884212d468976e3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "drafts/base-boss.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from base-boss"
+            }
+          },
+          {
+            "id": "add7f1fd31414e5c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3632120450762f9d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "drafts/base-boss.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of base-boss"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "07ea5f6b66829cd8",
+  "lastOpenFiles": [
+    "drafts/gameboard.canvas",
+    "drafts/player-design.md",
+    "drafts/karen-boss.md",
+    "drafts/base-boss.md",
+    "drafts/unblocked-chain.md"
+  ]
+}
