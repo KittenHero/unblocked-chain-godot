@@ -34,7 +34,7 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
  
 ## Movement System
 
-- **Omni-directional movement** - Can move in any direction at fixed speed constrained by space
+- **Omni-directional movement** - Can move in any direction at fixed speed, constrained by space
 - **Dodge roll** - Can roll in direction of movement, constrained by stamina bar
 - **Melee movement** - A small amount of distance covered by melee attack, constrained by type of attack
 
@@ -61,6 +61,7 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 		- Might get a tip
 		- High on cheese 
 		- Too Fast(Food) for you
+		- Holy Macaroni 
 		- ???
 - **Melee**:
 	- Simple melee attacks that contain some movement towards the direction of the attack
@@ -142,7 +143,6 @@ Your bag feels heavier, you reach into the Drinks compartment on the side, and p
 - **Physical empowerment**:
 	- **Dance Of Death**:
 - **Guns**:
-	- 
 - **Dodge** - Sound of wind
 - **Parry attack** - Blade draw
 - **Compute network Slot machine**  
