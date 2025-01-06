@@ -6,7 +6,6 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 
 ## Core Abilities
 
-- **Targetting reticle with aim** 
 - **Dodge roll**
 - **Melee attack** 
 - **Spin attack parry** 
@@ -29,7 +28,9 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 - **Selected Weapon**: 
 	- Icon of selected arnament 
 - **Ammo count**:
-	- Remaining ammo for weapon 
+	- Remaining ammo for weapon
+- **Targetting reticle for aim** 
+
  
 ## Movement System
 
