@@ -9,6 +9,7 @@ She hangry.
 ## Combat
 
 ### Enemy Moveset Phase 1
+ 
 
 - **Granny Scooter**:
 	- Entity blows whistle, brief window to calibrate direction
@@ -17,22 +18,26 @@ She hangry.
 	- If collide into wall, knocked down and increase stagger bar
 	- Deals X damage
 	- Can be parried
+	- **Frame data**: Startup - 6frames, Active - 20frames, Recovery - 8frames
 - **Verbal Diarrhea**:
 	- Throws circle shaped cloud full of symbols 
 	- Deals X damage
 	- Can use up to 3-5 in succession 
 	- Leaves red indicator in place of impact
 	- Cannot be parried
+	- **Frame data**: Startup - 4frames, Active - 3 frames, Recovery - 5frames
 - **Look what big teeth you have**:
 	- Chomp attack
 	- Can be parried
 	- Fast
 	- Deals X damage
+	- **Frame data**: Startup - 3frames, Active - 5frames, Recovery - 4frames
 - **Oops dropped my slap cane**:
 	- Flying walking canes
 	- Can be parried
 	- Bullet hell patterns
 	- Deals X damage
+	- **Frame data**: Startup - 2frames, Active - 2frames, Recovery - 2frames
 
 ### Enemy Moveset Phase 2
 

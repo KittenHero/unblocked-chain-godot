@@ -12,3 +12,5 @@ The following may be features present in all bosses and this shortlist acts as a
 	- Uses a phase 2 ability? Would allow us to reuse some moves
 	- Phase 2 gives no gacha
 	- Still have some spin mechanic
+- **Phase 1 3-4 moves**
+- **Phase 2 3-4 moves**
