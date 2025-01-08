@@ -14,6 +14,6 @@
 ![](references/phantom-brave.png)
 - From: Phantom Brave
 - Char Size: 24x38
-- Head: 16x16
+- Head: 16x16 (1/3)
 - Colors: Flat + Shade
 - Line: Colored + Shaded

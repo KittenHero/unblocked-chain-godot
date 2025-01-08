@@ -105,7 +105,7 @@ Your bag feels heavier, you reach into the Drinks compartment on the side, and p
 	- Has limited ammo
 - **Garbage dump**:
 	- Throw out expired food from your bag
-	- Differently shaped projeciles, follow a looping certain order and may be differing in damage
+	- Differently shaped projectiles, follow a looping certain order and may be differing in damage
 	- Has limited ammo
 
 #### Physical enhancement
