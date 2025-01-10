@@ -6,11 +6,17 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 
 ## Core Abilities
 
-- **Dodge roll**
-- **Melee attack** 
-- **Spin attack parry** 
-- **Ranged weapons**
-- **Physical empowerment**
+Actions default control mapping:
+
+| action | controller | KBaM |
+|---|---|---|
+| move | L-stick | WASD |
+| aim | r-stick | mouse |
+| melee attack | X | l-click |
+| parry | Y | r-click |
+| dodge | A | l-shift |
+| switch weapon | L1,R1 | wheel |
+
 
 ## UI
 
