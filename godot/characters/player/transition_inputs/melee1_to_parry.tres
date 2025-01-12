@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://c7yt0nw257wn5"]
+
+[ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/parry_condition.tres" id="1_7beim"]
+[ext_resource type="Script" path="res://characters/input_state.gd" id="1_mc34v"]
+[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_u8e8o"]
+
+[sub_resource type="Resource" id="Resource_a4dsn"]
+script = ExtResource("1_mc34v")
+input_name = &"parry"
+input_type = 0
+
+[resource]
+script = ExtResource("2_u8e8o")
+from_anim = &"player/melee1"
+anim_state = 0
+input_combo = Array[ExtResource("1_mc34v")]([SubResource("Resource_a4dsn")])
+condition = ExtResource("1_7beim")
