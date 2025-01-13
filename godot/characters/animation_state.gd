@@ -9,7 +9,7 @@ enum States {
 
 	## should only allow transitions to states with multiple inputs
 	## i.e, if a special attack requires pressing attack + parry
-	## then we can allow the start up frames of attack to cancel to parry
+	## then we can allow the start up frames of attack to cancel to special
 	Startup,
 
 	## Should not be interrupted
