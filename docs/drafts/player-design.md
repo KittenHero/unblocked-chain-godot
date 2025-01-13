@@ -8,14 +8,14 @@ Uber eats employee that is cybernetically enhanced through mobile gacha and skil
 
 Actions default control mapping:
 
-| action | controller | KBaM |
-|---|---|---|
-| move | L-stick | WASD |
-| aim | r-stick | mouse |
-| melee attack | X | l-click |
-| parry | Y | r-click |
-| dodge | A | l-shift |
-| switch weapon | L1,R1 | wheel |
+| action        | controller                | KBaM              |
+| ------------- | ------------------------- | ----------------- |
+| move          | L-stick                   | WASD              |
+| aim           | r-stick                   | mouse             |
+| melee attack  | X                         | l-click           |
+| parry         | Y                         | r-click           |
+| dodge         | A                         | l-shift           |
+| switch weapon | L1,R1, hold L1/R1 + d-pad | wheel, E,Q, 1,2,3 |
 
 
 ## UI
@@ -31,10 +31,10 @@ Actions default control mapping:
 - **Unblocked Chain Combo counter**:
 	- Has different effects and transitions based on combo count
 - **Selected Weapon**: 
-	- Icon of selected arnament 
+	- Icon of selected armament 
 - **Ammo count**:
 	- Remaining ammo for weapon
-- **Targetting reticle for aim** 
+- **Targeting reticle for aim** 
 
  
 ## Movement System
