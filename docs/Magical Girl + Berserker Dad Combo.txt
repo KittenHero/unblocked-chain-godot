@@ -1,3 +1,24 @@
-Magical Girl + Berserker Dad Combo
+#### Magical Girl + Berserker Dad Combo
 
-Sparkle and Guts
+### Inspiration
+Cyber Magical girl and Bondrewd
+
+### Core themes for Magical Girl
+
+- Uses levitating energy halos has weapons. Can expand and contract at will, however must maintain close proximity with main body.
+
+- Can stack halos on top of each other for a powerful beam attack
+
+- Each halo can do smaller beam attacks or rapid "bullets" and will be main way for her to do bullet hells
+
+- Halos can be arranged to boost her speed while sacrificing her ranged attacks for more closer ranged attacks, and possibly melee
+
+- Used to be able to do summons (ie. robot/doll hacking, golem master, in exchange for all ranged and melee attacks) (under consideration)
+
+
+### Core themes for Bondrewd Boss
+
+- Has large cyber weapon and can have multiple forms in his later phases
+
+- Weapon base form is: claymore/Zweihander, almost like the one guts in berserks use
+	- Slow but strong attacks
