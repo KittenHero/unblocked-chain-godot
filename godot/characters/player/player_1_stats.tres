@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://ddi03kv40d52h"]
+
+[ext_resource type="Script" path="res://characters/stats.gd" id="1_7n1cj"]
+
+[resource]
+script = ExtResource("1_7n1cj")
+id = 1
+health = 200.0
+stamina = 200.0
+parry_stamina_cost = 50.0

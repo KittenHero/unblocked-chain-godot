@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=34 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_ulwh7"]
+[ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_1_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="4_i2kgi"]
@@ -14,6 +15,11 @@
 [ext_resource type="Resource" uid="uid://7ue6qxsw8yfr" path="res://characters/player/transition_inputs/idle_to_move.tres" id="9_xdwag"]
 [ext_resource type="Resource" uid="uid://bjrfii4ymht8a" path="res://characters/player/transition_inputs/melee2_to_melee1.tres" id="10_ghlts"]
 [ext_resource type="Resource" uid="uid://bergcbsab64gk" path="res://characters/player/transition_inputs/melee1_to_melee2.tres" id="10_opg22"]
+[ext_resource type="Resource" uid="uid://jir4fk3iyssl" path="res://characters/player/transition_inputs/move_to_parry.tres" id="15_qnv6l"]
+[ext_resource type="Script" path="res://characters/states/parry.gd" id="15_xjqrg"]
+[ext_resource type="Resource" uid="uid://c7yt0nw257wn5" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
+[ext_resource type="Resource" uid="uid://cspoi0waf5pnk" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
+[ext_resource type="Resource" uid="uid://ctupbsl5fylic" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aq3nx"]
 size = Vector2(32, 32)
@@ -42,6 +48,15 @@ height = 32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy83j"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_me5af"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrbl"]
+gradient = SubResource("Gradient_me5af")
+use_hdr = true
 
 [sub_resource type="Animation" id="Animation_vbj3b"]
 length = 0.001
@@ -81,6 +96,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parry:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
@@ -94,6 +121,7 @@ motion_mode = 1
 platform_floor_layers = 4278190081
 platform_wall_layers = 2
 script = ExtResource("1_ulwh7")
+stats = ExtResource("2_7ryw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -124,6 +152,20 @@ texture = SubResource("GradientTexture2D_06htq")
 position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_0yu3m")
 
+[node name="Parry" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry"]
+shape = SubResource("RectangleShape2D_cy83j")
+debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parry"]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.125, 32)
+texture = SubResource("GradientTexture1D_jvrbl")
+
 [node name="InputController" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_rj1di")
@@ -144,14 +186,17 @@ valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("6_ibckf"), ExtRe
 [node name="Melee1" type="Node" parent="States"]
 script = ExtResource("3_ftd67")
 anim_name = &"player/melee1"
-exit_anmiation = 1
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("7_psxkn"), ExtResource("8_36fom"), ExtResource("10_ghlts")])
 
 [node name="Melee2" type="Node" parent="States"]
 script = ExtResource("3_ftd67")
 anim_name = &"player/melee2"
-exit_anmiation = 1
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("10_opg22")])
+
+[node name="Parry" type="Node" parent="States"]
+script = ExtResource("15_xjqrg")
+anim_name = &"player/parry"
+valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("15_qnv6l"), ExtResource("16_u2ul6"), ExtResource("17_q04ht"), ExtResource("18_tl358")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

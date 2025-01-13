@@ -13,6 +13,9 @@ class_name Character
 @export var speed : float = 200.0
 @export var time_to_max : float = .3
 @export var facing := Vector2.RIGHT
+@export var deceleration : float = 175.0
+@export_category("Resources")
+@export var stats: PlayerStats
 
 func _ready() -> void:
 	if current_state == null:
@@ -49,6 +52,20 @@ func move(delta: float, input: InputController) -> void:
 func manual_move(move_speed: float) -> void:
 	# TODO: validate player on kb&m vs controller
 	velocity = move_speed * facing
+
+func slow_down(delta: float) -> void:
+	if velocity.length() > 0:
+		velocity = velocity.move_toward(Vector2.ZERO, delta * deceleration)
+
+# Stats
+func can_parry() -> bool:
+	return stats.stamina > stats.parry_stamina_cost
+
+func increase_stamina(value: float) -> void:
+	stats.stamina += value
+
+func decrease_stamina(value: float) -> void:
+	stats.stamina -= value
 
 func update_debug() -> void:
 	var buffered: BufferedCharacterController = input_controller

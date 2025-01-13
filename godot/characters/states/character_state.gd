@@ -12,7 +12,7 @@ enum ExitAnimation {
 
 @export var anim_name: StringName
 @export var enter_animation := EnterAnimation.PLAY
-@export var exit_anmiation := ExitAnimation.STOP
+@export var exit_animation := ExitAnimation.STOP
 @export var valid_transitions: Array[TransitionInput] = []
 
 func enter(character: Character) -> void:
@@ -29,7 +29,7 @@ func update(_delta: float, _character: Character, _input: InputController) -> vo
 
 func exit(character: Character) -> void:
 	var animation := character.animation
-	match exit_anmiation:
+	match exit_animation:
 		ExitAnimation.STOP:
 			animation.stop()
 		ExitAnimation.CONTINUE:
