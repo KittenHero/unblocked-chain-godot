@@ -2,7 +2,7 @@ extends Node
 class_name CharacterState
 
 @export var anim_name: StringName
-@export var interrupt_resistance: float = 0.0
+@export_range(0, 100) var interrupt_resistance: float = 0.0
 @export var valid_transitions: Array[TransitionInput] = []
 
 func enter(character: Character) -> void:
