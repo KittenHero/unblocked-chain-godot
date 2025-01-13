@@ -23,20 +23,21 @@ func empty() -> bool:
 
 func matches(action: StringName, state: InputState) -> bool:
 	trim_buffer()
-	var result : bool
+	var result : TimedInput = null
 	match state:
 		InputState.just_pressed:
-			result = count_pressed(action) == 1
-			if result: used.append(pressing.get(action))
-			return result
+			result = get_last_pressed(action)
+			if result: used.append(result)
+			return result != null
 		InputState.pressing:
-			return pressing.has(action)
+			return pressing.get(action)
 		InputState.released:
-			return not pressing.has(action)
+			return pressing.has(action)
 		InputState.tapped:
-			result = not pressing.has(action) and count_pressed(action) == 1
-			if result: used.append(pressing.get(action))
-			return result
+			if pressing.has(action) or count_pressed(action) != 1: return false
+			result = get_last_pressed(action)
+			if result: used.append(result)
+			return result != null
 		_:
 			return false
 
@@ -47,12 +48,19 @@ func count_pressed(action: StringName) -> int:
 		0
 	)
 
-func count_unpressed(action: StringName) -> int:
-	return buffer.reduce(
-		func (accum: int, input: TimedInput) -> int:
-			return accum + int(input.event.is_action_released(action)),
-		0
+func get_last_pressed(action: StringName) -> TimedInput:
+	var matching := buffer.filter(
+		func (input: TimedInput) -> int:
+			return input.event.is_action_pressed(action)
 	)
+	return null if matching.is_empty() else matching.back()
+
+func get_last_released(action: StringName) -> TimedInput:
+	var matching := buffer.filter(
+		func (input: TimedInput) -> int:
+			return input.event.is_action_released(action)
+	)
+	return null if matching.is_empty() else matching.back()
 
 func get_actions_from(event: InputEvent) -> Array[StringName]:
 	return InputMap.get_actions().filter(

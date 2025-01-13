@@ -1,39 +1,20 @@
 extends Node
 class_name CharacterState
 
-enum EnterAnimation {
-	QUEUE,
-	PLAY,
-}
-enum ExitAnimation {
-	STOP,
-	CONTINUE
-}
-
 @export var anim_name: StringName
-@export var enter_animation := EnterAnimation.PLAY
-@export var exit_animation := ExitAnimation.STOP
+@export var interrupt_resistance: float = 0.0
 @export var valid_transitions: Array[TransitionInput] = []
 
 func enter(character: Character) -> void:
 	var animation := character.animation
-	match enter_animation:
-		EnterAnimation.PLAY:
-			animation.play(anim_name)
-			animation.advance(0)
-		EnterAnimation.QUEUE:
-			animation.queue(anim_name)
+	animation.play(anim_name)
+	animation.advance(0)
 
 func update(_delta: float, _character: Character, _input: InputController) -> void:
 	pass
 
 func exit(character: Character) -> void:
-	var animation := character.animation
-	match exit_animation:
-		ExitAnimation.STOP:
-			animation.stop()
-		ExitAnimation.CONTINUE:
-			pass
+	pass
 
 func can_transition(current: CharacterState, character: Character, input: InputController) -> bool:
 	var input_valid := func(state: NamedInputState) -> bool:
@@ -41,7 +22,7 @@ func can_transition(current: CharacterState, character: Character, input: InputC
 	var is_active := func (transition: TransitionInput) -> bool:
 		return (
 			(
-				transition.from_anim == character.animation.current_animation
+				transition.from_anim.is_empty()
 				or transition.from_anim == current.anim_name
 			)
 			and transition.anim_state == character.animation_state

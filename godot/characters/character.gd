@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
-@onready var states := %States.get_children()
+@onready var states := %States
 @onready var input_controller: InputController = %InputController
 
 @onready var animation : AnimationPlayer = %AnimationPlayer
@@ -19,7 +19,7 @@ class_name Character
 
 func _ready() -> void:
 	if current_state == null:
-		current_state = states[0]
+		current_state = states.get_child(0)
 	current_state.enter(self)
 
 func _physics_process(delta: float) -> void:
@@ -30,7 +30,8 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if animation_state == AnimationState.States.Busy: return
 	input_controller.consume()
-	for s: CharacterState in states:
+	# prioritises states lower in the list (e.g, melee2 > move)
+	for s: CharacterState in states.get_children().slice(-1 , -1-states.get_child_count(), -1):
 		if s.can_transition(current_state, self, input_controller):
 			current_state.exit(self)
 			s.enter(self)
@@ -39,6 +40,7 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	input_controller.handle(event)
+	# TODO: validate player on kb&m vs controller
 	facing = position.direction_to(get_global_mouse_position())
 	look_at(get_global_mouse_position())
 
@@ -50,7 +52,6 @@ func move(delta: float, input: InputController) -> void:
 	velocity += (target_velocity - velocity).limit_length(speed * delta / time_to_max)
 
 func manual_move(move_speed: float) -> void:
-	# TODO: validate player on kb&m vs controller
 	velocity = move_speed * facing
 
 func slow_down(delta: float) -> void:
