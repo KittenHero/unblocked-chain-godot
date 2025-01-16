@@ -67,7 +67,6 @@ func manual_move(move_speed: float) -> void:
 	velocity = move_speed * Vector2.RIGHT.rotated(facing.rotation)
 	update_sprite_direction(velocity)
 
-
 func slow_down(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * deceleration)
