@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_ulwh7"]
-[ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
+[ext_resource type="Resource" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
@@ -16,11 +16,11 @@
 [ext_resource type="Resource" uid="uid://7ue6qxsw8yfr" path="res://characters/player/transition_inputs/idle_to_move.tres" id="9_xdwag"]
 [ext_resource type="Resource" uid="uid://bjrfii4ymht8a" path="res://characters/player/transition_inputs/melee2_to_melee1.tres" id="10_ghlts"]
 [ext_resource type="Resource" uid="uid://bergcbsab64gk" path="res://characters/player/transition_inputs/melee1_to_melee2.tres" id="10_opg22"]
-[ext_resource type="Resource" uid="uid://jir4fk3iyssl" path="res://characters/player/transition_inputs/move_to_parry.tres" id="15_qnv6l"]
+[ext_resource type="Resource" uid="uid://cdeicq36xnwhq" path="res://characters/player/transition_inputs/move_to_parry.tres" id="15_qnv6l"]
 [ext_resource type="Script" path="res://characters/states/parry.gd" id="15_xjqrg"]
-[ext_resource type="Resource" uid="uid://c7yt0nw257wn5" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
-[ext_resource type="Resource" uid="uid://cspoi0waf5pnk" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
-[ext_resource type="Resource" uid="uid://ctupbsl5fylic" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
+[ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
+[ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
+[ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
 
 [sub_resource type="Gradient" id="Gradient_7emq2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)

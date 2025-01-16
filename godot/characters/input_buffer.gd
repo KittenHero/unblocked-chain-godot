@@ -93,7 +93,7 @@ func get_axis(negative: StringName, positive: StringName) -> float:
 		return -neg.event.get_action_strength(negative)
 	return 0.0
 
-func get_dual_axis(
+func get_vector(
 	negative_x: StringName,
 	positive_x: StringName,
 	negative_y: StringName,
@@ -101,4 +101,4 @@ func get_dual_axis(
 ) -> Vector2:
 	var x := get_axis(negative_x, positive_x)
 	var y := get_axis(negative_y, positive_y)
-	return Vector2(x, y)
+	return Vector2(x, y).limit_length(1.0)

@@ -41,11 +41,13 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	input_controller.handle(event)
-	# TODO: validate player on kb&m vs controller
-	if event is InputEventMouse:
+	var aim := input_controller.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	if aim != Vector2.ZERO:
+		facing.rotation = Vector2.ZERO.angle_to(aim)
+	elif event is InputEventMouse:
 		facing.look_at(get_global_mouse_position())
-
-func update_sprite_direction(direction: Vector2):
+ 
+func update_sprite_direction(direction: Vector2) -> void:
 	if direction.x < 0:
 		scale.y = -1
 		rotation = PI
@@ -54,7 +56,7 @@ func update_sprite_direction(direction: Vector2):
 		rotation = 0
 
 func move(delta: float,  input: InputController) -> void:
-	var target_velocity := speed * input.get_dual_axis(
+	var target_velocity := speed * input.get_vector(
 		&"move_left", &"move_right",
 		&"move_up", &"move_down",
 	).normalized()

@@ -6,6 +6,6 @@
 script = ExtResource("1_tivx7")
 value = "(
 		current_state != self
-		and input.get_dual_axis(\"move_left\", \"move_right\", \"move_up\", \"move_down\") == Vector2(0, 0)
+		and input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\") == Vector2(0, 0)
 		and character.get_real_velocity() ==  character.get_platform_velocity()
 )"

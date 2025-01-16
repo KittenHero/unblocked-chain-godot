@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://cspoi0waf5pnk"]
+[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://xvan0x35q0mh"]
 
-[ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/parry_condition.tres" id="1_3p3fw"]
+[ext_resource type="Resource" path="res://characters/player/transition_inputs/parry_condition.tres" id="1_3p3fw"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="1_fk4qj"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="2_15hds"]
 
