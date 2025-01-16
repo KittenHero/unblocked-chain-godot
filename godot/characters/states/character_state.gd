@@ -13,7 +13,7 @@ func enter(character: Character) -> void:
 func update(_delta: float, _character: Character, _input: InputController) -> void:
 	pass
 
-func exit(character: Character) -> void:
+func exit(_character: Character) -> void:
 	pass
 
 func can_transition(current: CharacterState, character: Character, input: InputController) -> bool:
