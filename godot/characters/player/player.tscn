@@ -44,15 +44,6 @@ height = 32
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy83j"]
-size = Vector2(32, 32)
-
-[sub_resource type="Gradient" id="Gradient_me5af"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrbl"]
-gradient = SubResource("Gradient_me5af")
-use_hdr = true
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqdts"]
 radius = 5.0
 height = 12.0
@@ -75,6 +66,15 @@ height = 8.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cciot"]
 radius = 2.0
 height = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdbmb"]
+radius = 21.0238
+
+[sub_resource type="Gradient" id="Gradient_me5af"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrbl"]
+gradient = SubResource("Gradient_me5af")
+use_hdr = true
 
 [sub_resource type="Animation" id="Animation_vbj3b"]
 length = 0.001
@@ -117,7 +117,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Facing/Parry:visible")
+tracks/3/path = NodePath("Parry:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -310,25 +310,11 @@ texture = SubResource("GradientTexture2D_06htq")
 position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_0yu3m")
 
-[node name="Parry" type="Area2D" parent="Facing"]
-visible = false
-collision_layer = 4
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Parry"]
-shape = SubResource("RectangleShape2D_cy83j")
-debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="Facing/Parry"]
-position = Vector2(0, 4.76837e-07)
-scale = Vector2(0.125, 32)
-texture = SubResource("GradientTexture1D_jvrbl")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("3_e8t2w")
 hframes = 6
-vframes = 2
+vframes = 3
 
 [node name="body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bqdts")
@@ -353,6 +339,22 @@ shape = SubResource("CapsuleShape2D_7iu55")
 [node name="front-leg" type="CollisionShape2D" parent="."]
 position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_cciot")
+
+[node name="Parry" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_jdbmb")
+debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parry"]
+visible = false
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.125, 32)
+texture = SubResource("GradientTexture1D_jvrbl")
 
 [node name="InputController" type="Node" parent="."]
 unique_name_in_owner = true
