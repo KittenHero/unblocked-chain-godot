@@ -5,6 +5,7 @@ var buffer: Array[TimedInput] = []
 var used: Array[TimedInput] = []
 var pressing := {}
 var held: int = 300
+@onready var character: Character = self.owner
 
 func handle(event: InputEvent) -> void:
 	if event.is_echo(): return
@@ -17,6 +18,37 @@ func handle(event: InputEvent) -> void:
 	elif event.is_released() and event.is_action_type():
 		for action in get_actions_from(event):
 			pressing.erase(action)
+	elif event is InputEventMouse:
+		var pos : Vector2 = (character.get_global_mouse_position() - character.global_position).limit_length(1.0)
+		var eventx := InputEventAction.new()
+		var eventy := InputEventAction.new()
+		eventx.pressed = true
+		eventy.pressed = true
+		eventx.strength = minf(absf(pos.x), 1.0)
+		eventy.strength = minf(absf(pos.y), 1.0)
+		pressing[&"aim_left"] = TimedInput.new(eventx, te.created)
+		pressing[&"aim_right"] = TimedInput.new(eventx, te.created)
+		pressing[&"aim_up"] = TimedInput.new(eventy, te.created)
+		pressing[&"aim_down"] = TimedInput.new(eventy, te.created)
+		if pos.x < 0.0:
+			eventx.action = &"aim_left"
+			pressing.erase(&"aim_right")
+		elif pos.x > 0.0:
+			eventx.action = &"aim_right"
+			pressing.erase(&"aim_left")
+		else:
+			pressing.erase(&"aim_left")
+			pressing.erase(&"aim_right")
+		if pos.y < 0.0:
+			eventy.action = &"aim_up"
+			pressing.erase(&"aim_down")
+		elif pos.y > 0.0:
+			eventy.action = &"aim_down"
+			pressing.erase(&"aim_up")
+		else:
+			pressing.erase(&"aim_up")
+			pressing.erase(&"aim_down")
+
 
 func empty() -> bool:
 	return pressing.is_empty() and buffer.is_empty()

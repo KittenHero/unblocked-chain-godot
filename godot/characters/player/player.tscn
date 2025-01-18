@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=35 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_ulwh7"]
 [ext_resource type="Resource" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
@@ -22,24 +22,8 @@
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
 
-[sub_resource type="Gradient" id="Gradient_7emq2"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ttlw5"]
-gradient = SubResource("Gradient_7emq2")
-width = 32
-height = 32
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
 radius = 16.0
-
-[sub_resource type="Gradient" id="Gradient_0n68l"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_06htq"]
-gradient = SubResource("Gradient_0n68l")
-width = 32
-height = 32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
@@ -270,15 +254,39 @@ tracks/15/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Facing/Melee1/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Facing/Melee2/CollisionShape2D:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
 "RESET": SubResource("Animation_vbj3b")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 4
-collision_mask = 114
+collision_mask = 2
 motion_mode = 1
 platform_floor_layers = 4278190081
 platform_wall_layers = 2
@@ -291,24 +299,18 @@ unique_name_in_owner = true
 [node name="Melee1" type="Area2D" parent="Facing"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Facing/Melee1"]
-position = Vector2(32, 0)
-texture = SubResource("GradientTexture2D_ttlw5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee1"]
 position = Vector2(32, 0)
 shape = SubResource("CircleShape2D_tqpkg")
+disabled = true
 
 [node name="Melee2" type="Area2D" parent="Facing"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Facing/Melee2"]
-position = Vector2(48, 0)
-texture = SubResource("GradientTexture2D_06htq")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee2"]
 position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_0yu3m")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
