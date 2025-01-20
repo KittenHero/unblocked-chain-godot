@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://708w06x6vyhm"]
 
-[ext_resource type="Script" path="res://characters/character.gd" id="1_ulwh7"]
-[ext_resource type="Resource" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
+[ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
@@ -290,8 +290,8 @@ collision_mask = 2
 motion_mode = 1
 platform_floor_layers = 4278190081
 platform_wall_layers = 2
-script = ExtResource("1_ulwh7")
-stats = ExtResource("2_7ryw2")
+script = ExtResource("1_b864y")
+player_stats = ExtResource("2_7ryw2")
 
 [node name="Facing" type="Marker2D" parent="."]
 unique_name_in_owner = true

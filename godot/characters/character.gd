@@ -13,8 +13,6 @@ class_name Character
 @export var speed : float = 200.0
 @export var time_to_max : float = .3
 @export var deceleration : float = 175.0
-@export_category("Resources")
-@export var stats: PlayerStats
 
 func _ready() -> void:
 	facing.set_as_top_level(true)
@@ -68,16 +66,6 @@ func manual_move(move_speed: float) -> void:
 func slow_down(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * deceleration)
-
-# Stats
-func can_parry() -> bool:
-	return stats.stamina > stats.parry_stamina_cost
-
-func increase_stamina(value: float) -> void:
-	stats.stamina += value
-
-func decrease_stamina(value: float) -> void:
-	stats.stamina -= value
 
 func update_debug() -> void:
 	pass
