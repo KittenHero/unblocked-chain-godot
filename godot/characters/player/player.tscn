@@ -316,7 +316,7 @@ disabled = true
 unique_name_in_owner = true
 texture = ExtResource("3_e8t2w")
 hframes = 6
-vframes = 3
+vframes = 4
 
 [node name="body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bqdts")

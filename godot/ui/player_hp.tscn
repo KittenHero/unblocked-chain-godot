@@ -157,13 +157,11 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0i3kx"]
 shader = ExtResource("3_1fjpd")
-shader_parameter/progress = 1.0
-shader_parameter/bar_color = Vector4(1, 1, 1, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gb14r"]
 shader = ExtResource("3_1fjpd")
-shader_parameter/progress = 1.0
-shader_parameter/bar_color = Vector4(1, 1, 1, 1)
+shader_parameter/progress = 0.0
 
 [node name="PlayerHp" type="Control"]
 layout_mode = 3
@@ -178,18 +176,19 @@ script = ExtResource("1_1niv7")
 player_stats = ExtResource("2_gtqff")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_wbgvb")
 animation = &"ui_entrance"
 autoplay = "ui_entrance"
 
 [node name="HPBarFill" type="Sprite2D" parent="."]
-visible = false
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_0i3kx")
 position = Vector2(21, -5)
 texture = ExtResource("4_kbdmi")
 
 [node name="StaminaBarFill" type="Sprite2D" parent="."]
-visible = false
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gb14r")
 position = Vector2(22, 4)
 texture = ExtResource("5_qfs5p")

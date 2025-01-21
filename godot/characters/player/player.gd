@@ -9,8 +9,11 @@ func _ready() -> void:
 	super()
 	await get_tree().create_timer(5).timeout
 	change_health(-20)
-	change_stamina(-30)
-	
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	player_stats.change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
+
 # Stats
 func can_parry() -> bool:
 	return player_stats.stamina > player_stats.parry_stamina_cost
