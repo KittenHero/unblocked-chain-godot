@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="TransitionInput" load_steps=4 format=3 uid="uid://bjrfii4ymht8a"]
+[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://bjrfii4ymht8a"]
 
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="1_a1lme"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="1_hfsp3"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="2_k5lh7"]
 
@@ -13,3 +14,4 @@ script = ExtResource("2_k5lh7")
 from_anim = &"player/melee2"
 anim_state = 0
 input_combo = Array[ExtResource("1_hfsp3")]([SubResource("Resource_ok6ft")])
+condition = ExtResource("1_a1lme")

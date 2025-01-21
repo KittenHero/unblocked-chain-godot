@@ -1,0 +1,297 @@
+[gd_scene load_steps=32 format=3 uid="uid://b38se0pqvos72"]
+
+[ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
+[ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
+[ext_resource type="Script" path="res://characters/stats.gd" id="2_x5jq3"]
+[ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="3_yts4b"]
+[ext_resource type="Script" path="res://characters/states/character_state.gd" id="4_63x1n"]
+[ext_resource type="Script" path="res://characters/minions/minion_controller.gd" id="4_ixan0"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="5_gffjc"]
+[ext_resource type="Script" path="res://characters/transition_input.gd" id="5_wgs0m"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
+[ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="7_6en44"]
+[ext_resource type="Script" path="res://characters/input_state.gd" id="7_pr2ds"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
+[ext_resource type="Script" path="res://characters/states/move.gd" id="8_4sdl6"]
+[ext_resource type="Resource" uid="uid://bu8rdy7t068tc" path="res://characters/minions/transitions/move_to_idle.tres" id="8_l5e00"]
+[ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="9_hxknx"]
+[ext_resource type="PackedScene" uid="uid://8yytsd82hfmn" path="res://characters/minions/trees/move_and_attack.tscn" id="9_js4t1"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="11_w1eq3"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/orb_movement.gd" id="16_rcxqo"]
+
+[sub_resource type="Resource" id="Resource_j2xyx"]
+script = ExtResource("2_x5jq3")
+id = 0
+health = 0.0
+stamina = 0.0
+parry_stamina_cost = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in0cg"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkwh8"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqoa2"]
+radius = 5.0
+height = 40.0
+
+[sub_resource type="Resource" id="Resource_cbm7a"]
+script = ExtResource("7_pr2ds")
+input_name = &"attack"
+input_type = 0
+
+[sub_resource type="Resource" id="Resource_5qxj0"]
+script = ExtResource("5_wgs0m")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("7_pr2ds")]([SubResource("Resource_cbm7a")])
+condition = ExtResource("6_k8tgn")
+
+[sub_resource type="Animation" id="Animation_ovrja"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yywjl"]
+_data = {
+"RESET": SubResource("Animation_ovrja")
+}
+
+[sub_resource type="Animation" id="Animation_dwt2x"]
+resource_name = "attack"
+length = 0.900002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.25, 0.3, 0.5, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"manual_move"
+}, {
+"args": [800.0],
+"method": &"manual_move"
+}, {
+"args": [0.0],
+"method": &"manual_move"
+}, {
+"args": [400.0],
+"method": &"manual_move"
+}, {
+"args": [0.0],
+"method": &"manual_move"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kh771"]
+resource_name = "idle"
+length = 0.250002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_femco"]
+resource_name = "move"
+length = 0.600002
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgi7r"]
+_data = {
+"attack": SubResource("Animation_dwt2x"),
+"idle": SubResource("Animation_kh771"),
+"move": SubResource("Animation_femco")
+}
+
+[node name="minion" type="CharacterBody2D" groups=["minions"]]
+collision_layer = 16
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_kpvmy")
+texture = ExtResource("2_wflah")
+stats = SubResource("Resource_j2xyx")
+
+[node name="Facing" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="body" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_in0cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_yts4b")
+hframes = 6
+vframes = 2
+
+[node name="cross" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cross"]
+position = Vector2(20, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hkwh8")
+disabled = true
+
+[node name="uppercut" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="uppercut"]
+position = Vector2(5, -5)
+shape = SubResource("CapsuleShape2D_dqoa2")
+disabled = true
+
+[node name="InputController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_ixan0")
+
+[node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("5_gffjc")
+blackboard = NodePath("@Node@17270")
+actor = NodePath("../..")
+
+[node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
+script = ExtResource("6_3sced")
+
+[node name="CooldownDecorator" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
+script = ExtResource("7_yatif")
+wait_time = 2.0
+
+[node name="SequenceComposite" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator" instance=ExtResource("9_js4t1")]
+
+[node name="Idle" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
+script = ExtResource("11_w1eq3")
+
+[node name="CooldownDecorator2" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
+script = ExtResource("7_yatif")
+wait_time = 0.5
+
+[node name="Orb Movement" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2"]
+script = ExtResource("16_rcxqo")
+
+[node name="States" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("4_63x1n")
+anim_name = &"minion/idle"
+valid_transitions = Array[ExtResource("5_wgs0m")]([ExtResource("7_6en44"), ExtResource("8_l5e00")])
+
+[node name="Move" type="Node" parent="States"]
+script = ExtResource("8_4sdl6")
+anim_name = &"minion/move"
+valid_transitions = Array[ExtResource("5_wgs0m")]([ExtResource("9_hxknx")])
+
+[node name="attack" type="Node" parent="States"]
+script = ExtResource("4_63x1n")
+anim_name = &"minion/attack"
+valid_transitions = Array[ExtResource("5_wgs0m")]([SubResource("Resource_5qxj0")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_yywjl"),
+"minion": SubResource("AnimationLibrary_sgi7r")
+}

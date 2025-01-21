@@ -23,7 +23,7 @@ func matches(_name: StringName, _state: InputState) -> bool:
 func get_axis(_negative: StringName, _positive: StringName) -> float:
 	return 0.0
 
-func get_dual_axis(
+func get_vector(
 	_negative_x: StringName,
 	_positive_x: StringName,
 	_negative_y: StringName,
