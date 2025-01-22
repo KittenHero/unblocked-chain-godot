@@ -14,6 +14,9 @@ class_name Character
 @export var time_to_max : float = .3
 @export var deceleration : float = 175.0
 
+# Knockback 
+var knockback_timer : float = 0.0
+
 func _ready() -> void:
 	facing.set_as_top_level(true)
 	if current_state == null:
@@ -25,7 +28,15 @@ func _physics_process(delta: float) -> void:
 	var aim := input_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down")
 	if aim != Vector2.ZERO:
 		facing.rotation = Vector2.ZERO.angle_to_point(aim)
-	current_state.update(delta, self, input_controller)
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		slow_down(delta)
+		
+		if knockback_timer <= 0:
+			velocity = Vector2.ZERO
+	# Interrupt normal physics	
+	else:
+		current_state.update(delta, self, input_controller)
 	move_and_slide()
 	if OS.is_debug_build(): update_debug()
 
@@ -58,6 +69,12 @@ func move(delta: float,  input: InputController) -> void:
 	).normalized()
 	velocity += (target_velocity - velocity).limit_length(speed * delta / time_to_max)
 	update_sprite_direction(velocity)
+
+func knockback(knockback_velocity: Vector2) -> void:
+	velocity = knockback_velocity
+	facing.rotation = knockback_velocity.angle() 
+	print("Knocked back with {0}".format([knockback_velocity]))
+	update_sprite_direction(-velocity)
 
 func manual_move(move_speed: float) -> void:
 	velocity = move_speed * Vector2.RIGHT.rotated(facing.rotation)

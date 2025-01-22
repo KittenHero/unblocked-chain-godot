@@ -1,8 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://b38se0pqvos72"]
+[gd_scene load_steps=30 format=3 uid="uid://b38se0pqvos72"]
 
 [ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
 [ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
-[ext_resource type="Script" path="res://characters/stats.gd" id="2_x5jq3"]
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="3_yts4b"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="4_63x1n"]
 [ext_resource type="Script" path="res://characters/minions/minion_controller.gd" id="4_ixan0"]
@@ -19,13 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://8yytsd82hfmn" path="res://characters/minions/trees/move_and_attack.tscn" id="9_js4t1"]
 [ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="11_w1eq3"]
 [ext_resource type="Script" path="res://characters/minions/behaviours/orb_movement.gd" id="16_rcxqo"]
-
-[sub_resource type="Resource" id="Resource_j2xyx"]
-script = ExtResource("2_x5jq3")
-id = 0
-health = 0.0
-stamina = 0.0
-parry_stamina_cost = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in0cg"]
 radius = 8.0
@@ -210,7 +202,6 @@ collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_kpvmy")
 texture = ExtResource("2_wflah")
-stats = SubResource("Resource_j2xyx")
 
 [node name="Facing" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -249,7 +240,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@17270")
+blackboard = NodePath("@Node@61875")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]

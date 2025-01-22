@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://du2gsahh62fny"]
+[gd_scene load_steps=13 format=4 uid="uid://du2gsahh62fny"]
 
 [ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
 [ext_resource type="Texture2D" uid="uid://bjt0l1h2mm8g4" path="res://assets/icon.svg" id="3_1j04w"]
-[ext_resource type="PackedScene" uid="uid://dnxsbhymcqxcp" path="res://ui/hud.tscn" id="3_o6d5o"]
+[ext_resource type="PackedScene" uid="uid://dnxsbhymcqxcp" path="res://ui/PlayerHUD.tscn" id="3_o6d5o"]
+[ext_resource type="PackedScene" uid="uid://bh7wbsr5equwx" path="res://ui/EnemyHUD.tscn" id="4_1c0wv"]
 [ext_resource type="PackedScene" uid="uid://b38se0pqvos72" path="res://characters/minions/minion.tscn" id="4_hbp2t"]
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="5_0bntq"]
 [ext_resource type="Script" path="res://levels/camera_follow.gd" id="6_5bm6y"]
@@ -63,6 +64,8 @@ script = ExtResource("6_5bm6y")
 max_target_offset = Vector2(160, 120)
 
 [node name="HUD" parent="." instance=ExtResource("3_o6d5o")]
+
+[node name="EnemyHud" parent="." instance=ExtResource("4_1c0wv")]
 
 [node name="LiveDebug" parent="." instance=ExtResource("2_7fjiu")]
 

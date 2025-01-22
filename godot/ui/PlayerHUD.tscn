@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnxsbhymcqxcp"]
 
-[ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/player_hp.tscn" id="1_8xym4"]
+[ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/HPStaminaView.tscn" id="1_8xym4"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="PlayerHud" type="CanvasLayer"]
 offset = Vector2(90, 30)
 transform = Transform2D(1, 0, 0, 1, 90, 30)
 
-[node name="PlayerHp" parent="." instance=ExtResource("1_8xym4")]
+[node name="HpstaminaView" parent="." instance=ExtResource("1_8xym4")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0

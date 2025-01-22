@@ -1,11 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=40 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
+[ext_resource type="Script" path="res://characters/player/attack.gd" id="3_nvhi5"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="4_i2kgi"]
+[ext_resource type="Resource" uid="uid://dotx8jyroet6c" path="res://characters/player/attacks/melee_one.tres" id="4_pfkb3"]
+[ext_resource type="Resource" uid="uid://df4yubob40y2s" path="res://characters/player/attacks/melee_two.tres" id="5_4f4n3"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="5_dg6fa"]
 [ext_resource type="AnimationLibrary" uid="uid://cpfsuxckowqi2" path="res://characters/player/player_anim.tres" id="5_uxnwd"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="6_ibckf"]
@@ -21,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
+[ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
 radius = 16.0
@@ -284,6 +288,9 @@ _data = {
 "RESET": SubResource("Animation_vbj3b")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwgd"]
+shader = ExtResource("23_gxp7c")
+
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 4
 collision_mask = 2
@@ -298,6 +305,10 @@ unique_name_in_owner = true
 
 [node name="Melee1" type="Area2D" parent="Facing"]
 visible = false
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_nvhi5")
+attack_data = ExtResource("4_pfkb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee1"]
 position = Vector2(32, 0)
@@ -306,6 +317,10 @@ disabled = true
 
 [node name="Melee2" type="Area2D" parent="Facing"]
 visible = false
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_nvhi5")
+attack_data = ExtResource("5_4f4n3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee2"]
 position = Vector2(48, 0)
@@ -342,26 +357,6 @@ shape = SubResource("CapsuleShape2D_7iu55")
 position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_cciot")
 
-[node name="Parry" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry"]
-position = Vector2(0, -2)
-shape = SubResource("CircleShape2D_jdbmb")
-debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parry"]
-visible = false
-position = Vector2(0, 4.76837e-07)
-scale = Vector2(0.125, 32)
-texture = SubResource("GradientTexture1D_jvrbl")
-
-[node name="InputController" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_rj1di")
-
 [node name="States" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -390,9 +385,33 @@ script = ExtResource("15_xjqrg")
 anim_name = &"player/parry"
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("15_qnv6l"), ExtResource("16_u2ul6"), ExtResource("17_q04ht"), ExtResource("18_tl358")])
 
+[node name="Parry" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_jdbmb")
+debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parry"]
+visible = false
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.125, 32)
+texture = SubResource("GradientTexture1D_jvrbl")
+
+[node name="InputController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_rj1di")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_lueav"),
 "player": ExtResource("5_uxnwd")
 }
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ShaderMaterial_gbwgd")
