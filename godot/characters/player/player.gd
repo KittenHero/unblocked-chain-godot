@@ -6,8 +6,6 @@ class_name PlayerCharacter
 func _ready() -> void:
 	player_stats.health_changed.connect(_on_health_changed)
 	player_stats.stamina_changed.connect(_on_stamina_changed)
-	SignalManager.player_land_attack.connect(_on_player_land_attack)
-	SignalManager.enemy_calculate_damage.connect(_on_enemy_calculate_damage)
 	super()
 
 func _physics_process(delta: float) -> void:
@@ -31,18 +29,22 @@ func _on_stamina_changed(new_stamina: float) -> void:
 func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
 
-# Decorate
-func _on_player_land_attack(target: Node, attack_data: AttackData) -> void:
-	var copy : AttackData = attack_data.duplicate()
+# Decorate - ?? are you making cake?
+# TODO: move to character.gd (depend on character stats not player stats?)
+func attack(target: Node2D, attack_node: NodePath) -> void:
+	var collision_valid : bool = target.has_method("recieve_attack")
+	if not collision_valid:
+		assert(collision_valid, "Unexpected collision fix now")
+
+	var attack_data := (get_node(attack_node) as Attack).attack_data.duplicate()
 	var is_crit : bool = randf() < player_stats.crit_rate
 	if is_crit:
-		copy.damage = attack_data.damage * player_stats.crit_damage
-		copy.effects = {"is_crit": true}
+		attack_data.damage = attack_data.damage * player_stats.crit_damage
+		attack_data.effects = {"is_crit": true}
+	# TODO: modify attack data hit direction based on sprite orientation or facing
 	var hit_direction : Vector2 = ((target as CharacterBody2D).global_position - global_position).normalized()
-	SignalManager.emit_player_calculate_damage(target, hit_direction, copy)
+	target.recieve_attack(attack_data, hit_direction)
 
-func _on_enemy_calculate_damage(_target: Node, _direction: Vector2, _attack_data: AttackData) -> void:
-	pass
 
 func update_debug() -> void:
 	pass

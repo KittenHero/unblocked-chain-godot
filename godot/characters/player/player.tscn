@@ -415,3 +415,5 @@ libraries = {
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 process_material = SubResource("ShaderMaterial_gbwgd")
+
+[connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]

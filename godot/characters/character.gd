@@ -14,9 +14,6 @@ class_name Character
 @export var time_to_max : float = .3
 @export var deceleration : float = 175.0
 
-# Knockback 
-var knockback_timer : float = 0.0
-
 func _ready() -> void:
 	facing.set_as_top_level(true)
 	if current_state == null:
@@ -28,15 +25,7 @@ func _physics_process(delta: float) -> void:
 	var aim := input_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down")
 	if aim != Vector2.ZERO:
 		facing.rotation = Vector2.ZERO.angle_to_point(aim)
-	if knockback_timer > 0:
-		knockback_timer -= delta
-		slow_down(delta)
-		
-		if knockback_timer <= 0:
-			velocity = Vector2.ZERO
-	# Interrupt normal physics	
-	else:
-		current_state.update(delta, self, input_controller)
+	current_state.update(delta, self, input_controller)
 	move_and_slide()
 	if OS.is_debug_build(): update_debug()
 
@@ -71,8 +60,8 @@ func move(delta: float,  input: InputController) -> void:
 	update_sprite_direction(velocity)
 
 func knockback(knockback_velocity: Vector2) -> void:
-	velocity = knockback_velocity
-	facing.rotation = knockback_velocity.angle() 
+	velocity += knockback_velocity
+	facing.rotation = -knockback_velocity.angle() 
 	print("Knocked back with {0}".format([knockback_velocity]))
 	update_sprite_direction(-velocity)
 
@@ -83,6 +72,19 @@ func manual_move(move_speed: float) -> void:
 func slow_down(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * deceleration)
+
+func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
+	# TODO:
+	# - lower health
+	# - play death animation, queue free, emit death signal
+	if attack_data.interrupt_strength > current_state.interrupt_resistance:
+		# Hmm.... need to export a special state for this
+		# if knockback > threshold: launch state
+		# else: flinch state
+		# or maybe simplify to as one
+		pass
+	print("Taking damage of value {0}".format([attack_data.damage]))
+	knockback(direction*attack_data.knockback)
 
 func update_debug() -> void:
 	pass
