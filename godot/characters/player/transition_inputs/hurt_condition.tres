@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TransitionCondition" load_steps=2 format=3 uid="uid://ctac4ej8bqu5h"]
-
-[ext_resource type="Script" path="res://characters/transition_expression.gd" id="1_s7hji"]
-
-[resource]
-script = ExtResource("1_s7hji")
-value = ""

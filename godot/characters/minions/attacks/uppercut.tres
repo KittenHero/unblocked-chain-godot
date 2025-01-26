@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://b7wa54jccbfgj"]
+
+[ext_resource type="Script" path="res://characters/attack_data.gd" id="1_o8l7e"]
+
+[resource]
+script = ExtResource("1_o8l7e")
+name = ""
+damage = 20.0
+knockback = 500.0
+interrupt_strength = 20.0
+hitstop = 0.0
+effects = {}

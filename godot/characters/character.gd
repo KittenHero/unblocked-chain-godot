@@ -13,13 +13,20 @@ class_name Character
 @export var speed : float = 200.0
 @export var time_to_max : float = .3
 @export var deceleration : float = 175.0
+@export_category("Resources")
+@export var stats : Stats 
+
+var is_launched: bool = false
+var is_flinching: bool = false
 
 func _ready() -> void:
+	assert(stats != null, "Attach your stats sheet")
+	
 	facing.set_as_top_level(true)
 	if current_state == null:
 		current_state = states.get_child(0)
 	current_state.enter(self)
-
+	
 func _physics_process(delta: float) -> void:
 	facing.global_position = global_position
 	var aim := input_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down")
@@ -51,6 +58,7 @@ func update_sprite_direction(direction: Vector2) -> void:
 		scale.y = 1
 		rotation = 0
 
+# Movement
 func move(delta: float,  input: InputController) -> void:
 	var target_velocity := speed * input.get_vector(
 		&"move_left", &"move_right",
@@ -72,31 +80,57 @@ func manual_move(move_speed: float) -> void:
 func slow_down(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * deceleration)
-
+		
+# Combat		
+func attack(target: Node2D, attack_node: NodePath) -> void:
+	var valid := target.has_method("recieve_attack")
+	print(target)
+	if not valid:
+		assert(valid, "Unexpected collision fix now")
+	
+	var attack_data : AttackData = (get_node(attack_node) as Attack).attack_data.duplicate()
+	var is_crit : bool = randf() < stats.crit_rate
+	if is_crit:
+		attack_data.damage = attack_data.damage * stats.crit_damage
+		attack_data.effects = {"is_crit": true}
+	# TODO: modify attack data hit direction based on sprite orientation or facing
+	var hit_direction : Vector2 = ((target as CharacterBody2D).global_position - global_position).normalized()
+	@warning_ignore("unsafe_method_access")
+	target.recieve_attack(attack_data, hit_direction)
+	
 func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
+	if stats.health == 0:
+		return
+	var damage : float = stats.calculate_mitigated_damage(attack_data.damage)
+	stats.change_health(-damage)
 	# TODO:
-	# - lower health
 	# - play death animation, queue free, emit death signal
-	if attack_data.interrupt_strength > current_state.interrupt_resistance:
-		# Hmm.... need to export a special state for this
-		# if knockback > threshold: launch state
-		# else: flinch state
-		# or maybe simplify to as one
-		pass
+	# launched > flinch
+	if attack_data.knockback > current_state.interrupt_resistance:
+		is_launched = true	
+		print("launching")
+	elif attack_data.interrupt_strength > current_state.interrupt_resistance:
+		is_flinching = true
+
 	print("Taking damage of value {0}".format([attack_data.damage]))
 	knockback(direction*attack_data.knockback)
 
+
+func reset_damaged_state() -> void:
+	is_flinching = false
+	is_launched = false
+
 func update_debug() -> void:
-	pass
-	#if self.is_in_group("players"):
-		#var buffered: BufferedCharacterController = input_controller
-		#LiveDebug.update_group({
-			#"FPS": str(Engine.get_frames_per_second()),
-			#"anim": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
-			##"velocity":  str(velocity),
-			#"active_input": JSON.stringify(buffered.pressing.keys()),
-			##"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
-		#})
+	#pass
+	if self.is_in_group("players"):
+		var buffered: BufferedCharacterController = input_controller
+		LiveDebug.update_group({
+			"FPS": str(Engine.get_frames_per_second()),
+			"anim": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
+			#"velocity":  str(velocity),
+			"active_input": JSON.stringify(buffered.pressing.keys()),
+			#"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
+		})
 	#if self.is_in_group("minions"):
 		#var minion_controller: MinionController = input_controller
 		#LiveDebug.update_group({

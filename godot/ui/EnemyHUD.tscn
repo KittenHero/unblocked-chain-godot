@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ceoeiax5pkaxn" path="res://ui/BossHPView.tscn" id="1_msq17"]
 
 [node name="EnemyHud" type="CanvasLayer"]
-offset = Vector2(-90, 30)
-transform = Transform2D(1, 0, 0, 1, -90, 30)
+offset = Vector2(-30, 33)
+transform = Transform2D(1, 0, 0, 1, -30, 33)
 
 [node name="BossHpView" parent="." instance=ExtResource("1_msq17")]
 anchors_preset = 1
