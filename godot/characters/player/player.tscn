@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://dotx8jyroet6c" path="res://characters/player/attacks/melee_one.tres" id="4_pfkb3"]
 [ext_resource type="Resource" uid="uid://df4yubob40y2s" path="res://characters/player/attacks/melee_two.tres" id="5_4f4n3"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="5_dg6fa"]
+[ext_resource type="Texture2D" uid="uid://clfcysqgo5sdo" path="res://characters/player/attack-fx.png" id="5_owe7q"]
 [ext_resource type="AnimationLibrary" uid="uid://cpfsuxckowqi2" path="res://characters/player/player_anim.tres" id="5_uxnwd"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="6_ibckf"]
 [ext_resource type="Resource" uid="uid://d2wxoxvj5ek10" path="res://characters/player/transition_inputs/move_to_idle.tres" id="6_mqcb5"]
@@ -27,7 +28,10 @@
 [ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
-radius = 16.0
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsym3"]
+size = Vector2(43, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
@@ -57,12 +61,6 @@ height = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdbmb"]
 radius = 21.0238
-
-[sub_resource type="Gradient" id="Gradient_me5af"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrbl"]
-gradient = SubResource("Gradient_me5af")
-use_hdr = true
 
 [sub_resource type="Animation" id="Animation_vbj3b"]
 length = 0.001
@@ -261,7 +259,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Facing/Melee1/CollisionShape2D:disabled")
+tracks/16/path = NodePath("Facing/Melee2/CollisionShape2D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -273,7 +271,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Facing/Melee2/CollisionShape2D:disabled")
+tracks/17/path = NodePath("Facing/Melee1/Sprite2D:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -281,6 +279,18 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Facing/Melee1/Sprite2D:frame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
@@ -311,9 +321,17 @@ script = ExtResource("3_nvhi5")
 attack_data = ExtResource("4_pfkb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee1"]
-position = Vector2(32, 0)
+position = Vector2(13, 3)
 shape = SubResource("CircleShape2D_tqpkg")
 disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Facing/Melee1"]
+position = Vector2(1.5, -8.5)
+shape = SubResource("RectangleShape2D_lsym3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Facing/Melee1"]
+texture = ExtResource("5_owe7q")
+hframes = 3
 
 [node name="Melee2" type="Area2D" parent="Facing"]
 visible = false
@@ -331,7 +349,7 @@ disabled = true
 unique_name_in_owner = true
 texture = ExtResource("3_e8t2w")
 hframes = 6
-vframes = 4
+vframes = 5
 
 [node name="body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bqdts")
@@ -394,12 +412,6 @@ collision_mask = 32
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_jdbmb")
 debug_color = Color(0.955002, 0.962476, 0.96002, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parry"]
-visible = false
-position = Vector2(0, 4.76837e-07)
-scale = Vector2(0.125, 32)
-texture = SubResource("GradientTexture1D_jvrbl")
 
 [node name="InputController" type="Node" parent="."]
 unique_name_in_owner = true
