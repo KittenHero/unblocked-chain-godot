@@ -44,6 +44,8 @@ func _process(_delta: float) -> void:
 		if s.can_transition(current_state, self, input_controller):
 			current_state.exit(self)
 			s.enter(self)
+			# if self.is_in_group("players"):
+			#	print(current_state.anim_name, ' -> ', s.anim_name)
 			current_state = s
 			break
 
@@ -65,15 +67,17 @@ func move(delta: float,  input: InputController) -> void:
 		&"move_up", &"move_down",
 	).normalized()
 	velocity += (target_velocity - velocity).limit_length(speed * delta / time_to_max)
-	update_sprite_direction(velocity)
+	if not is_launched:
+		update_sprite_direction(velocity)
 
 func knockback(knockback_velocity: Vector2) -> void:
 	velocity += knockback_velocity
 	facing.rotation = -knockback_velocity.angle() 
-	print("Knocked back with {0}".format([knockback_velocity]))
+	# print("Knocked back with {0}".format([knockback_velocity]))
 	update_sprite_direction(-velocity)
 
 func manual_move(move_speed: float) -> void:
+	if is_launched: return
 	velocity = move_speed * Vector2.RIGHT.rotated(facing.rotation)
 	update_sprite_direction(velocity)
 
@@ -84,7 +88,6 @@ func slow_down(delta: float) -> void:
 # Combat		
 func attack(target: Node2D, attack_node: NodePath) -> void:
 	var valid := target.has_method("recieve_attack")
-	print(target)
 	if not valid:
 		assert(valid, "Unexpected collision fix now")
 	
@@ -93,6 +96,8 @@ func attack(target: Node2D, attack_node: NodePath) -> void:
 	if is_crit:
 		attack_data.damage = attack_data.damage * stats.crit_damage
 		attack_data.effects = {"is_crit": true}
+		
+	print(self.name, " attacked ", target.name, " for ", attack_data.damage, " HP")
 	# TODO: modify attack data hit direction based on sprite orientation or facing
 	var hit_direction : Vector2 = ((target as CharacterBody2D).global_position - global_position).normalized()
 	@warning_ignore("unsafe_method_access")
@@ -107,12 +112,9 @@ func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 	# - play death animation, queue free, emit death signal
 	# launched > flinch
 	if attack_data.knockback > current_state.interrupt_resistance:
-		is_launched = true	
-		print("launching")
+		is_launched = true
 	elif attack_data.interrupt_strength > current_state.interrupt_resistance:
 		is_flinching = true
-
-	print("Taking damage of value {0}".format([attack_data.damage]))
 	knockback(direction*attack_data.knockback)
 
 
@@ -121,16 +123,16 @@ func reset_damaged_state() -> void:
 	is_launched = false
 
 func update_debug() -> void:
-	#pass
-	if self.is_in_group("players"):
-		var buffered: BufferedCharacterController = input_controller
-		LiveDebug.update_group({
-			"FPS": str(Engine.get_frames_per_second()),
-			"anim": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
-			#"velocity":  str(velocity),
-			"active_input": JSON.stringify(buffered.pressing.keys()),
-			#"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
-		})
+	pass
+	#if self.is_in_group("players"):
+		#var buffered: BufferedCharacterController = input_controller
+		#LiveDebug.update_group({
+			#"FPS": str(Engine.get_frames_per_second()),
+			#"anim": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
+			##"velocity":  str(velocity),
+			#"active_input": JSON.stringify(buffered.pressing.keys()),
+			##"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
+		#})
 	#if self.is_in_group("minions"):
 		#var minion_controller: MinionController = input_controller
 		#LiveDebug.update_group({
