@@ -4,7 +4,7 @@ extends CharacterState
 
 func enter(character: Character) -> void:
 	var initial_velocity := character.velocity.length()
-	var recovery_velocity := minf(character.speed, initial_velocity * 0.5)
+	var recovery_velocity := maxf(minf(character.speed, initial_velocity * 0.5), 1.0)
 	var launch_duration := log(initial_velocity / recovery_velocity) / drag
 	var anim: AnimationPlayer = character.animation
 	var animation_length: float = anim.get_animation(anim_name).length

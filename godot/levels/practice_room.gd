@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func assign_sectors() -> void:
+	minions = get_tree().get_nodes_in_group("minions")
 	var num_minions : int = minions.size()
 	
 	var angles: Array = []

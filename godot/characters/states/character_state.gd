@@ -11,8 +11,8 @@ func enter(character: Character) -> void:
 	animation.play(anim_name)
 	animation.advance(0)
 
-func update(_delta: float, _character: Character, _input: InputController) -> void:
-	pass
+func update(_delta: float, character: Character, _input: InputController) -> void:
+	if character.is_launched: character.is_launched = false
 
 func exit(_character: Character) -> void:
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b38se0pqvos72"]
+[gd_scene load_steps=40 format=3 uid="uid://b38se0pqvos72"]
 
 [ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
 [ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="11_w1eq3"]
 [ext_resource type="Script" path="res://characters/minions/behaviours/orb_movement.gd" id="16_rcxqo"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="19_8d1jk"]
+[ext_resource type="Script" path="res://characters/minions/dead.gd" id="19_hwk2p"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="20_c2hey"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in0cg"]
@@ -127,6 +128,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yywjl"]
@@ -257,10 +270,10 @@ tracks/1/path = NodePath(".:animation_state")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.09, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_r4isw"]
@@ -391,7 +404,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@27482")
+blackboard = NodePath("@Node@17294")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
@@ -432,7 +445,7 @@ anim_name = &"minion/attack"
 valid_transitions = Array[ExtResource("5_wgs0m")]([SubResource("Resource_5qxj0")])
 
 [node name="Dead" type="Node" parent="States"]
-script = ExtResource("4_63x1n")
+script = ExtResource("19_hwk2p")
 anim_name = &"minion/dead"
 valid_transitions = Array[ExtResource("5_wgs0m")]([SubResource("Resource_3yyg6")])
 

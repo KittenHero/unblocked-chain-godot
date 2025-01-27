@@ -71,7 +71,7 @@ func move(delta: float,  input: InputController) -> void:
 		update_sprite_direction(velocity)
 
 func knockback(knockback_velocity: Vector2) -> void:
-	velocity += knockback_velocity
+	velocity = knockback_velocity
 	facing.rotation = -knockback_velocity.angle() 
 	# print("Knocked back with {0}".format([knockback_velocity]))
 	update_sprite_direction(-velocity)
