@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=48 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
-[ext_resource type="Script" path="res://characters/player/attack.gd" id="3_nvhi5"]
+[ext_resource type="Script" path="res://characters/attack.gd" id="3_nvhi5"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="4_i2kgi"]
 [ext_resource type="Resource" uid="uid://dotx8jyroet6c" path="res://characters/player/attacks/melee_one.tres" id="4_pfkb3"]
 [ext_resource type="Resource" uid="uid://df4yubob40y2s" path="res://characters/player/attacks/melee_two.tres" id="5_4f4n3"]
@@ -25,7 +25,12 @@
 [ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
+[ext_resource type="Script" path="res://characters/states/launch.gd" id="23_5ty87"]
 [ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
+[ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="23_lewwa"]
+[ext_resource type="Script" path="res://characters/input_state.gd" id="24_jfn1f"]
+[ext_resource type="Resource" uid="uid://eaja252cgkb" path="res://characters/player/transition_inputs/launch_condition.tres" id="26_pilw5"]
+[ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
 radius = 13.0384
@@ -58,6 +63,27 @@ height = 8.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cciot"]
 radius = 2.0
 height = 8.0
+
+[sub_resource type="Resource" id="Resource_pbvho"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("23_lewwa")
+
+[sub_resource type="Resource" id="Resource_tfiso"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("26_pilw5")
+
+[sub_resource type="Resource" id="Resource_5f6c7"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("27_543js")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdbmb"]
 radius = 21.0238
@@ -305,10 +331,11 @@ shader = ExtResource("23_gxp7c")
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
-platform_floor_layers = 4278190081
-platform_wall_layers = 2
+platform_floor_layers = 4278190084
+platform_wall_layers = 3
 script = ExtResource("1_b864y")
 player_stats = ExtResource("2_7ryw2")
+stats = ExtResource("2_7ryw2")
 
 [node name="Facing" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -403,6 +430,24 @@ script = ExtResource("15_xjqrg")
 anim_name = &"player/parry"
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("15_qnv6l"), ExtResource("16_u2ul6"), ExtResource("17_q04ht"), ExtResource("18_tl358")])
 
+[node name="Flinch" type="Node" parent="States"]
+script = ExtResource("3_ftd67")
+anim_name = &"player/flinch"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_pbvho")])
+
+[node name="Launch" type="Node" parent="States"]
+script = ExtResource("23_5ty87")
+anim_name = &"player/launch"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_tfiso")])
+
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource("3_ftd67")
+anim_name = &"player/dead"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_5f6c7")])
+
 [node name="Parry" type="Area2D" parent="."]
 visible = false
 collision_layer = 4
@@ -429,3 +474,4 @@ emitting = false
 process_material = SubResource("ShaderMaterial_gbwgd")
 
 [connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
+[connection signal="body_entered" from="Facing/Melee2" to="." method="attack" binds= [NodePath("Facing/Melee2")]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://du2gsahh62fny"]
+[gd_scene load_steps=15 format=4 uid="uid://du2gsahh62fny"]
 
 [ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="5_0bntq"]
 [ext_resource type="Script" path="res://levels/camera_follow.gd" id="6_5bm6y"]
 [ext_resource type="PackedScene" uid="uid://708w06x6vyhm" path="res://characters/player/player.tscn" id="7_7q118"]
+[ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
+[ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_coye8"]
 
@@ -75,10 +77,12 @@ tile_set = SubResource("TileSet_6d3rr")
 
 [node name="jim" parent="." instance=ExtResource("4_hbp2t")]
 position = Vector2(60, 149)
+stats = ExtResource("8_grwuk")
 
 [node name="jack" parent="." instance=ExtResource("4_hbp2t")]
 position = Vector2(261, 150)
 texture = ExtResource("5_0bntq")
+stats = ExtResource("10_e1mct")
 
 [node name="Player" parent="." groups=["camera-follow"] instance=ExtResource("7_7q118")]
 position = Vector2(173, 141)

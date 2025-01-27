@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_2vw2q")
-value = ""
+value = "(
+current_state != self 
+and character.is_launched == true
+and character.stats.health > 0
+)"

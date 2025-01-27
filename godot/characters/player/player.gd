@@ -4,8 +4,8 @@ class_name PlayerCharacter
 @export var player_stats: PlayerStats
 
 func _ready() -> void:
-	player_stats.health_changed.connect(_on_health_changed)
 	player_stats.stamina_changed.connect(_on_stamina_changed)
+	player_stats.health_changed.connect(_on_health_changed)
 	super()
 
 func _physics_process(delta: float) -> void:
@@ -28,24 +28,6 @@ func _on_stamina_changed(new_stamina: float) -> void:
 
 func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
-
-# Decorate - ?? are you making cake?
-# TODO: move to character.gd (depend on character stats not player stats?)
-func attack(target: Node2D, attack_node: NodePath) -> void:
-	var valid := target.has_method("recieve_attack")
-	if not valid:
-		assert(valid, "Unexpected collision fix now")
-	
-	var attack_data : AttackData = (get_node(attack_node) as Attack).attack_data.duplicate()
-	var is_crit : bool = randf() < player_stats.crit_rate
-	if is_crit:
-		attack_data.damage = attack_data.damage * player_stats.crit_damage
-		attack_data.effects = {"is_crit": true}
-	# TODO: modify attack data hit direction based on sprite orientation or facing
-	var hit_direction : Vector2 = ((target as CharacterBody2D).global_position - global_position).normalized()
-	@warning_ignore("unsafe_method_access")
-	target.recieve_attack(attack_data, hit_direction)
-
 
 func update_debug() -> void:
 	pass

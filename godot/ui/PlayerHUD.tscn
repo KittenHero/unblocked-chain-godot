@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/HPStaminaView.tscn" id="1_8xym4"]
 
 [node name="PlayerHud" type="CanvasLayer"]
-offset = Vector2(90, 30)
-transform = Transform2D(1, 0, 0, 1, 90, 30)
+offset = Vector2(90, 31)
+transform = Transform2D(1, 0, 0, 1, 90, 31)
 
 [node name="HpstaminaView" parent="." instance=ExtResource("1_8xym4")]
 anchors_preset = 0
