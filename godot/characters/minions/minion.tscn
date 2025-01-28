@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b38se0pqvos72"]
+[gd_scene load_steps=41 format=3 uid="uid://b38se0pqvos72"]
 
 [ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
 [ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="5_wgs0m"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
 [ext_resource type="Resource" uid="uid://b7wa54jccbfgj" path="res://characters/minions/attacks/uppercut.tres" id="6_dmrnv"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="7_6en44"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="7_pr2ds"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="19_8d1jk"]
 [ext_resource type="Script" path="res://characters/minions/dead.gd" id="19_hwk2p"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="20_c2hey"]
+[ext_resource type="PackedScene" uid="uid://pyde4b7dg8ds" path="res://vfx/BloodParticles.tscn" id="25_stl8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in0cg"]
 radius = 8.0
@@ -404,7 +405,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@17294")
+blackboard = NodePath("@Node@137831")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
@@ -489,5 +490,4 @@ shape = SubResource("CapsuleShape2D_dqoa2")
 disabled = true
 debug_color = Color(0.945662, 4.62055e-06, 0.591423, 0.42)
 
-[connection signal="body_entered" from="cross" to="." method="attack" binds= [NodePath("cross")]]
-[connection signal="body_entered" from="uppercut" to="." method="attack" binds= [NodePath("uppercut")]]
+[node name="BloodParticles" parent="." instance=ExtResource("25_stl8q")]

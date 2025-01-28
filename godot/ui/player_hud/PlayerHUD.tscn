@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnxsbhymcqxcp"]
 
-[ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/HPStaminaView.tscn" id="1_8xym4"]
+[ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/player_hud/HPStaminaView.tscn" id="1_8xym4"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 offset = Vector2(90, 31)

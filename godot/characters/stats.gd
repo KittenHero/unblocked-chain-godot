@@ -6,6 +6,7 @@ signal health_changed(new_health: int)
 signal died()
 
 @export var id: int
+@export var name: WorldData.Characters
 @export var health: float
 @export var max_health: float
 @export var crit_rate: float = 0.05

@@ -1,9 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://b35eg8lxj1ylg"]
+[gd_scene load_steps=32 format=3 uid="uid://b35eg8lxj1ylg"]
 
-[ext_resource type="Script" path="res://ui/player_hp_stamina_view.gd" id="1_1vcff"]
+[ext_resource type="Script" path="res://ui/player_hud/player_hp_stamina_view.gd" id="1_1vcff"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_fxs3w"]
 [ext_resource type="Texture2D" uid="uid://cuwd0cyvx7mbn" path="res://assets/player-hp-stamina.png" id="3_yprsa"]
 [ext_resource type="Shader" path="res://ui/shaders/player_hp.gdshader" id="4_364mr"]
+[ext_resource type="Texture2D" uid="uid://b6dhdeo6t45uq" path="res://ui/avatars.png" id="4_b2cpc"]
+[ext_resource type="Script" path="res://ui/player_hud/background.gd" id="4_yasgo"]
 [ext_resource type="Texture2D" uid="uid://cu171dus3cvlj" path="res://assets/hp-bars.png" id="5_wytvi"]
 [ext_resource type="Texture2D" uid="uid://dg3bpdfpyq2bb" path="res://assets/stamina-bars.png" id="6_pevpi"]
 
@@ -182,6 +184,14 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_wbgvb")
 animation = &"ui_entrance"
 autoplay = "ui_entrance"
+frame = 8
+script = ExtResource("4_yasgo")
+
+[node name="Profile" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(-57, 0)
+texture = ExtResource("4_b2cpc")
+vframes = 5
 
 [node name="HPBarFill" type="Sprite2D" parent="."]
 unique_name_in_owner = true

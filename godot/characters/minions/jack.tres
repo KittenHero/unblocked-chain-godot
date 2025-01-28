@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_minha")
 id = 0
+name = 1
 health = 100.0
 max_health = 100.0
 crit_rate = 0.05
