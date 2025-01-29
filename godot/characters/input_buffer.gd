@@ -5,6 +5,7 @@ var buffer: Array[TimedInput] = []
 var used: Array[TimedInput] = []
 var pressing := {}
 var held: int = 300
+@onready var character: Character = self.owner
 
 func handle(event: InputEvent) -> void:
 	if event.is_echo(): return
@@ -17,26 +18,58 @@ func handle(event: InputEvent) -> void:
 	elif event.is_released() and event.is_action_type():
 		for action in get_actions_from(event):
 			pressing.erase(action)
+	elif event is InputEventMouse:
+		var pos : Vector2 = (character.get_global_mouse_position() - character.global_position).limit_length(1.0)
+		var eventx := InputEventAction.new()
+		var eventy := InputEventAction.new()
+		eventx.pressed = true
+		eventy.pressed = true
+		eventx.strength = minf(absf(pos.x), 1.0)
+		eventy.strength = minf(absf(pos.y), 1.0)
+		pressing[&"aim_left"] = TimedInput.new(eventx, te.created)
+		pressing[&"aim_right"] = TimedInput.new(eventx, te.created)
+		pressing[&"aim_up"] = TimedInput.new(eventy, te.created)
+		pressing[&"aim_down"] = TimedInput.new(eventy, te.created)
+		if pos.x < 0.0:
+			eventx.action = &"aim_left"
+			pressing.erase(&"aim_right")
+		elif pos.x > 0.0:
+			eventx.action = &"aim_right"
+			pressing.erase(&"aim_left")
+		else:
+			pressing.erase(&"aim_left")
+			pressing.erase(&"aim_right")
+		if pos.y < 0.0:
+			eventy.action = &"aim_up"
+			pressing.erase(&"aim_down")
+		elif pos.y > 0.0:
+			eventy.action = &"aim_down"
+			pressing.erase(&"aim_up")
+		else:
+			pressing.erase(&"aim_up")
+			pressing.erase(&"aim_down")
+
 
 func empty() -> bool:
 	return pressing.is_empty() and buffer.is_empty()
 
 func matches(action: StringName, state: InputState) -> bool:
 	trim_buffer()
-	var result : bool
+	var result : TimedInput = null
 	match state:
 		InputState.just_pressed:
-			result = count_pressed(action) == 1
-			if result: used.append(pressing.get(action))
-			return result
+			result = get_last_pressed(action)
+			if result: used.append(result)
+			return result != null
 		InputState.pressing:
-			return pressing.has(action)
+			return pressing.get(action)
 		InputState.released:
-			return not pressing.has(action)
+			return pressing.has(action)
 		InputState.tapped:
-			result = not pressing.has(action) and count_pressed(action) == 1
-			if result: used.append(pressing.get(action))
-			return result
+			if pressing.has(action) or count_pressed(action) != 1: return false
+			result = get_last_pressed(action)
+			if result: used.append(result)
+			return result != null
 		_:
 			return false
 
@@ -47,12 +80,19 @@ func count_pressed(action: StringName) -> int:
 		0
 	)
 
-func count_unpressed(action: StringName) -> int:
-	return buffer.reduce(
-		func (accum: int, input: TimedInput) -> int:
-			return accum + int(input.event.is_action_released(action)),
-		0
+func get_last_pressed(action: StringName) -> TimedInput:
+	var matching := buffer.filter(
+		func (input: TimedInput) -> int:
+			return input.event.is_action_pressed(action)
 	)
+	return null if matching.is_empty() else matching.back()
+
+func get_last_released(action: StringName) -> TimedInput:
+	var matching := buffer.filter(
+		func (input: TimedInput) -> int:
+			return input.event.is_action_released(action)
+	)
+	return null if matching.is_empty() else matching.back()
 
 func get_actions_from(event: InputEvent) -> Array[StringName]:
 	return InputMap.get_actions().filter(
@@ -85,7 +125,7 @@ func get_axis(negative: StringName, positive: StringName) -> float:
 		return -neg.event.get_action_strength(negative)
 	return 0.0
 
-func get_dual_axis(
+func get_vector(
 	negative_x: StringName,
 	positive_x: StringName,
 	negative_y: StringName,
@@ -93,4 +133,4 @@ func get_dual_axis(
 ) -> Vector2:
 	var x := get_axis(negative_x, positive_x)
 	var y := get_axis(negative_y, positive_y)
-	return Vector2(x, y)
+	return Vector2(x, y).limit_length(1.0)

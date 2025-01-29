@@ -1,10 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=45 format=3 uid="uid://708w06x6vyhm"]
 
-[ext_resource type="Script" path="res://characters/character.gd" id="1_ulwh7"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
+[ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
 [ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
+[ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
 [ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
+[ext_resource type="Script" path="res://characters/attack.gd" id="3_nvhi5"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="4_i2kgi"]
+[ext_resource type="Resource" uid="uid://dotx8jyroet6c" path="res://characters/player/attacks/melee_one.tres" id="4_pfkb3"]
+[ext_resource type="Resource" uid="uid://df4yubob40y2s" path="res://characters/player/attacks/melee_two.tres" id="5_4f4n3"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="5_dg6fa"]
+[ext_resource type="Texture2D" uid="uid://clfcysqgo5sdo" path="res://characters/player/attack-fx.png" id="5_owe7q"]
 [ext_resource type="AnimationLibrary" uid="uid://cpfsuxckowqi2" path="res://characters/player/player_anim.tres" id="5_uxnwd"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="6_ibckf"]
 [ext_resource type="Resource" uid="uid://d2wxoxvj5ek10" path="res://characters/player/transition_inputs/move_to_idle.tres" id="6_mqcb5"]
@@ -14,53 +20,76 @@
 [ext_resource type="Resource" uid="uid://7ue6qxsw8yfr" path="res://characters/player/transition_inputs/idle_to_move.tres" id="9_xdwag"]
 [ext_resource type="Resource" uid="uid://bjrfii4ymht8a" path="res://characters/player/transition_inputs/melee2_to_melee1.tres" id="10_ghlts"]
 [ext_resource type="Resource" uid="uid://bergcbsab64gk" path="res://characters/player/transition_inputs/melee1_to_melee2.tres" id="10_opg22"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aq3nx"]
-size = Vector2(32, 32)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ml0gm"]
-radius = 16.0
-
-[sub_resource type="Gradient" id="Gradient_7emq2"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ttlw5"]
-gradient = SubResource("Gradient_7emq2")
-width = 32
-height = 32
+[ext_resource type="Resource" uid="uid://cdeicq36xnwhq" path="res://characters/player/transition_inputs/move_to_parry.tres" id="15_qnv6l"]
+[ext_resource type="Script" path="res://characters/states/parry.gd" id="15_xjqrg"]
+[ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
+[ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
+[ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
+[ext_resource type="Script" path="res://characters/states/launch.gd" id="23_5ty87"]
+[ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
+[ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="23_lewwa"]
+[ext_resource type="Script" path="res://characters/input_state.gd" id="24_jfn1f"]
+[ext_resource type="Resource" uid="uid://eaja252cgkb" path="res://characters/player/transition_inputs/launch_condition.tres" id="26_pilw5"]
+[ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
+[ext_resource type="Script" path="res://characters/states/dead.gd" id="28_u1obv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
-radius = 16.0
+radius = 13.0384
 
-[sub_resource type="Gradient" id="Gradient_0n68l"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_06htq"]
-gradient = SubResource("Gradient_0n68l")
-width = 32
-height = 32
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsym3"]
+size = Vector2(43, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8db2p"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi1y"]
+size = Vector2(19, 32)
+
+[sub_resource type="Resource" id="Resource_pbvho"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("23_lewwa")
+
+[sub_resource type="Resource" id="Resource_tfiso"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("26_pilw5")
+
+[sub_resource type="Resource" id="Resource_5f6c7"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("27_543js")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdbmb"]
+radius = 21.0238
 
 [sub_resource type="Animation" id="Animation_vbj3b"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Melee1:visible")
+tracks/0/path = NodePath(".:animation_state")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Melee2:visible")
+tracks/1/path = NodePath("Parry:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,7 +101,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:animation_state")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -81,52 +110,251 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("body:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Melee2/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Melee1/Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Melee1/Sprite2D:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("body:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Facing/Melee1/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Facing/Melee1/CollisionShape2D2:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Facing/Melee2/Sprite2D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Facing/Melee2/Sprite2D:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Facing/Melee2/CollisionShape2D2:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Parry/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Facing/Melee1:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Facing/Melee2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
 "RESET": SubResource("Animation_vbj3b")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwgd"]
+shader = ExtResource("23_gxp7c")
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 4
-collision_mask = 114
+collision_mask = 2
 motion_mode = 1
-platform_floor_layers = 4278190081
-platform_wall_layers = 2
-script = ExtResource("1_ulwh7")
+platform_floor_layers = 4278190084
+platform_wall_layers = 3
+script = ExtResource("1_b864y")
+player_stats = ExtResource("2_7ryw2")
+stats = ExtResource("2_7ryw2")
+
+[node name="Facing" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Melee1" type="Area2D" parent="Facing"]
+visible = false
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_nvhi5")
+attack_data = ExtResource("4_pfkb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee1"]
+position = Vector2(13, 3)
+shape = SubResource("CircleShape2D_tqpkg")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Facing/Melee1"]
+position = Vector2(1.5, -8.5)
+shape = SubResource("RectangleShape2D_lsym3")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Facing/Melee1"]
+visible = false
+texture = ExtResource("5_owe7q")
+hframes = 3
+vframes = 2
+
+[node name="Melee2" type="Area2D" parent="Facing"]
+visible = false
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_nvhi5")
+attack_data = ExtResource("5_4f4n3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Melee2"]
+position = Vector2(9, 11)
+shape = SubResource("CircleShape2D_0yu3m")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Facing/Melee2"]
+position = Vector2(-7, 14)
+shape = SubResource("RectangleShape2D_8db2p")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Facing/Melee2"]
+visible = false
+texture = ExtResource("5_owe7q")
+hframes = 3
+vframes = 2
+frame = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = SubResource("PlaceholderTexture2D_aq3nx")
+texture = ExtResource("3_e8t2w")
+hframes = 6
+vframes = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ml0gm")
-
-[node name="Melee1" type="Area2D" parent="."]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Melee1"]
-position = Vector2(32, 0)
-texture = SubResource("GradientTexture2D_ttlw5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee1"]
-position = Vector2(32, 0)
-shape = SubResource("CircleShape2D_tqpkg")
-
-[node name="Melee2" type="Area2D" parent="."]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Melee2"]
-position = Vector2(48, 0)
-texture = SubResource("GradientTexture2D_06htq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee2"]
-position = Vector2(48, 0)
-shape = SubResource("CircleShape2D_0yu3m")
-
-[node name="InputController" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_rj1di")
+[node name="body" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7oi1y")
 
 [node name="States" type="Node" parent="."]
 unique_name_in_owner = true
@@ -144,14 +372,51 @@ valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("6_ibckf"), ExtRe
 [node name="Melee1" type="Node" parent="States"]
 script = ExtResource("3_ftd67")
 anim_name = &"player/melee1"
-exit_anmiation = 1
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("7_psxkn"), ExtResource("8_36fom"), ExtResource("10_ghlts")])
 
 [node name="Melee2" type="Node" parent="States"]
 script = ExtResource("3_ftd67")
 anim_name = &"player/melee2"
-exit_anmiation = 1
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("10_opg22")])
+
+[node name="Parry" type="Node" parent="States"]
+script = ExtResource("15_xjqrg")
+anim_name = &"player/parry"
+valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("15_qnv6l"), ExtResource("16_u2ul6"), ExtResource("17_q04ht"), ExtResource("18_tl358")])
+
+[node name="Flinch" type="Node" parent="States"]
+script = ExtResource("3_ftd67")
+anim_name = &"player/flinch"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_pbvho")])
+
+[node name="Launch" type="Node" parent="States"]
+script = ExtResource("23_5ty87")
+drag = 4.0
+anim_name = &"player/launch"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_tfiso")])
+
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource("28_u1obv")
+anim_name = &"player/dead"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_5f6c7")])
+
+[node name="Parry" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_jdbmb")
+disabled = true
+debug_color = Color(0.227165, 0.591393, 0, 0.419608)
+
+[node name="InputController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_rj1di")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -159,3 +424,10 @@ libraries = {
 "": SubResource("AnimationLibrary_lueav"),
 "player": ExtResource("5_uxnwd")
 }
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ShaderMaterial_gbwgd")
+
+[connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
+[connection signal="body_entered" from="Facing/Melee2" to="." method="attack" binds= [NodePath("Facing/Melee2")]]

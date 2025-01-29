@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://du2gsahh62fny"]
+
+[ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
+[ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
+[ext_resource type="PackedScene" uid="uid://dnxsbhymcqxcp" path="res://ui/player_hud/PlayerHUD.tscn" id="3_o6d5o"]
+[ext_resource type="PackedScene" uid="uid://bh7wbsr5equwx" path="res://ui/enemy_hud/EnemyHUD.tscn" id="4_1c0wv"]
+[ext_resource type="PackedScene" uid="uid://b38se0pqvos72" path="res://characters/minions/minion.tscn" id="4_hbp2t"]
+[ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="5_0bntq"]
+[ext_resource type="Script" path="res://levels/camera_follow.gd" id="6_5bm6y"]
+[ext_resource type="PackedScene" uid="uid://708w06x6vyhm" path="res://characters/player/player.tscn" id="7_7q118"]
+[ext_resource type="PackedScene" uid="uid://cad4amhotirt4" path="res://levels/alley.tscn" id="7_8h3so"]
+[ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
+[ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
+
+[node name="PracticeRoom" type="Node2D"]
+script = ExtResource("1_wcmue")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+script = ExtResource("6_5bm6y")
+max_target_offset = Vector2(160, 120)
+
+[node name="HUD" parent="." instance=ExtResource("3_o6d5o")]
+
+[node name="EnemyHud" parent="." instance=ExtResource("4_1c0wv")]
+
+[node name="LiveDebug" parent="." instance=ExtResource("2_7fjiu")]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Alley" parent="World" instance=ExtResource("7_8h3so")]
+
+[node name="jim" parent="World" instance=ExtResource("4_hbp2t")]
+y_sort_enabled = true
+position = Vector2(179, 232)
+stats = ExtResource("8_grwuk")
+
+[node name="jack" parent="World" instance=ExtResource("4_hbp2t")]
+y_sort_enabled = true
+position = Vector2(208, 246)
+texture = ExtResource("5_0bntq")
+stats = ExtResource("10_e1mct")
+
+[node name="Player" parent="World" groups=["camera-follow"] instance=ExtResource("7_7q118")]
+y_sort_enabled = true
+position = Vector2(384, 255)

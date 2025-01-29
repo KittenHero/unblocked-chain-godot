@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransitionCondition" load_steps=2 format=3 uid="uid://eaja252cgkb"]
+
+[ext_resource type="Script" path="res://characters/transition_expression.gd" id="1_2vw2q"]
+
+[resource]
+script = ExtResource("1_2vw2q")
+value = "(
+current_state != self 
+and character.is_launched == true
+and character.stats.health > 0
+)"

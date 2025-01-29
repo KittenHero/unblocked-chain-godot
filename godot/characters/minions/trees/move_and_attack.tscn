@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://8yytsd82hfmn"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_cs5vm"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/move_to_player.gd" id="2_ivm7f"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/attack.gd" id="3_70p32"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="4_jmet2"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_iel5h"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/is_attacking.gd" id="6_ebaev"]
+
+[node name="SequenceComposite" type="Node"]
+script = ExtResource("1_cs5vm")
+
+[node name="MoveToPlayer" type="Node" parent="."]
+script = ExtResource("2_ivm7f")
+offset = Vector2(60, 0)
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("3_70p32")
+
+[node name="UntilFailDecorator" type="Node" parent="."]
+script = ExtResource("4_jmet2")
+
+[node name="InverterDecorator" type="Node" parent="UntilFailDecorator"]
+script = ExtResource("5_iel5h")
+
+[node name="IsAttacking" type="Node" parent="UntilFailDecorator/InverterDecorator"]
+script = ExtResource("6_ebaev")
+
+[node name="UntilFailDecorator2" type="Node" parent="."]
+script = ExtResource("4_jmet2")
+
+[node name="IsAttacking" type="Node" parent="UntilFailDecorator2"]
+script = ExtResource("6_ebaev")

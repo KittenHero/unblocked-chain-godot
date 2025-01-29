@@ -1,50 +1,41 @@
 extends Node
 class_name CharacterState
 
-enum EnterAnimation {
-	QUEUE,
-	PLAY,
-}
-enum ExitAnimation {
-	STOP,
-	CONTINUE
-}
-
 @export var anim_name: StringName
-@export var enter_animation := EnterAnimation.PLAY
-@export var exit_anmiation := ExitAnimation.STOP
+@export_range(0, 100) var interrupt_resistance: float = 0.0
 @export var valid_transitions: Array[TransitionInput] = []
+var interruptible: Array[String] =  ["flinch", "launch"]
 
 func enter(character: Character) -> void:
 	var animation := character.animation
-	match enter_animation:
-		EnterAnimation.PLAY:
-			animation.play(anim_name)
-			animation.advance(0)
-		EnterAnimation.QUEUE:
-			animation.queue(anim_name)
+	animation.play(anim_name)
+	animation.advance(0)
 
-func update(_delta: float, _character: Character, _input: InputController) -> void:
+func update(_delta: float, character: Character, _input: InputController) -> void:
+	if character.is_launched: character.is_launched = false
+
+func exit(_character: Character) -> void:
 	pass
-
-func exit(character: Character) -> void:
-	var animation := character.animation
-	match exit_anmiation:
-		ExitAnimation.STOP:
-			animation.stop()
-		ExitAnimation.CONTINUE:
-			pass
+	
+func can_interrupt(target_state: String) -> bool:
+	return interruptible.any(func(state: String) -> bool: 
+		return target_state.contains(state)) 
 
 func can_transition(current: CharacterState, character: Character, input: InputController) -> bool:
 	var input_valid := func(state: NamedInputState) -> bool:
 		return input.matches(state.input_name, state.input_type)
+
 	var is_active := func (transition: TransitionInput) -> bool:
 		return (
 			(
-				transition.from_anim == character.animation.current_animation
+				transition.from_anim.is_empty()
 				or transition.from_anim == current.anim_name
 			)
-			and transition.anim_state == character.animation_state
+			and 
+			(
+				transition.anim_state == character.animation_state
+				or can_interrupt(current.anim_name)
+			)
 			and transition.condition.evaluate(current, self, character, input)
 			and transition.input_combo.all(input_valid)
 		)

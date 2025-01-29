@@ -12,7 +12,7 @@ fill_to = Vector2(0.963964, 0.0945946)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_40rt2")
-main_scene = "res://levels/pactice_room.tscn"
+main_scene = "res://levels/practice_room.tscn"
 
 [node name="Control" type="TextureRect" parent="."]
 anchors_preset = 15

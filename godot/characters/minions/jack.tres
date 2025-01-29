@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://bbq3e2fbag6wa"]
+
+[ext_resource type="Script" path="res://characters/stats.gd" id="1_minha"]
+
+[resource]
+script = ExtResource("1_minha")
+id = 0
+name = 1
+health = 100.0
+max_health = 100.0
+crit_rate = 0.05
+crit_damage = 1.5
+defense = 0.0
