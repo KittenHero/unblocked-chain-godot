@@ -197,7 +197,6 @@ vframes = 5
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_0i3kx")
 position = Vector2(16.875, -5)
-scale = Vector2(1.00688, 1)
 texture = ExtResource("5_wytvi")
 
 [node name="StaminaBarFill" type="Sprite2D" parent="."]

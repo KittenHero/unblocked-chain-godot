@@ -93,8 +93,8 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3he5j"]
 shader = ExtResource("4_hci3s")
 shader_parameter/color_modifier = Color(0.2, 0, 0, 1)
-shader_parameter/chunk_size = Vector2(0.2, 0.2)
 shader_parameter/progress = 0.0
+shader_parameter/extra_height = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fi45b"]
 shader = ExtResource("3_kitgc")
@@ -112,8 +112,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k6gfv")
 target_avatar_frame = 8
+metadata/_edit_horizontal_guides_ = [180.0]
+metadata/_edit_vertical_guides_ = [320.0]
 
 [node name="Avatar" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_qg7lc")
 animation = &"avatar"
 script = ExtResource("4_rfeav")
@@ -124,15 +128,15 @@ texture = ExtResource("4_coy7u")
 vframes = 5
 
 [node name="HPBarBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_3he5j")
-position = Vector2(-144, 0)
-scale = Vector2(0.8, 0.8)
+position = Vector2(-172, 0)
 texture = ExtResource("4_idpb8")
 
-[node name="HPBarFill" type="Sprite2D" parent="."]
+[node name="HPBarFill" type="Sprite2D" parent="HPBarBackground"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_fi45b")
-position = Vector2(-146, 0)
-scale = Vector2(0.8, 0.8)
+position = Vector2(-3.5, 0)
 texture = ExtResource("5_r1esp")
 
 [connection signal="frame_changed" from="Avatar" to="." method="_on_avatar_frame_changed"]

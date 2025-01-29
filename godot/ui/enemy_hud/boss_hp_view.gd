@@ -4,9 +4,9 @@ class_name BossHPView
 
 @export var target_avatar_frame: int
 
-@onready var avatar_animation: Avatar = $Avatar
-@onready var background_bar_shader: ShaderMaterial = ($HPBarBackground as CanvasItem).material
-@onready var health_bar_shader: ShaderMaterial = ($HPBarFill as CanvasItem).material
+@onready var avatar_animation: Avatar = %Avatar
+@onready var background_bar_shader: ShaderMaterial = (%HPBarBackground as CanvasItem).material
+@onready var health_bar_shader: ShaderMaterial = (%HPBarFill as CanvasItem).material
 
 func _ready() -> void:
 	assert(
@@ -24,7 +24,7 @@ func update_background_bar() -> void:
 		func(value: float) -> void: background_bar_shader.set_shader_parameter("progress", value),
 		0.0,
 		1.0,
-		0.5
+		1.0
 	)
 	await tween.finished
 
