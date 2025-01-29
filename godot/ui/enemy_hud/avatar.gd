@@ -2,10 +2,17 @@ extends AnimatedSprite2D
 
 class_name Avatar
 
-@onready var sprite : Sprite2D = $Profile
+@onready var profile : Sprite2D = $Profile
+@export var target_avatar_frame: int
+signal profile_shown();
 
 func _ready() -> void:
-	sprite.visible = false
+	frame_changed.connect(self._on_frame_changed)
+	assert(
+		sprite_frames.get_frame_count("avatar") >= target_avatar_frame,
+		"Invalid animation completion point"
+	)
+	profile.hide()
 
 func set_boss_frame(boss_name: WorldData.Characters) -> void:
 	var frame_map: Dictionary = {
@@ -15,8 +22,10 @@ func set_boss_frame(boss_name: WorldData.Characters) -> void:
 		WorldData.Characters.KAREN: 4,
 	}
 	assert(boss_name in frame_map, "New enemy detected, add sprite")
-	sprite.frame = frame_map[boss_name]
+	profile.frame = frame_map[boss_name]
 
-func _process(_delta: float) -> void:
-	if self.frame == 8:
-		sprite.visible = true
+func _on_frame_changed() -> void:
+	if self.frame >= target_avatar_frame and not profile.visible:
+		profile.show()
+		profile_shown.emit()
+		frame_changed.disconnect(self._on_frame_changed)

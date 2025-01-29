@@ -111,7 +111,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k6gfv")
-target_avatar_frame = 8
 metadata/_edit_horizontal_guides_ = [180.0]
 metadata/_edit_vertical_guides_ = [320.0]
 
@@ -121,22 +120,23 @@ position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_qg7lc")
 animation = &"avatar"
 script = ExtResource("4_rfeav")
+target_avatar_frame = 8
 
 [node name="Profile" type="Sprite2D" parent="Avatar"]
 position = Vector2(-2, -3)
 texture = ExtResource("4_coy7u")
 vframes = 5
 
-[node name="HPBarBackground" type="Sprite2D" parent="."]
+[node name="HPBarBackground" type="Sprite2D" parent="Avatar"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_3he5j")
-position = Vector2(-172, 0)
+position = Vector2(-175, 0)
 texture = ExtResource("4_idpb8")
 
-[node name="HPBarFill" type="Sprite2D" parent="HPBarBackground"]
+[node name="HPBarFill" type="Sprite2D" parent="Avatar/HPBarBackground"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_fi45b")
 position = Vector2(-3.5, 0)
 texture = ExtResource("5_r1esp")
 
-[connection signal="frame_changed" from="Avatar" to="." method="_on_avatar_frame_changed"]
+[connection signal="profile_shown" from="Avatar" to="." method="complete_animation"]

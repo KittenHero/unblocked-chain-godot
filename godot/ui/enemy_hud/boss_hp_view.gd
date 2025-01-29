@@ -1,18 +1,11 @@
 extends Control
-
 class_name BossHPView
-
-@export var target_avatar_frame: int
 
 @onready var avatar_animation: Avatar = %Avatar
 @onready var background_bar_shader: ShaderMaterial = (%HPBarBackground as CanvasItem).material
 @onready var health_bar_shader: ShaderMaterial = (%HPBarFill as CanvasItem).material
 
 func _ready() -> void:
-	assert(
-		avatar_animation.sprite_frames.get_frame_count("avatar") >= target_avatar_frame,
-		"Invalid animation completion point"
-	)
 	avatar_animation.play("avatar")
 
 func prepare_tween() -> Tween:
@@ -54,9 +47,3 @@ func set_starting_sprite(boss_name: WorldData.Characters) -> void:
 func _on_boss_stat_change(stats: Stats) -> void:
 	set_starting_sprite(stats.name)
 	update_health_bar(stats.health / stats.max_health)
-		
-
-func _on_avatar_frame_changed() -> void:
-	print(avatar_animation.frame)
-	if avatar_animation.frame == target_avatar_frame:
-		complete_animation()		

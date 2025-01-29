@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ceoeiax5pkaxn" path="res://ui/enemy_hud/BossHPView.tscn" id="2_nbu27"]
 
 [node name="EnemyHud" type="CanvasLayer"]
-offset = Vector2(-30, 33)
-transform = Transform2D(1, 0, 0, 1, -30, 33)
+offset = Vector2(-30, 30)
+transform = Transform2D(1, 0, 0, 1, -30, 30)
 script = ExtResource("1_uf7s8")
 starting_enemy = 3
 

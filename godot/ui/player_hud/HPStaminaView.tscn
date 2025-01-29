@@ -178,9 +178,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1vcff")
 player_stats = ExtResource("2_fxs3w")
+metadata/_edit_horizontal_guides_ = [180.0, 180.0, 180.0]
+metadata/_edit_vertical_guides_ = [320.0]
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(57, -2)
 sprite_frames = SubResource("SpriteFrames_wbgvb")
 animation = &"ui_entrance"
 autoplay = "ui_entrance"
@@ -193,13 +196,13 @@ position = Vector2(-57, 0)
 texture = ExtResource("4_b2cpc")
 vframes = 5
 
-[node name="HPBarFill" type="Sprite2D" parent="."]
+[node name="HPBarFill" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_0i3kx")
 position = Vector2(16.875, -5)
 texture = ExtResource("5_wytvi")
 
-[node name="StaminaBarFill" type="Sprite2D" parent="."]
+[node name="StaminaBarFill" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gb14r")
 position = Vector2(14.5, 4)
