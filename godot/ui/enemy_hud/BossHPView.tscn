@@ -130,7 +130,7 @@ vframes = 5
 [node name="HPBarBackground" type="Sprite2D" parent="Avatar"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_3he5j")
-position = Vector2(-175, 0)
+position = Vector2(-172, 0)
 texture = ExtResource("4_idpb8")
 
 [node name="HPBarFill" type="Sprite2D" parent="Avatar/HPBarBackground"]

@@ -6,8 +6,7 @@
 script = ExtResource("1_hc1ic")
 name = "melee two"
 damage = 20.0
-knockback = 100.0
-knockback_timer = 0.5
+knockback = 70.0
 interrupt_strength = 30.0
 hitstop = 0.4
 effects = {}

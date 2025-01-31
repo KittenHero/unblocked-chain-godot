@@ -1,5 +1,5 @@
 extends InputController
-class_name MinionController
+class_name EnemyController
 
 var current_action: StringName = &""
 var current_state: InputState = InputState.released

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcefkdx7pls88"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_01n17"]
+[ext_resource type="Script" path="res://characters/crim_boss/behaviours/agent_move.gd" id="2_sw0iy"]
+[ext_resource type="Script" path="res://characters/minions/behaviours/attack.gd" id="3_3re2t"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="4_rk0h1"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_38c04"]
+[ext_resource type="Script" path="res://characters/crim_boss/behaviours/is_attacking.gd" id="6_uc311"]
+
+[node name="SequenceComposite" type="Node"]
+script = ExtResource("1_01n17")
+
+[node name="AgentMove" type="Node" parent="."]
+script = ExtResource("2_sw0iy")
+
+[node name="BigPunch" type="Node" parent="."]
+script = ExtResource("3_3re2t")
+
+[node name="UntilFailDecorator" type="Node" parent="."]
+script = ExtResource("4_rk0h1")
+
+[node name="InverterDecorator" type="Node" parent="UntilFailDecorator"]
+script = ExtResource("5_38c04")
+
+[node name="IsAttacking" type="Node" parent="UntilFailDecorator/InverterDecorator"]
+script = ExtResource("6_uc311")
