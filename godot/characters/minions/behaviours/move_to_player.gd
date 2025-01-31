@@ -7,7 +7,7 @@ func tick(actor:Node, _blackboard:Blackboard) -> int:
 	var players := get_tree().get_nodes_in_group("players")
 	if players.is_empty(): return FAILURE
 	var minion : Character = actor
-	var controller: MinionController = minion.input_controller
+	var controller: EnemyController = minion.input_controller
 	
 	var nearest: Character = players[0]
 	for p: Character in players:

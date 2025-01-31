@@ -187,7 +187,6 @@ position = Vector2(57, -2)
 sprite_frames = SubResource("SpriteFrames_wbgvb")
 animation = &"ui_entrance"
 autoplay = "ui_entrance"
-frame = 8
 script = ExtResource("4_yasgo")
 
 [node name="Profile" type="Sprite2D" parent="Background"]

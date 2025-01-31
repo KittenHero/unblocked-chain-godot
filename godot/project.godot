@@ -55,6 +55,7 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 camera-follow=""
 minions=""
 players=""
+boss=""
 
 [input]
 
