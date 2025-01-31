@@ -97,7 +97,7 @@ func get_last_released(action: StringName) -> TimedInput:
 func get_actions_from(event: InputEvent) -> Array[StringName]:
 	return InputMap.get_actions().filter(
 		func (action: StringName) -> bool:
-			return InputMap.action_has_event(action, event)
+			return event.is_action(action)
 	)
 
 func trim_buffer() -> void:

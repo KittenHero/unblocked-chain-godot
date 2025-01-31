@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=52 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
@@ -25,6 +25,9 @@
 [ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
+[ext_resource type="Script" path="res://characters/player/dash.gd" id="19_416my"]
+[ext_resource type="Curve" uid="uid://uda0n67g0hfe" path="res://characters/player/player_dash_curve.tres" id="20_jnfrs"]
+[ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="21_6l47k"]
 [ext_resource type="Script" path="res://characters/states/launch.gd" id="23_5ty87"]
 [ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="23_lewwa"]
@@ -47,6 +50,30 @@ size = Vector2(28, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi1y"]
 size = Vector2(19, 32)
+
+[sub_resource type="Resource" id="Resource_43q4n"]
+script = ExtResource("24_jfn1f")
+input_name = &"dash"
+input_type = 0
+
+[sub_resource type="Resource" id="Resource_vbbw1"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 0
+input_combo = Array[ExtResource("24_jfn1f")]([SubResource("Resource_43q4n")])
+condition = ExtResource("21_6l47k")
+
+[sub_resource type="Resource" id="Resource_rueb4"]
+script = ExtResource("24_jfn1f")
+input_name = &"dash"
+input_type = 0
+
+[sub_resource type="Resource" id="Resource_btrpv"]
+script = ExtResource("4_i2kgi")
+from_anim = &""
+anim_state = 3
+input_combo = Array[ExtResource("24_jfn1f")]([SubResource("Resource_rueb4")])
+condition = ExtResource("21_6l47k")
 
 [sub_resource type="Resource" id="Resource_pbvho"]
 script = ExtResource("4_i2kgi")
@@ -379,6 +406,12 @@ script = ExtResource("3_ftd67")
 anim_name = &"player/melee2"
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("10_opg22")])
 
+[node name="Dash" type="Node" parent="States"]
+script = ExtResource("19_416my")
+speed_curve = ExtResource("20_jnfrs")
+anim_name = &"player/dash"
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_vbbw1"), SubResource("Resource_btrpv")])
+
 [node name="Parry" type="Node" parent="States"]
 script = ExtResource("15_xjqrg")
 anim_name = &"player/parry"
@@ -431,3 +464,4 @@ process_material = SubResource("ShaderMaterial_gbwgd")
 
 [connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
 [connection signal="body_entered" from="Facing/Melee2" to="." method="attack" binds= [NodePath("Facing/Melee2")]]
+[connection signal="area_entered" from="Parry" to="States/Parry" method="_on_parry_area_entered"]

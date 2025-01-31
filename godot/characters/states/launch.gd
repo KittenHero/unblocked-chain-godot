@@ -5,7 +5,7 @@ extends CharacterState
 func enter(character: Character) -> void:
 	var initial_velocity := character.velocity.length()
 	var recovery_velocity := maxf(minf(character.speed, initial_velocity * 0.5), 1.0)
-	var launch_duration := log(initial_velocity / recovery_velocity) / drag
+	var launch_duration := maxf(log(initial_velocity / recovery_velocity) / drag, 0.1)
 	var anim: AnimationPlayer = character.animation
 	var animation_length: float = anim.get_animation(anim_name).length
 	var speed_scale: float = animation_length / launch_duration
@@ -17,7 +17,6 @@ func update(delta: float, character: Character, _input: InputController) -> void
 
 func exit(character: Character) -> void:
 	character.is_launched = false
-	print("unlaunch ", character.is_launched)
 	var anim: AnimationPlayer = character.animation
 	anim.speed_scale = 1.0
 	super(character)

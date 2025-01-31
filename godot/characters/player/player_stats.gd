@@ -5,7 +5,6 @@ signal stamina_changed(new_stamina: int)
 
 @export var stamina: float 
 @export var max_stamina: float
-@export var parry_stamina_cost: float
 @export var stamina_regen: float = 0.1
 
 func change_stamina(delta: float) -> void:

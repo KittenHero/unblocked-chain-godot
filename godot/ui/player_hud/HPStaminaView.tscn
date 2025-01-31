@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b35eg8lxj1ylg"]
+[gd_scene load_steps=33 format=3 uid="uid://b35eg8lxj1ylg"]
 
 [ext_resource type="Script" path="res://ui/player_hud/player_hp_stamina_view.gd" id="1_1vcff"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_fxs3w"]
@@ -158,13 +158,24 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0i3kx"]
+resource_local_to_scene = true
 shader = ExtResource("4_364mr")
 shader_parameter/progress = 0.0
+shader_parameter/bar_color = Color(0.266667, 0.266667, 0.266667, 1)
 shader_parameter/flip = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb14r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rw1w"]
+resource_local_to_scene = true
 shader = ExtResource("4_364mr")
 shader_parameter/progress = 0.0
+shader_parameter/bar_color = Color(1, 1, 1, 1)
+shader_parameter/flip = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4nlv"]
+resource_local_to_scene = true
+shader = ExtResource("4_364mr")
+shader_parameter/progress = 0.0
+shader_parameter/bar_color = Color(1, 1, 1, 1)
 shader_parameter/flip = false
 
 [node name="HPStaminaView" type="Control"]
@@ -196,15 +207,21 @@ position = Vector2(-57, 0)
 texture = ExtResource("4_b2cpc")
 vframes = 5
 
-[node name="HPBarFill" type="Sprite2D" parent="Background"]
+[node name="HPBarBG" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_0i3kx")
 position = Vector2(16.875, -5)
 texture = ExtResource("5_wytvi")
 
+[node name="HPBarFill" type="Sprite2D" parent="Background"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_1rw1w")
+position = Vector2(16.875, -5)
+texture = ExtResource("5_wytvi")
+
 [node name="StaminaBarFill" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_gb14r")
+material = SubResource("ShaderMaterial_o4nlv")
 position = Vector2(14.5, 4)
 scale = Vector2(1.00962, 1)
 texture = ExtResource("6_pevpi")
