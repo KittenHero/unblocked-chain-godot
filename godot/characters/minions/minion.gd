@@ -15,8 +15,10 @@ func _ready() -> void:
 	if texture != null:
 		sprite.texture = texture
 
-func _on_health_changed(_delta: float) -> void:
+func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_boss_stat_change(stats)
+	if new_health == 0:
+		SignalManager.emit_boss_died(stats.name)
 
 func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 	super(attack_data, direction)

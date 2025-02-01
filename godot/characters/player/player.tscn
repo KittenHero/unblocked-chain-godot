@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=54 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
-[ext_resource type="Script" path="res://characters/player/dash.gd" id="19_416my"]
+[ext_resource type="Script" path="res://characters/states/dash.gd" id="19_416my"]
 [ext_resource type="Curve" uid="uid://uda0n67g0hfe" path="res://characters/player/player_dash_curve.tres" id="20_jnfrs"]
 [ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="21_6l47k"]
 [ext_resource type="Script" path="res://characters/states/launch.gd" id="23_5ty87"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://eaja252cgkb" path="res://characters/player/transition_inputs/launch_condition.tres" id="26_pilw5"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
 [ext_resource type="Script" path="res://characters/states/dead.gd" id="28_u1obv"]
+[ext_resource type="Resource" uid="uid://brv4wxlvysk61" path="res://characters/player/transition_inputs/spin_condition.tres" id="31_cec5i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
 radius = 13.0384
@@ -88,6 +89,13 @@ from_anim = &""
 anim_state = 0
 input_combo = Array[ExtResource("24_jfn1f")]([])
 condition = ExtResource("26_pilw5")
+
+[sub_resource type="Resource" id="Resource_4pea4"]
+script = ExtResource("4_i2kgi")
+from_anim = &"player/parry"
+anim_state = 3
+input_combo = Array[ExtResource("24_jfn1f")]([])
+condition = ExtResource("31_cec5i")
 
 [sub_resource type="Resource" id="Resource_5f6c7"]
 script = ExtResource("4_i2kgi")
@@ -305,6 +313,18 @@ tracks/16/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Sprite2D:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
@@ -429,6 +449,12 @@ drag = 4.0
 anim_name = &"player/launch"
 interrupt_resistance = 100.0
 valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_tfiso")])
+
+[node name="Spin" type="Node" parent="States"]
+script = ExtResource("3_ftd67")
+anim_name = &"player/spin"
+interrupt_resistance = 100.0
+valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_4pea4")])
 
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("28_u1obv")

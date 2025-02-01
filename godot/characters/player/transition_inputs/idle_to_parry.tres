@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://ck54srcd1wwb7"]
 
+[ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="1_5aw4w"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="1_hyvpl"]
-[ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="1_mx5wi"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="2_ie6bk"]
 
 [sub_resource type="Resource" id="Resource_2nui0"]
@@ -14,4 +14,4 @@ script = ExtResource("2_ie6bk")
 from_anim = &"player/idle"
 anim_state = 0
 input_combo = Array[ExtResource("1_hyvpl")]([SubResource("Resource_2nui0")])
-condition = ExtResource("1_mx5wi")
+condition = ExtResource("1_5aw4w")

@@ -20,9 +20,18 @@ func load_status(path: String) -> float:
 func background_load(path: String) -> Error:
 	if not loading.is_empty(): return ERR_UNAVAILABLE
 	loading = path
+	# Stores it in cache
 	var err := ResourceLoader.load_threaded_request(path)
 	set_process(true)
 	return err
 
 func get_packed_scene(path: String) -> PackedScene:
 	return ResourceLoader.load_threaded_get(path) as PackedScene
+
+func switch_to_path_scene(path: String) -> void:
+	switch_to_scene(get_packed_scene(path))
+
+func switch_to_scene(packed_scene: PackedScene) -> void:
+	if packed_scene == null:
+		get_tree().call_deferred("unload_current_scene")
+	get_tree().call_deferred("change_scene_to_packed", packed_scene)

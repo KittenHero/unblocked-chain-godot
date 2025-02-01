@@ -8,5 +8,6 @@ name = ""
 damage = 20.0
 knockback = 500.0
 interrupt_strength = 20.0
-hitstop = 0.0
+attack_hitstop_frames = 11
+victim_hitstop_frames = 13
 effects = {}

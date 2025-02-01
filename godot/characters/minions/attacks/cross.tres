@@ -8,5 +8,6 @@ name = "cross"
 damage = 20.0
 knockback = 100.0
 interrupt_strength = 5.0
-hitstop = 0.0
+attack_hitstop_frames = 5
+victim_hitstop_frames = 9
 effects = {}

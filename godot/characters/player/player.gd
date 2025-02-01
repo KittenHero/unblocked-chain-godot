@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	player_stats.change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
+	change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
 	if OS.is_debug_build(): update_debug()
 
 # Stats
@@ -26,6 +26,8 @@ func _on_stamina_changed(new_stamina: float) -> void:
 
 func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
+	if new_health == 0:
+		SignalManager.emit_player_died()
 
 func update_debug() -> void:
 	if current_state.name == "Dead": return

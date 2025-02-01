@@ -3,8 +3,18 @@ extends Node2D
 var sector_reassignment_interval : float = 20.0  
 var orbit_radius : float = 50.0
 var minions : Array[Node] = []
+var bosses : Array[WorldData.Characters] = [
+	WorldData.Characters.JACK,
+	WorldData.Characters.JIM,
+	WorldData.Characters.BOSS
+]
+@export var retry_scene: PackedScene = preload("res://ui/retry_or_menu.tscn")
+@export var victory_scene: PackedScene = preload("res://ui/victory.tscn")
 
 func _ready() -> void:
+	SignalManager.boss_died.connect(_on_boss_died)
+	SignalManager.player_died.connect(_on_player_died)
+		
 	minions = get_tree().get_nodes_in_group("minions")
 	assign_sectors()
 
@@ -32,3 +42,11 @@ func assign_sectors() -> void:
 
 func _on_timer_timeout() -> void:
 	assign_sectors()
+
+func _on_boss_died(boss_name: WorldData.Characters) -> void:
+	bosses.erase(boss_name)
+	if len(bosses) == 0:
+		SceneLoader.switch_to_scene(victory_scene)
+
+func _on_player_died() -> void:
+	SceneLoader.switch_to_scene(retry_scene)

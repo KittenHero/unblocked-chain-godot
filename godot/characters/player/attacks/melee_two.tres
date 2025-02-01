@@ -8,5 +8,6 @@ name = "melee two"
 damage = 20.0
 knockback = 70.0
 interrupt_strength = 30.0
-hitstop = 0.4
+attack_hitstop_frames = 12
+victim_hitstop_frames = 16
 effects = {}

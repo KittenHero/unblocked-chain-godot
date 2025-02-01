@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
 
-[sub_resource type="Gradient" id="Gradient_t5dnr"]
+[sub_resource type="Gradient" id="Gradient_xxct5"]
 colors = PackedColorArray(0, 0, 0.290196, 1, 0.227451, 0.6, 0.839216, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_holui"]
-gradient = SubResource("Gradient_t5dnr")
+gradient = SubResource("Gradient_xxct5")
 fill_from = Vector2(0.171171, 0.882883)
 fill_to = Vector2(0.963964, 0.0945946)
 
@@ -47,6 +47,7 @@ value = 50.0
 unique_name_in_owner = true
 title = "Error"
 initial_position = 2
+size = Vector2i(301, 100)
 dialog_text = "There was an error loading the game"
 
 [connection signal="pressed" from="MarginContainer/Start" to="." method="_start"]

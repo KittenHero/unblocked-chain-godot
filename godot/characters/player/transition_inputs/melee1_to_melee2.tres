@@ -12,6 +12,6 @@ input_type = 0
 [resource]
 script = ExtResource("2_3twlb")
 from_anim = &"player/melee1"
-anim_state = 0
+anim_state = 3
 input_combo = Array[ExtResource("1_jdhwd")]([SubResource("Resource_8pr38")])
 condition = ExtResource("1_xd5l4")

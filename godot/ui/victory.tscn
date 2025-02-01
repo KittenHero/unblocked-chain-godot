@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://df5d8x1cn55mn"]
+
+[ext_resource type="Script" path="res://ui/victory.gd" id="1_wk5le"]
+
+[sub_resource type="Gradient" id="Gradient_t5dnr"]
+colors = PackedColorArray(0, 0.991342, 0.493703, 1, 0.227451, 0.6, 0.839216, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pvorq"]
+gradient = SubResource("Gradient_t5dnr")
+fill_from = Vector2(0.858974, 0.940171)
+fill_to = Vector2(0.0897436, 0.0811966)
+
+[node name="Victory" type="CanvasLayer"]
+script = ExtResource("1_wk5le")
+main_scene = "res://ui/main_menu.tscn"
+
+[node name="Control" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_pvorq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "YOU WON
+Return to Main Menu"
+
+[node name="ErrorDialog" type="AcceptDialog" parent="MarginContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Error"
+initial_position = 2
+size = Vector2i(301, 100)
+dialog_text = "There was an error loading the game"
+
+[connection signal="pressed" from="MarginContainer/Menu" to="." method="_start"]

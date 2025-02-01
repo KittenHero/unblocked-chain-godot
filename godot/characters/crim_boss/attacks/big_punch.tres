@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://bo2v43mupw4i7"]
+
+[ext_resource type="Script" path="res://characters/attack_data.gd" id="1_g21ay"]
+
+[resource]
+script = ExtResource("1_g21ay")
+name = "BigPunch"
+damage = 5.0
+knockback = 50.0
+interrupt_strength = 20.0
+attack_hitstop_frames = 15
+victim_hitstop_frames = 20
+effects = {}

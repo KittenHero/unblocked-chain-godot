@@ -43,8 +43,6 @@ func _process(_delta: float) -> void:
 		if s.can_transition(current_state, self, input_controller):
 			current_state.exit(self)
 			s.enter(self)
-			# if self.is_in_group("players"):
-			#	print(current_state.anim_name, ' -> ', s.anim_name)
 			current_state = s
 			break
 
@@ -100,14 +98,14 @@ func attack(target: Node2D, attack_node: NodePath) -> void:
 	var hit_direction : Vector2 = ((target as CharacterBody2D).global_position - global_position).normalized()
 	@warning_ignore("unsafe_method_access")
 	target.recieve_attack(attack_data, hit_direction)
+	CombatManager.synchronize_hitstop(attack_data, [self, target])
 	
 func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 	if stats.health == 0:
 		return
 	var damage : float = stats.calculate_mitigated_damage(attack_data.damage)
 	stats.change_health(-damage)
-	# TODO:
-	# - play death animation, queue free, emit death signal
+
 	# launched > flinch
 	if attack_data.knockback > current_state.interrupt_resistance:
 		is_launched = true
@@ -116,6 +114,17 @@ func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 		
 	knockback(direction*attack_data.knockback)
 
+func start_hitstop() -> void:
+	set_physics_process(false)
+	# This already disables animation player
+	# Also activates RESET track, consider usage
+	set_process(false)
+	animation.pause()
+	
+func end_hitstop() -> void:
+	set_physics_process(true)
+	set_process(true)
+	animation.play()
 
 func reset_damaged_state() -> void:
 	is_flinching = false

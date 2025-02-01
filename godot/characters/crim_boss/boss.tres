@@ -6,8 +6,8 @@
 script = ExtResource("1_gvmj4")
 id = 1
 name = 3
-health = 400.0
-max_health = 400.0
+health = 100.0
+max_health = 100.0
 crit_rate = 0.0
 crit_damage = 0.0
 defense = 20.0

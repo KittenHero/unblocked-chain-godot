@@ -3,7 +3,6 @@ extends Resource
 class_name Stats 
 
 signal health_changed(new_health: int)
-signal died()
 
 @export var id: int
 @export var name: WorldData.Characters
@@ -20,8 +19,6 @@ func modify_stat(stat_name: String, value: float) -> void:
 func change_health(delta: float) -> void:
 	health = clamp(health + delta, 0, max_health)
 	health_changed.emit(health)
-	if health == 0:
-		died.emit()
 
 func calculate_mitigated_damage(damage: float) -> float:
 	return max(damage - defense, 1)
