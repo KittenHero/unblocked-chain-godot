@@ -5,7 +5,11 @@ extends Control
 @onready var left : Path2D = %LeftWheel
 @onready var middle : Path2D = %MiddleWheel
 @onready var right : Path2D = %RightWheel
+@onready var wheel_stop_sfx : AudioStreamPlayer = %WheelStopSfx
+@onready var win_sfx : AudioStreamPlayer = %WinSfx
+
 @export var rps : float = 2.0
+
 var computeNode: UnblockChainMiner
 var wheels : Array[Array] = []
 var stops : Array[Array] = [[1,1,1], [2,2,2], [3,3,3], [1,2,3], [3,2,1]];
@@ -54,7 +58,7 @@ func _process(_delta: float) -> void:
 	else:
 		(bar.material as ShaderMaterial).set_shader_parameter("speed_multiplier", 1.0)
 
-func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, wheel: Path2D, stop: int, duration: float) -> void:
+func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, wheel: Path2D, stop: int, duration: float) -> Tween:
 	var target := wheel_data.find(reward)
 	var wheel_size := wheel_data.size()
 	for slot : Node in wheel.get_children():
@@ -81,6 +85,8 @@ func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, whe
 			final,
 			duration
 		)
+	tween.tween_callback(wheel_stop_sfx.play)
+	return tween
 
 func follow_wheel(progress: float, wheel_item: PathFollow2D, wheel_size: int) -> void:
 	wheel_item.progress_ratio = clampf((int(progress) % wheel_size) + progress - int(progress), 0.0, 4.0) * 0.25
@@ -92,7 +98,13 @@ func _on_chain_reward(reward: UnblockChainReward) -> void:
 	var duration := computeNode.cooldown_timer
 	spin(wheels[0], reward, left, stopping[0] as int, duration * 0.4)
 	spin(wheels[1], reward, middle, stopping[1] as int, duration * 0.6)
-	spin(wheels[2], reward, right, stopping[2] as int, duration * 0.8)
+	var tween = spin(wheels[2], reward, right, stopping[2] as int, duration * 0.8)
+	tween.tween_callback(win_sfx.play)
+	var sfx_len := win_sfx.stream.get_length()
+	win_sfx.volume_db = 0
+	tween.tween_interval(sfx_len * 0.8)
+	tween.tween_property(win_sfx, "volume_db", -80, 0.2*sfx_len)
+	
 	await get_tree().create_timer(duration).timeout
 	bar.show()
 	slot_machine.hide()

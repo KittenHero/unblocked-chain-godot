@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpdrsvm2bn7f8"]
+[gd_scene load_steps=18 format=3 uid="uid://dpdrsvm2bn7f8"]
 
 [ext_resource type="Script" path="res://ui/player_hud/miner_ui.gd" id="1_hoyx6"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="1_mqb0t"]
 [ext_resource type="Texture2D" uid="uid://duoogjt041fbr" path="res://ui/player_hud/mining-bar.png" id="2_ta5gq"]
 [ext_resource type="Shader" path="res://ui/player_hud/miner.gdshader" id="3_47wes"]
 [ext_resource type="Texture2D" uid="uid://2e2iviv3v2o5" path="res://ui/player_hud/slot.png" id="4_mdngn"]
+[ext_resource type="AudioStream" uid="uid://dyp8u0k1j3imm" path="res://sfx/wheel_stop_1.wav" id="6_2deu4"]
+[ext_resource type="AudioStream" uid="uid://f1pw80no6sth" path="res://sfx/slot_win.wav" id="6_cw3am"]
+[ext_resource type="AudioStream" uid="uid://djwo3qc5gpw4h" path="res://sfx/wheel_stop_2.wav" id="7_183m4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3t4gb"]
 frequency = 0.1156
@@ -49,6 +52,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 71, 7, 0, 0, 0, 0, 71, 37, 0, 0, 0, 0, 71, 67)
 }
 point_count = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jhcef"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_2deu4")
+stream_1/stream = ExtResource("7_183m4")
 
 [node name="UnblockedChain" type="MarginContainer"]
 offset_right = 92.0
@@ -120,3 +129,13 @@ curve = SubResource("Curve2D_xkg67")
 unique_name_in_owner = true
 z_index = -1
 curve = SubResource("Curve2D_wv4u4")
+
+[node name="WinSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_cw3am")
+
+[node name="WheelStopSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_jhcef")
+max_polyphony = 3
+bus = &"SFX"
