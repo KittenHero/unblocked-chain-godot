@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_dlqfm")
-heal = 20
-period = 2.5
+heal_over_time = 5
+period = 0.1
 icon = ExtResource("1_1jv7v")
 duration = 10.0
 name = "Regen"
