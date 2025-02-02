@@ -1,0 +1,62 @@
+#### Magical Girl + Berserker Dad Combo
+
+### Inspiration
+Cyber Magical girl and Bondrewd
+
+### Core themes for Magical Girl
+
+- Uses levitating energy halos as weapons. Can expand and contract at will, however must maintain close proximity with main body.
+
+- Can stack halos on top of each other for a powerful beam attack
+
+- Each halo can do smaller beam attacks or rapid "bullets" and will be main way for her to do bullet hells
+
+- Halos can be arranged to boost her speed while sacrificing her ranged attacks for more closer ranged attacks, and possibly melee
+
+- Used to be able to do summons (ie. robot/doll hacking, golem master, in exchange for all ranged and melee attacks) (under consideration)
+
+- Gacha Power ups:
+	- Increase attack speeds
+	- Increase damage dealt
+	- Increase number of projectiles
+	- Unlock certain move sets- various forms of bullet hell
+	- Increase movement speed
+	- More powerful versions of beams or projectiles
+
+### Core themes for Bondrewd Boss
+
+- Has large cyber weapon and can have multiple forms in his later phases
+
+- Weapon base form: claymore, almost like the one guts in berserks use
+	- Slow but strong arcing attacks
+	- Delayed AOE at sword impact points when it hits the ground
+	- Sword Combos with openings near the end of the combo for parries or dodges or attacks
+	- Parry minigame at half way point
+
+- Weapon second form: Odachi form
+	- Thinner but long large blade
+	- Sweeping attacks which can be dodge checks
+	- Longer range slashes, reaction checks with tight subtle indicators
+
+- Weapon third form: Spears/Javelins
+	- Thrusting attacks
+	- Throwing attacks
+	- Can make duplicates
+	- Xayah's E to recall all thrown spears back to the user
+	- Levitating weapon attacks
+	- Electric fence mechanic?
+
+- Weapon fourth form?: Dual Blades
+	- Fast attacks
+	- High mobility
+	- Parries/dodges galore 
+	- Flurry of attacks with openings at the end of the combo
+
+- Gacha Power ups:
+	- Attack speed increase along with movement speed increases
+	- Energy powered attacks
+	- Shockwaves that emit from ground impacts
+	- Slash will emit energy waves that can behave like projectiles
+	- Can unlock certain move sets like the electric fence of the spears
+	- Damage increase
+	
