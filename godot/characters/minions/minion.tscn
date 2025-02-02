@@ -475,7 +475,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@77307")
+blackboard = NodePath("@Node@57550")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
@@ -483,7 +483,7 @@ script = ExtResource("6_3sced")
 
 [node name="CooldownDecorator" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
 script = ExtResource("7_yatif")
-wait_time = 2.0
+wait_time = 1.0
 
 [node name="SequenceComposite" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator" instance=ExtResource("9_js4t1")]
 

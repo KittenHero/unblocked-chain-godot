@@ -5,6 +5,7 @@ class_name PlayerCharacter
 @export var miner : UnblockChainMiner
 
 func _ready() -> void:
+	player_stats.change_health(player_stats.max_health)
 	player_stats.stamina_changed.connect(_on_stamina_changed)
 	player_stats.health_changed.connect(_on_health_changed)
 	# TODO: this should connect to combo counter instead
@@ -49,9 +50,10 @@ func update_debug() -> void:
 	if current_state.name == "Dead": return
 	# var buffered: BufferedCharacterController = input_controller
 	#LiveDebug.update_group({
-		#"FPS": str(Engine.get_frames_per_second()),
+		#"health": str(player_stats.health),
+		##"FPS": str(Engine.get_frames_per_second()),
 		#"anim": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
-		##"velocity":  str(velocity),
-		##"active_input": JSON.stringify(buffered.pressing.keys()),
-		##"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
+		###"velocity":  str(velocity),
+		###"active_input": JSON.stringify(buffered.pressing.keys()),
+		###"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
 	#})

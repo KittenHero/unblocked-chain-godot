@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://kld4o36nej6t"]
+[gd_scene load_steps=51 format=3 uid="uid://kld4o36nej6t"]
 
 [ext_resource type="Script" path="res://characters/crim_boss/boss.gd" id="1_ogpyq"]
 [ext_resource type="Resource" uid="uid://sj4em7pd0xte" path="res://characters/crim_boss/boss.tres" id="2_1ia2a"]
@@ -26,15 +26,9 @@
 [ext_resource type="Script" path="res://characters/dead.gd" id="14_exeoq"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="15_vl5jf"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="16_v8k1h"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="18_0njud"]
 [ext_resource type="Script" path="res://characters/crim_boss/states/charge.gd" id="18_5tvxi"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="19_833jg"]
 [ext_resource type="PackedScene" uid="uid://dcefkdx7pls88" path="res://characters/crim_boss/behaviours/move_and_strike.tscn" id="20_77ni2"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="26_sj3sy"]
-[ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="26_ykk76"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/select_point.gd" id="27_4jhvr"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="27_xgy8b"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/action.gd" id="28_n8sje"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8v73t"]
 radius = 8.0
@@ -596,8 +590,9 @@ condition = ExtResource("12_6r3pi")
 collision_layer = 16
 collision_mask = 11
 script = ExtResource("1_ogpyq")
-speed = 250.0
+speed = 300.0
 stats = ExtResource("2_1ia2a")
+metadata/_edit_vertical_guides_ = [34.0]
 
 [node name="Facing" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -616,6 +611,7 @@ disabled = true
 debug_color = Color(0.927415, 0.159202, 0.542924, 0.42)
 
 [node name="Charge" type="Area2D" parent="."]
+visible = false
 script = ExtResource("3_hfoi3")
 attack_data = ExtResource("5_qeo1a")
 
@@ -696,39 +692,16 @@ script = ExtResource("6_jsi6p")
 blackboard = NodePath("../Blackboard")
 actor = NodePath("../..")
 
-[node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
-script = ExtResource("18_0njud")
-
-[node name="CooldownDecorator" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
-script = ExtResource("19_833jg")
-wait_time = 3.0
-
-[node name="MoveAndStrike" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator" instance=ExtResource("20_77ni2")]
-
-[node name="Idle" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
-script = ExtResource("26_ykk76")
-
-[node name="CooldownDecorator2" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
-script = ExtResource("19_833jg")
-wait_time = 5.0
-
-[node name="SequenceComposite" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2"]
-script = ExtResource("26_sj3sy")
-
-[node name="SelectPoint" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2/SequenceComposite"]
-script = ExtResource("27_4jhvr")
-
-[node name="Charge" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2/SequenceComposite"]
-script = ExtResource("28_n8sje")
+[node name="MoveAndStrike" parent="InputController/BeehaveTree" instance=ExtResource("20_77ni2")]
 
 [node name="Blackboard" type="Node" parent="InputController"]
 script = ExtResource("27_xgy8b")
 
 [node name="Agent" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-path_desired_distance = 40.0
-target_desired_distance = 40.0
-path_max_distance = 500.0
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+path_max_distance = 2000.0
 debug_use_custom = true
 debug_path_custom_color = Color(0.620662, 3.1285e-07, 0.303968, 1)
 

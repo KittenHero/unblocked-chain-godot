@@ -1,5 +1,6 @@
 extends ActionLeaf
 
+@export var offset : Vector2
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var players := get_tree().get_nodes_in_group("players")
@@ -10,18 +11,18 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var controller: EnemyController = character.input_controller
 	var agent: NavigationAgent2D = character.agent 
 	var nearest: Character = players[0]
-	
+	var dir := 1 if character.position.direction_to(nearest.position).x <= 0 else -1
+	var target := nearest.position + dir * offset	
 	# Map has never synchronized 
 	if NavigationServer2D.map_get_iteration_id(agent.get_navigation_map()) == 0:
 		return FAILURE
 
 	if agent.get_target_position() != nearest.global_position:
-		agent.target_position = nearest.global_position
+		agent.target_position = target
 		
-	if agent.is_navigation_finished() and (
-		nearest.global_position.distance_to(character.global_position) <= agent.path_desired_distance
-		):
+	if agent.is_navigation_finished():
 		controller.aim = character.position.direction_to(nearest.position)
+		character.update_sprite_direction(controller.aim)
 		controller.move = Vector2.ZERO
 		
 		if character.velocity.length_squared() > 1.0:

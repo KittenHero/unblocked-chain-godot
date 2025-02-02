@@ -5,8 +5,21 @@ extends CanvasLayer
 @onready var retry_button: Button = %Retry
 @onready var menu_button: Button = %Menu
 
+func _ready() -> void:
+	var err: Error
+	if main_scene:
+		err = SceneLoader.background_load(main_scene)
+		SceneLoader.load_completed.connect(_on_scene_loaded)
+	else:
+		err = ERR_INVALID_DATA
+
+func _on_scene_loaded(path: String) -> void:
+	if path != main_scene: return
+	SceneLoader.load_completed.disconnect(_on_scene_loaded)
+
 func _retry() -> void:
-	get_tree().reload_current_scene()
+	#get_tree().unload_current_scene()
+	SceneLoader.switch_to_path_scene(main_scene)
 
 func _menu() -> void:
 	SceneLoader.switch_to_scene(main_menu)

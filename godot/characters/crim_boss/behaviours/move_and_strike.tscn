@@ -12,6 +12,7 @@ script = ExtResource("1_01n17")
 
 [node name="AgentMove" type="Node" parent="."]
 script = ExtResource("2_sw0iy")
+offset = Vector2(35, 0)
 
 [node name="BigPunch" type="Node" parent="."]
 script = ExtResource("3_3re2t")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cad4amhotirt4"]
+[gd_scene load_steps=18 format=4 uid="uid://cad4amhotirt4"]
 
 [ext_resource type="Texture2D" uid="uid://buuhrekqwkohq" path="res://assets/floor.png" id="1_123gx"]
 [ext_resource type="Texture2D" uid="uid://cx7f62135rqlm" path="res://assets/wall.png" id="2_6qtye"]
@@ -1772,6 +1772,9 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_11kpi"]
 distance = -369.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f4icx"]
+normal = Vector2(0, 1)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0klem"]
 normal = Vector2(-1, 0)
 
@@ -1811,6 +1814,14 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map Boundaries/Keep Up"]
 position = Vector2(0, -2)
 shape = SubResource("WorldBoundaryShape2D_11kpi")
+
+[node name="Keep Down" type="StaticBody2D" parent="Map Boundaries"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map Boundaries/Keep Down"]
+position = Vector2(0, 166)
+shape = SubResource("WorldBoundaryShape2D_f4icx")
 
 [node name="Keep Left" type="StaticBody2D" parent="Map Boundaries"]
 collision_layer = 2

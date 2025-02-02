@@ -10,7 +10,7 @@ func tick(actor:Node, _blackboard:Blackboard) -> int:
 	var nearest: Character = players[0]
 	
 	controller.aim = character.position.direction_to(nearest.position)
-
+	
 	controller.current_action = &"attack"
 	controller.current_state = InputController.InputState.just_pressed
 	return SUCCESS

@@ -129,7 +129,7 @@ uri = "https://jotson.itch.io/gravity-pixel-font"
 [node name="Title Screen Background" type="Label" parent="Control/MarginContainer/ScrollContainer/VBoxContainer/AssetsList"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Developer & Pixel Art"
+text = "Title Screen Background"
 horizontal_alignment = 2
 
 [node name="LinkButton2" type="LinkButton" parent="Control/MarginContainer/ScrollContainer/VBoxContainer/AssetsList"]
