@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo2gc8qxhcln0"]
+[gd_scene load_steps=9 format=3 uid="uid://bo2gc8qxhcln0"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
+[ext_resource type="Texture2D" uid="uid://dosf4q74j3taf" path="res://assets/title background/1.png" id="2_cpj6s"]
+[ext_resource type="Texture2D" uid="uid://fnsudg347v03" path="res://assets/title background/2.png" id="3_8ykkg"]
+[ext_resource type="Texture2D" uid="uid://du8a77la18yx0" path="res://assets/title background/3.png" id="4_koefb"]
+[ext_resource type="Texture2D" uid="uid://bku1cphqok1k1" path="res://assets/title background/4.png" id="5_a6yl6"]
+[ext_resource type="Texture2D" uid="uid://cnmqdlm1b8rrm" path="res://assets/title background/5.png" id="6_5s7tm"]
 
 [sub_resource type="Gradient" id="Gradient_t5dnr"]
 colors = PackedColorArray(0, 0, 0.290196, 1, 0.227451, 0.6, 0.839216, 1)
@@ -23,6 +28,52 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = SubResource("GradientTexture2D_holui")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(2, 0)
+repeat_times = 3
+
+[node name="sky" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(289, 180)
+texture = ExtResource("2_cpj6s")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, -8)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(5, 0)
+repeat_times = 3
+
+[node name="city1" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(289, 198)
+texture = ExtResource("3_8ykkg")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 3
+
+[node name="city2" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(289, 195)
+texture = ExtResource("4_koefb")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 3
+
+[node name="city3" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(289, 195)
+texture = ExtResource("5_a6yl6")
+
+[node name="Parallax2D5" type="Parallax2D" parent="."]
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(40, 0)
+repeat_times = 3
+
+[node name="city4" type="Sprite2D" parent="Parallax2D5"]
+position = Vector2(289, 198)
+texture = ExtResource("6_5s7tm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
