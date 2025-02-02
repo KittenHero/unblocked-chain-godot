@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export_file("*.tscn", "*.scn") var main_scene : String
-@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var progress_bar: TextureProgressBar = %ProgressBar
 @onready var start_button: Button = %Start
 @onready var error_popup: AcceptDialog = %ErrorDialog
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b35eg8lxj1ylg"]
+[gd_scene load_steps=34 format=3 uid="uid://b35eg8lxj1ylg"]
 
 [ext_resource type="Script" path="res://ui/player_hud/player_hp_stamina_view.gd" id="1_1vcff"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_fxs3w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ui/player_hud/background.gd" id="4_yasgo"]
 [ext_resource type="Texture2D" uid="uid://cu171dus3cvlj" path="res://assets/hp-bars.png" id="5_wytvi"]
 [ext_resource type="Texture2D" uid="uid://dg3bpdfpyq2bb" path="res://assets/stamina-bars.png" id="6_pevpi"]
+[ext_resource type="Script" path="res://ui/player_hud/status_ui.gd" id="9_dcric"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie544"]
 atlas = ExtResource("3_yprsa")
@@ -179,50 +180,61 @@ shader_parameter/bar_color = Color(1, 1, 1, 1)
 shader_parameter/flip = false
 
 [node name="HPStaminaView" type="Control"]
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 60.0
 script = ExtResource("1_1vcff")
 player_stats = ExtResource("2_fxs3w")
-metadata/_edit_horizontal_guides_ = [180.0, 180.0, 180.0]
-metadata/_edit_vertical_guides_ = [320.0]
+metadata/_edit_horizontal_guides_ = [180.0, 180.0, 180.0, -46.0]
+metadata/_edit_vertical_guides_ = [320.0, 160.0]
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(57, -2)
 sprite_frames = SubResource("SpriteFrames_wbgvb")
 animation = &"ui_entrance"
 autoplay = "ui_entrance"
+frame = 19
+frame_progress = 1.0
+centered = false
 script = ExtResource("4_yasgo")
 
 [node name="Profile" type="Sprite2D" parent="Background"]
-visible = false
-position = Vector2(-57, 0)
+position = Vector2(23, 29)
 texture = ExtResource("4_b2cpc")
 vframes = 5
 
 [node name="HPBarBG" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_0i3kx")
-position = Vector2(16.875, -5)
+position = Vector2(96, 25)
 texture = ExtResource("5_wytvi")
 
 [node name="HPBarFill" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_1rw1w")
-position = Vector2(16.875, -5)
+position = Vector2(96, 25)
 texture = ExtResource("5_wytvi")
 
 [node name="StaminaBarFill" type="Sprite2D" parent="Background"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_o4nlv")
-position = Vector2(14.5, 4)
-scale = Vector2(1.00962, 1)
+position = Vector2(94, 34)
 texture = ExtResource("6_pevpi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.65
+anchor_right = 0.95
+anchor_bottom = 0.883
+offset_left = 0.079998
+offset_bottom = 0.0200005
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("9_dcric")
 
 [connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]

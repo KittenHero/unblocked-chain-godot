@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=55 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
@@ -36,6 +36,7 @@
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
 [ext_resource type="Script" path="res://characters/states/dead.gd" id="28_u1obv"]
 [ext_resource type="Resource" uid="uid://brv4wxlvysk61" path="res://characters/player/transition_inputs/spin_condition.tres" id="31_cec5i"]
+[ext_resource type="PackedScene" uid="uid://civr1k3bjutis" path="res://unblocked_chain/default_miner.tscn" id="36_bhafg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqpkg"]
 radius = 13.0384
@@ -334,7 +335,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwgd"]
 shader = ExtResource("23_gxp7c")
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("miner") groups=["players"]]
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
@@ -342,6 +343,7 @@ platform_floor_layers = 4278190084
 platform_wall_layers = 3
 script = ExtResource("1_b864y")
 player_stats = ExtResource("2_7ryw2")
+miner = NodePath("UnblockChainMiner")
 stats = ExtResource("2_7ryw2")
 
 [node name="Facing" type="Marker2D" parent="."]
@@ -483,6 +485,8 @@ libraries = {
 "": SubResource("AnimationLibrary_lueav"),
 "player": ExtResource("5_uxnwd")
 }
+
+[node name="UnblockChainMiner" parent="." instance=ExtResource("36_bhafg")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

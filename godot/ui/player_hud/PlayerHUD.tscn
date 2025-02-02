@@ -1,16 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnxsbhymcqxcp"]
+[gd_scene load_steps=3 format=3 uid="uid://dnxsbhymcqxcp"]
 
 [ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/player_hud/HPStaminaView.tscn" id="1_8xym4"]
+[ext_resource type="PackedScene" uid="uid://dpdrsvm2bn7f8" path="res://ui/player_hud/UnblockedChain.tscn" id="2_k87p3"]
 
 [node name="PlayerHud" type="CanvasLayer"]
-offset = Vector2(30, 30)
-transform = Transform2D(1, 0, 0, 1, 30, 30)
+metadata/_edit_horizontal_guides_ = [60.0]
+metadata/_edit_vertical_guides_ = [160.0]
 
-[node name="HpstaminaView" parent="." instance=ExtResource("1_8xym4")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 160.0
+offset_bottom = 138.0
+
+[node name="HpstaminaView" parent="VBoxContainer" instance=ExtResource("1_8xym4")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="UnblockedChain" parent="VBoxContainer" instance=ExtResource("2_k87p3")]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 0

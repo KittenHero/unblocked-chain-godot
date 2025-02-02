@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpdrsvm2bn7f8"]
+
+[ext_resource type="Script" path="res://ui/player_hud/miner_ui.gd" id="1_hoyx6"]
+[ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="1_mqb0t"]
+[ext_resource type="Texture2D" uid="uid://duoogjt041fbr" path="res://ui/player_hud/mining-bar.png" id="2_ta5gq"]
+[ext_resource type="Shader" path="res://ui/player_hud/miner.gdshader" id="3_47wes"]
+[ext_resource type="Texture2D" uid="uid://2e2iviv3v2o5" path="res://ui/player_hud/slot.png" id="4_mdngn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3t4gb"]
+frequency = 0.1156
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ihume"]
+width = 120
+height = 40
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.25
+noise = SubResource("FastNoiseLite_3t4gb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_023h3"]
+shader = ExtResource("3_47wes")
+shader_parameter/speed_multiplier = 1.0
+shader_parameter/default_speed = 0.2
+shader_parameter/noise_scale = 0.4
+shader_parameter/noise = SubResource("NoiseTexture2D_ihume")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjfft"]
+atlas = ExtResource("4_mdngn")
+region = Rect2(1, 1, 97, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2es7f"]
+atlas = ExtResource("4_mdngn")
+region = Rect2(6, 126, 4, 5)
+
+[sub_resource type="Curve2D" id="Curve2D_lyb6f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, 7, 0, 0, 0, 0, 25, 37, 0, 0, 0, 0, 25, 67)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_xkg67"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 7, 0, 0, 0, 0, 48, 37, 0, 0, 0, 0, 48, 67)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_wv4u4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 71, 7, 0, 0, 0, 0, 71, 37, 0, 0, 0, 0, 71, 67)
+}
+point_count = 3
+
+[node name="UnblockedChain" type="MarginContainer"]
+offset_right = 92.0
+offset_bottom = 74.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+script = ExtResource("1_hoyx6")
+metadata/_edit_horizontal_guides_ = [74.0]
+metadata/_edit_vertical_guides_ = [160.0]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_023h3")
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+step = 0.01
+allow_greater = true
+nine_patch_stretch = true
+stretch_margin_left = 36
+stretch_margin_right = 48
+texture_under = ExtResource("2_ta5gq")
+texture_progress = ExtResource("2_ta5gq")
+tint_under = Color(0.980392, 0.415686, 0.0392157, 1)
+tint_progress = Color(1, 0.988235, 0.25098, 1)
+
+[node name="ComputeChip" type="TextureRect" parent="TextureProgressBar"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 2
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 36.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_mqb0t")
+stretch_mode = 2
+
+[node name="SlotMachine" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_xjfft")
+
+[node name="Highlight" type="TextureRect" parent="SlotMachine"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 9.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_2es7f")
+
+[node name="LeftWheel" type="Path2D" parent="SlotMachine"]
+unique_name_in_owner = true
+z_index = -1
+curve = SubResource("Curve2D_lyb6f")
+
+[node name="MiddleWheel" type="Path2D" parent="SlotMachine"]
+unique_name_in_owner = true
+z_index = -1
+curve = SubResource("Curve2D_xkg67")
+
+[node name="RightWheel" type="Path2D" parent="SlotMachine"]
+unique_name_in_owner = true
+z_index = -1
+curve = SubResource("Curve2D_wv4u4")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=10 format=3 uid="uid://civr1k3bjutis"]
+
+[ext_resource type="Script" path="res://unblocked_chain/miner.gd" id="1_0p531"]
+[ext_resource type="Script" path="res://unblocked_chain/rewarder.gd" id="2_kmvqn"]
+[ext_resource type="Script" path="res://unblocked_chain/reward.gd" id="3_v1o0s"]
+[ext_resource type="Resource" uid="uid://d1l331lc1h3ed" path="res://unblocked_chain/attack_up.tres" id="4_xqebx"]
+[ext_resource type="Resource" uid="uid://1vuoqnn654sl" path="res://unblocked_chain/defense_up.tres" id="5_duwvu"]
+[ext_resource type="Resource" uid="uid://6xgx8imc1daq" path="res://unblocked_chain/regen.tres" id="6_11rwh"]
+[ext_resource type="Resource" uid="uid://de5hgykfl8wn5" path="res://unblocked_chain/speed_up.tres" id="7_o3n34"]
+[ext_resource type="Resource" uid="uid://dstrfhoiin5q3" path="res://unblocked_chain/stamina_up.tres" id="8_qttfe"]
+[ext_resource type="Resource" uid="uid://c4lwkrant1c7k" path="res://unblocked_chain/omni_buff.tres" id="9_p7mk6"]
+
+[node name="UnblockChainMiner" type="Node" node_paths=PackedStringArray("rewarder")]
+script = ExtResource("1_0p531")
+rewarder = NodePath("UnblockChainRewarder")
+
+[node name="UnblockChainRewarder" type="Node" parent="."]
+script = ExtResource("2_kmvqn")
+rewards = Array[ExtResource("3_v1o0s")]([ExtResource("4_xqebx"), ExtResource("5_duwvu"), ExtResource("6_11rwh"), ExtResource("7_o3n34"), ExtResource("8_qttfe"), ExtResource("9_p7mk6")])

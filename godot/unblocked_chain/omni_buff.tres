@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MultiBuffReward" load_steps=9 format=3 uid="uid://c4lwkrant1c7k"]
+
+[ext_resource type="Script" path="res://status/status_condition.gd" id="1_412vw"]
+[ext_resource type="Resource" uid="uid://t4xk5vxplok8" path="res://status/attack_up.tres" id="2_ccexl"]
+[ext_resource type="Resource" uid="uid://rdjv2j07rm1s" path="res://status/defense_up.tres" id="3_gul42"]
+[ext_resource type="Resource" uid="uid://dsl7exk5uwy1f" path="res://status/regen.tres" id="4_mvinv"]
+[ext_resource type="Resource" uid="uid://b4rdbg1dqqc1w" path="res://status/speed_up.tres" id="5_6vff1"]
+[ext_resource type="Resource" uid="uid://bb1t5n7oyouc5" path="res://status/stamina_up.tres" id="6_gjwf3"]
+[ext_resource type="Texture2D" uid="uid://dn4qf81kechcn" path="res://unblocked_chain/omni_buff_icon.tres" id="7_bi13k"]
+[ext_resource type="Script" path="res://unblocked_chain/multibuff_reward.gd" id="8_4q3t5"]
+
+[resource]
+script = ExtResource("8_4q3t5")
+buffs = Array[ExtResource("1_412vw")]([ExtResource("2_ccexl"), ExtResource("3_gul42"), ExtResource("4_mvinv"), ExtResource("5_6vff1"), ExtResource("6_gjwf3")])
+duration = 10.0
+icon = ExtResource("7_bi13k")
+name = "OmniBuff"
+rarity = 2

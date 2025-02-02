@@ -10,6 +10,7 @@ extends Control
 var tween : Tween
 
 func _ready() -> void:
+	custom_minimum_size = background_animation.sprite_frames.get_frame_texture("ui_entrance", 0).get_size()
 	health_bar.set_shader_parameter("progress", 0.0)
 	health_bar_bg.set_shader_parameter("progress", 0.0)
 	stamina_bar.set_shader_parameter("progress", 0.0)

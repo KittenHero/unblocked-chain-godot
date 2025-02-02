@@ -1,6 +1,7 @@
 extends CharacterState
 
 @export var drag : float = 1
+var speed_scale : float 
 
 func enter(character: Character) -> void:
 	var initial_velocity := character.velocity.length()
@@ -8,8 +9,8 @@ func enter(character: Character) -> void:
 	var launch_duration := maxf(log(initial_velocity / recovery_velocity) / drag, 0.1)
 	var anim: AnimationPlayer = character.animation
 	var animation_length: float = anim.get_animation(anim_name).length
-	var speed_scale: float = animation_length / launch_duration
-	anim.speed_scale = speed_scale
+	speed_scale  = animation_length / launch_duration
+	anim.speed_scale *= speed_scale
 	anim.play(anim_name)
 
 func update(delta: float, character: Character, _input: InputController) -> void:
@@ -18,5 +19,5 @@ func update(delta: float, character: Character, _input: InputController) -> void
 func exit(character: Character) -> void:
 	character.is_launched = false
 	var anim: AnimationPlayer = character.animation
-	anim.speed_scale = 1.0
+	anim.speed_scale /= speed_scale
 	super(character)

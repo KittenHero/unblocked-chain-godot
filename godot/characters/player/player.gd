@@ -2,10 +2,13 @@ extends Character
 class_name PlayerCharacter
 
 @export var player_stats: PlayerStats
+@export var miner : UnblockChainMiner
 
 func _ready() -> void:
 	player_stats.stamina_changed.connect(_on_stamina_changed)
 	player_stats.health_changed.connect(_on_health_changed)
+	# TODO: this should connect to combo counter instead
+	miner.mined.connect(self._recieve_reward)
 	super()
 
 func _physics_process(delta: float) -> void:
@@ -28,6 +31,17 @@ func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
 	if new_health == 0:
 		SignalManager.emit_player_died()
+
+func attack(target: Node2D, attack_node: NodePath) -> void:
+	super(target, attack_node)
+	if miner != null:
+		# TODO: duration based on attack
+		var duration : float = 0.5
+		miner.overclock(duration)
+
+func _recieve_reward(reward: UnblockChainReward) -> void:
+	await get_tree().create_timer(miner.cooldown).timeout
+	reward.apply(self)
 
 func update_debug() -> void:
 	if current_state.name == "Dead": return

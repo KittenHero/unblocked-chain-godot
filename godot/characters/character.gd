@@ -16,8 +16,12 @@ class_name Character
 @export_category("Resources")
 @export var stats : Stats 
 
+var active_conditions : Dictionary = {}
+var local_time_scale := 1.0
+
 var is_launched: bool = false
 var is_flinching: bool = false
+
 
 func _ready() -> void:
 	assert(stats != null, "Attach your stats sheet")
@@ -32,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	var aim := input_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down")
 	if aim != Vector2.ZERO:
 		facing.rotation = Vector2.ZERO.angle_to_point(aim)
+	delta *= local_time_scale
 	current_state.update(delta, self, input_controller)
 	move_and_slide()
 

@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://bu8rdy7t068tc" path="res://characters/minions/transitions/move_to_idle.tres" id="9_3x4ly"]
 [ext_resource type="Script" path="res://characters/states/move.gd" id="10_6j2g7"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="11_w7xid"]
-[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
+[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="13_r7k2m"]
 [ext_resource type="Script" path="res://characters/dead.gd" id="14_exeoq"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="15_vl5jf"]

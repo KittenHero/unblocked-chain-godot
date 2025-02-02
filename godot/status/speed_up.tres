@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpeedUp" load_steps=3 format=3 uid="uid://b4rdbg1dqqc1w"]
+
+[ext_resource type="Texture2D" uid="uid://rymxh8t2714h" path="res://status/speed_up_icon.tres" id="1_qyulr"]
+[ext_resource type="Script" path="res://status/speed_up.gd" id="2_2prai"]
+
+[resource]
+script = ExtResource("2_2prai")
+speed_mult = 1.5
+icon = ExtResource("1_qyulr")
+duration = 10.0
+name = "SpeedUp"
