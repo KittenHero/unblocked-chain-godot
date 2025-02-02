@@ -10,7 +10,6 @@ class_name SequenceComposite extends Composite
 
 var successful_index: int = 0
 
-
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	for c in get_children():
 

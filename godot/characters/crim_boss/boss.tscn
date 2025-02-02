@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://kld4o36nej6t"]
+[gd_scene load_steps=55 format=3 uid="uid://kld4o36nej6t"]
 
 [ext_resource type="Script" path="res://characters/crim_boss/boss.gd" id="1_ogpyq"]
 [ext_resource type="Resource" uid="uid://sj4em7pd0xte" path="res://characters/crim_boss/boss.tres" id="2_1ia2a"]
@@ -12,10 +12,10 @@
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_jsi6p"]
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="7_6s5ek"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="8_dx0v5"]
-[ext_resource type="Resource" uid="uid://bu8rdy7t068tc" path="res://characters/minions/transitions/move_to_idle.tres" id="9_3x4ly"]
+[ext_resource type="Resource" uid="uid://b8r56rftv6xnj" path="res://characters/player/transition_inputs/idle_condition.tres" id="10_0pvpf"]
 [ext_resource type="Script" path="res://characters/states/move.gd" id="10_6j2g7"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="11_w7xid"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="13_r7k2m"]
 [ext_resource type="Script" path="res://characters/dead.gd" id="14_exeoq"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="15_vl5jf"]
@@ -24,11 +24,13 @@
 [ext_resource type="Script" path="res://characters/crim_boss/states/charge.gd" id="18_5tvxi"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="19_833jg"]
 [ext_resource type="PackedScene" uid="uid://dcefkdx7pls88" path="res://characters/crim_boss/behaviours/move_and_strike.tscn" id="20_77ni2"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="26_bbpjg"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="26_sj3sy"]
-[ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="26_ykk76"]
 [ext_resource type="Script" path="res://characters/crim_boss/behaviours/select_point.gd" id="27_4jhvr"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="27_xgy8b"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/action.gd" id="28_n8sje"]
+[ext_resource type="Script" path="res://characters/crim_boss/enter_charge.gd" id="28_kfc7a"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="29_l7h8n"]
+[ext_resource type="Script" path="res://characters/crim_boss/behaviours/charge.gd" id="30_jsbdj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8v73t"]
 radius = 8.0
@@ -331,6 +333,58 @@ tracks/8/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_im6j3"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.714868, 0.669018, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Charge/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
 [sub_resource type="Animation" id="Animation_ih3rb"]
 
 [sub_resource type="Animation" id="Animation_18bfe"]
@@ -415,58 +469,6 @@ tracks/1/keys = {
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_im6j3"]
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, -2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14, 15]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0.714868, 0.669018, 1), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Charge/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lp3ro"]
 _data = {
 "big_punch": SubResource("Animation_5l58b"),
@@ -475,6 +477,20 @@ _data = {
 "idle": SubResource("Animation_18bfe"),
 "walk": SubResource("Animation_ga7u1")
 }
+
+[sub_resource type="Resource" id="Resource_i267m"]
+script = ExtResource("7_6s5ek")
+from_anim = &"boss/walk"
+anim_state = 0
+input_combo = Array[ExtResource("13_r7k2m")]([])
+condition = ExtResource("10_0pvpf")
+
+[sub_resource type="Resource" id="Resource_roemx"]
+script = ExtResource("7_6s5ek")
+from_anim = &"boss/charge"
+anim_state = 4
+input_combo = Array[ExtResource("13_r7k2m")]([])
+condition = ExtResource("12_6r3pi")
 
 [sub_resource type="Resource" id="Resource_cbm7a"]
 script = ExtResource("13_r7k2m")
@@ -574,7 +590,7 @@ unique_name_in_owner = true
 script = ExtResource("6_7c4of")
 anim_name = &"boss/idle"
 interrupt_resistance = 100.0
-valid_transitions = Array[ExtResource("7_6s5ek")]([ExtResource("8_dx0v5"), ExtResource("9_3x4ly")])
+valid_transitions = Array[ExtResource("7_6s5ek")]([ExtResource("8_dx0v5"), SubResource("Resource_i267m"), SubResource("Resource_roemx")])
 
 [node name="walk" type="Node" parent="States"]
 script = ExtResource("10_6j2g7")
@@ -601,6 +617,7 @@ valid_transitions = Array[ExtResource("7_6s5ek")]([SubResource("Resource_73v3h")
 
 [node name="Charge" type="Node" parent="States"]
 script = ExtResource("18_5tvxi")
+duration = 5
 anim_name = &"boss/charge"
 interrupt_resistance = 100.0
 valid_transitions = Array[ExtResource("7_6s5ek")]([SubResource("Resource_wm5dv")])
@@ -619,27 +636,33 @@ actor = NodePath("../..")
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
 script = ExtResource("18_0njud")
 
+[node name="MoveAndStrike" parent="InputController/BeehaveTree/SelectorRandomComposite" instance=ExtResource("20_77ni2")]
+
 [node name="CooldownDecorator" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
 script = ExtResource("19_833jg")
 wait_time = 3.0
 
-[node name="MoveAndStrike" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator" instance=ExtResource("20_77ni2")]
+[node name="SelectorComposite" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator"]
+script = ExtResource("26_bbpjg")
 
-[node name="Idle" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
-script = ExtResource("26_ykk76")
-
-[node name="CooldownDecorator2" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite"]
+[node name="CooldownDecorator" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite"]
 script = ExtResource("19_833jg")
 wait_time = 5.0
 
-[node name="SequenceComposite" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2"]
+[node name="PrepareCharge" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite/CooldownDecorator"]
 script = ExtResource("26_sj3sy")
 
-[node name="SelectPoint" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2/SequenceComposite"]
+[node name="UntilFailDecorator2" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite/CooldownDecorator/PrepareCharge"]
+script = ExtResource("29_l7h8n")
+
+[node name="SelectPoint" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite/CooldownDecorator/PrepareCharge/UntilFailDecorator2"]
 script = ExtResource("27_4jhvr")
 
-[node name="Charge" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator2/SequenceComposite"]
-script = ExtResource("28_n8sje")
+[node name="EnterCharge" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite/CooldownDecorator/PrepareCharge"]
+script = ExtResource("28_kfc7a")
+
+[node name="Charge" type="Node" parent="InputController/BeehaveTree/SelectorRandomComposite/CooldownDecorator/SelectorComposite"]
+script = ExtResource("30_jsbdj")
 
 [node name="Blackboard" type="Node" parent="InputController"]
 script = ExtResource("27_xgy8b")

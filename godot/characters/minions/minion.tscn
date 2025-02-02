@@ -405,7 +405,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@101792")
+blackboard = NodePath("@Node@52111")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
