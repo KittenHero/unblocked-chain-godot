@@ -84,7 +84,7 @@ func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, whe
 			start,
 			final,
 			duration
-		)
+		).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(wheel_stop_sfx.play)
 	return tween
 
@@ -103,7 +103,7 @@ func _on_chain_reward(reward: UnblockChainReward) -> void:
 	var sfx_len := win_sfx.stream.get_length()
 	win_sfx.volume_db = 0
 	tween.tween_interval(sfx_len * 0.8)
-	tween.tween_property(win_sfx, "volume_db", -80, 0.2*sfx_len)
+	tween.tween_property(win_sfx, "volume_db", -80, 0.2*sfx_len).set_ease(Tween.EASE_OUT)
 	
 	await get_tree().create_timer(duration).timeout
 	bar.show()
