@@ -1,4 +1,13 @@
-[gd_resource type="AnimationLibrary" load_steps=11 format=3 uid="uid://cpfsuxckowqi2"]
+[gd_resource type="AnimationLibrary" load_steps=19 format=3 uid="uid://cpfsuxckowqi2"]
+
+[ext_resource type="AudioStream" uid="uid://baghmgmjlh6e" path="res://sfx/attack_whiff_3.wav" id="1_ade5m"]
+[ext_resource type="AudioStream" uid="uid://bsrmpbd726tet" path="res://sfx/dash.wav" id="1_ftak6"]
+[ext_resource type="AudioStream" uid="uid://c3ltrkraa321b" path="res://sfx/player_walk.wav" id="2_70hlq"]
+[ext_resource type="AudioStream" uid="uid://d4mg0oe4xtl76" path="res://sfx/KO.wav" id="2_hfvp7"]
+[ext_resource type="AudioStream" uid="uid://c8yjcjrerg40g" path="res://sfx/hit_2.wav" id="2_oggen"]
+[ext_resource type="AudioStream" uid="uid://di11tyybt78qt" path="res://sfx/hit_1.wav" id="3_se6gn"]
+[ext_resource type="AudioStream" uid="uid://cqwypi4vxy1sr" path="res://sfx/attack_whiff_1.wav" id="3_v4dpp"]
+[ext_resource type="AudioStream" uid="uid://c0a2t5eahc618" path="res://sfx/attack_whiff_4.wav" id="7_s3575"]
 
 [sub_resource type="Animation" id="Animation_qde1i"]
 resource_name = "dash"
@@ -40,8 +49,28 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_ftak6")
+}, {
+"end_offset": 0.18,
+"start_offset": 0.0,
+"stream": ExtResource("2_70hlq")
+}],
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0rfd2"]
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -78,6 +107,35 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_hfvp7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("States/Dead")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.06667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"game_over"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_swntk"]
 length = 0.250002
@@ -106,6 +164,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [18]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_oggen")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ebm4d"]
 resource_name = "idle"
@@ -195,11 +268,26 @@ tracks/2/path = NodePath("body:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0001, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_se6gn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_13utj"]
 resource_name = "melee1"
@@ -265,7 +353,7 @@ tracks/4/path = NodePath("Facing/Melee1/Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.15, 0.250001, 0.350001),
+"times": PackedFloat32Array(0.15, 0.25, 0.350001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
@@ -306,6 +394,21 @@ tracks/7/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sfx")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_ade5m")
+}],
+"times": PackedFloat32Array(0.15)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="Animation" id="Animation_bpogk"]
 resource_name = "melee2"
@@ -407,11 +510,26 @@ tracks/7/path = NodePath("Facing/Melee2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.15, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.15, 0.1501, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sfx")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_s3575")
+}],
+"times": PackedFloat32Array(0.15)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="Animation" id="Animation_grahk"]
 resource_name = "move"
@@ -442,6 +560,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [6, 7, 8, 9, 10, 11]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_70hlq")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_70hlq")
+}],
+"times": PackedFloat32Array(0.2, 0.6)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_57sjn"]
 length = 0.5
@@ -506,6 +643,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_ade5m")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7741u"]
 length = 0.5
@@ -540,10 +692,10 @@ tracks/2/path = NodePath("body:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -556,6 +708,45 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_v4dpp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Facing/Counter/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Facing/Counter/CollisionShape2D/GPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [resource]

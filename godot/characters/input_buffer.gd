@@ -105,6 +105,9 @@ func trim_buffer() -> void:
 	buffer = buffer.filter(
 		func(t: TimedInput) -> bool: return t.created + held >= current_time
 	)
+	for action : String in pressing.keys():
+		if not Input.is_action_pressed(action):
+			pressing.erase(action)
 
 func consume() -> void:
 	buffer = buffer.filter(func(t: TimedInput) -> bool: return t not in used)

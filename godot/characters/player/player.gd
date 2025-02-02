@@ -29,11 +29,11 @@ func _on_stamina_changed(new_stamina: float) -> void:
 
 func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
-	if new_health == 0:
-		SignalManager.emit_player_died()
 
 func attack(target: Node2D, attack_node: NodePath) -> void:
 	super(target, attack_node)
+	$sfx.stream = preload("res://sfx/hit_2.wav")
+	$sfx.play()
 	if miner != null:
 		# TODO: duration based on attack
 		var duration : float = 0.5

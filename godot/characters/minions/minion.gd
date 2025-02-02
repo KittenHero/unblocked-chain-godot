@@ -22,5 +22,6 @@ func _on_health_changed(new_health: float) -> void:
 
 func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 	super(attack_data, direction)
-	blood_particles.rotation = get_angle_to(-direction)
+	# blood_particles.rotation = get_angle_to(-direction)
+	(blood_particles.process_material as ParticleProcessMaterial).direction = Vector3(-direction.x, -direction.y, 0)
 	blood_particles.restart()

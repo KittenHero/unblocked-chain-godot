@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b38se0pqvos72"]
+[gd_scene load_steps=46 format=3 uid="uid://b38se0pqvos72"]
 
 [ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
 [ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="5_wgs0m"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
 [ext_resource type="Resource" uid="uid://b7wa54jccbfgj" path="res://characters/minions/attacks/uppercut.tres" id="6_dmrnv"]
-[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
+[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="7_6en44"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="7_pr2ds"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
@@ -24,6 +24,11 @@
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="19_8d1jk"]
 [ext_resource type="Script" path="res://characters/dead.gd" id="19_hwk2p"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="20_c2hey"]
+[ext_resource type="AudioStream" uid="uid://dcafpgq5333dj" path="res://sfx/telegrph_1.wav" id="22_wtpel"]
+[ext_resource type="AudioStream" uid="uid://b0qn27spxkp4a" path="res://sfx/attack_whiff_2.wav" id="23_fprc3"]
+[ext_resource type="AudioStream" uid="uid://cqwypi4vxy1sr" path="res://sfx/attack_whiff_1.wav" id="24_60lbx"]
+[ext_resource type="AudioStream" uid="uid://c2hbri177hrf3" path="res://sfx/dead.wav" id="24_kdamg"]
+[ext_resource type="AudioStream" uid="uid://di11tyybt78qt" path="res://sfx/hit_1.wav" id="25_4tl7h"]
 [ext_resource type="PackedScene" uid="uid://pyde4b7dg8ds" path="res://vfx/BloodParticles.tscn" id="25_stl8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in0cg"]
@@ -250,6 +255,41 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("22_wtpel")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("23_fprc3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("22_wtpel")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_60lbx")
+}],
+"times": PackedFloat32Array(0, 0.0500001, 0.466667, 0.6, 0.6001, 1)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_35w5a"]
 tracks/0/type = "value"
@@ -276,6 +316,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [2]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_kdamg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_r4isw"]
 length = 0.5
@@ -303,6 +358,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("25_4tl7h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_kh771"]
 resource_name = "idle"
@@ -405,7 +475,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@101792")
+blackboard = NodePath("@Node@77307")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
@@ -491,6 +561,8 @@ disabled = true
 debug_color = Color(0.945662, 4.62055e-06, 0.591423, 0.42)
 
 [node name="BloodParticles" parent="." instance=ExtResource("25_stl8q")]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="cross" to="." method="attack" binds= [NodePath("cross")]]
 [connection signal="body_entered" from="uppercut" to="." method="attack" binds= [NodePath("uppercut")]]

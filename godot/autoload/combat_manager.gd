@@ -26,11 +26,11 @@ func synchronize_hitstop(attack_data: AttackData, nodes: Array[Node2D]) -> void:
 	for node: Character in nodes:
 		node.start_hitstop()
 	
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	camera_shake.emit(min_frames)
 
 	for i in range(max_frames):
-		await get_tree().process_frame
+		await get_tree().physics_frame
 		
 		if i == attacker_frames - 1 and is_instance_valid(attacker):
 			attacker.end_hitstop()

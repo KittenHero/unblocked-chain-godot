@@ -14,7 +14,6 @@ var bosses : Array[WorldData.Characters] = [
 func _ready() -> void:
 	SignalManager.boss_died.connect(_on_boss_died)
 	SignalManager.player_died.connect(_on_player_died)
-		
 	minions = get_tree().get_nodes_in_group("minions")
 	assign_sectors()
 
@@ -23,7 +22,6 @@ func _ready() -> void:
 	timer.autostart = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	add_child(timer)
-
 
 func assign_sectors() -> void:
 	minions = get_tree().get_nodes_in_group("minions")

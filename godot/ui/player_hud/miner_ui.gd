@@ -6,6 +6,7 @@ extends Control
 @onready var middle : Path2D = %MiddleWheel
 @onready var right : Path2D = %RightWheel
 @onready var wheel_stop_sfx : AudioStreamPlayer = %WheelStopSfx
+@onready var spin_sfx : AudioStreamPlayer = %WheelSpinSfx
 @onready var win_sfx : AudioStreamPlayer = %WinSfx
 
 @export var rps : float = 2.0
@@ -84,7 +85,7 @@ func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, whe
 			start,
 			final,
 			duration
-		).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(wheel_stop_sfx.play)
 	return tween
 
@@ -94,11 +95,13 @@ func follow_wheel(progress: float, wheel_item: PathFollow2D, wheel_size: int) ->
 func _on_chain_reward(reward: UnblockChainReward) -> void:
 	bar.hide()
 	slot_machine.show()
+	spin_sfx.play()
 	var stopping : Array = stops.pick_random()
 	var duration := computeNode.cooldown_timer
 	spin(wheels[0], reward, left, stopping[0] as int, duration * 0.4)
 	spin(wheels[1], reward, middle, stopping[1] as int, duration * 0.6)
-	var tween = spin(wheels[2], reward, right, stopping[2] as int, duration * 0.8)
+	var tween := spin(wheels[2], reward, right, stopping[2] as int, duration * 0.8)
+	tween.tween_callback(spin_sfx.stop)
 	tween.tween_callback(win_sfx.play)
 	var sfx_len := win_sfx.stream.get_length()
 	win_sfx.volume_db = 0

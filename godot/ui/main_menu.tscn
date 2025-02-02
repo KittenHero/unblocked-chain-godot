@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo2gc8qxhcln0"]
+[gd_scene load_steps=25 format=3 uid="uid://bo2gc8qxhcln0"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
+[ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="2_qbhfh"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="2_yjv10"]
+[ext_resource type="Texture2D" uid="uid://colvv3b2tf486" path="res://characters/crim_boss/boss.png" id="3_cd6ku"]
 [ext_resource type="Texture2D" uid="uid://duoogjt041fbr" path="res://ui/player_hud/mining-bar.png" id="3_msvvf"]
+[ext_resource type="AudioStream" uid="uid://dqgfcbtfff1fu" path="res://bgm/no_rush.ogg" id="4_of4io"]
+[ext_resource type="PackedScene" uid="uid://cpfav1tokyjas" path="res://ui/settings.tscn" id="7_tfyev"]
 
 [sub_resource type="Gradient" id="Gradient_t5dnr"]
 colors = PackedColorArray(0, 0, 0.290196, 1, 0.0964682, 0.370504, 0.537813, 1)
@@ -17,7 +21,108 @@ MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc6f3"]
+atlas = ExtResource("2_qbhfh")
+region = Rect2(0, 78, 30, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53fbx"]
+atlas = ExtResource("2_qbhfh")
+region = Rect2(30, 78, 30, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1prl"]
+atlas = ExtResource("2_qbhfh")
+region = Rect2(60, 78, 30, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvtrf"]
+atlas = ExtResource("2_qbhfh")
+region = Rect2(90, 78, 30, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_am8vq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc6f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53fbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1prl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvtrf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6dh4"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(0, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx0fe"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(76, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwmqp"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(152, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpt77"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(228, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lvdp"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(304, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6so5j"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(380, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8vjj"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(456, 53, 76, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l04pk"]
+atlas = ExtResource("3_cd6ku")
+region = Rect2(532, 53, 76, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcmef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6dh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx0fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwmqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpt77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lvdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6so5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8vjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l04pk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_40rt2")
 main_scene = "res://levels/practice_room.tscn"
 
@@ -39,26 +144,75 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_kbr2o")
 
-[node name="Start" type="Button" parent="MarginContainer"]
-unique_name_in_owner = true
-visible = false
+[node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
-text = "start"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Control"]
 layout_mode = 2
-size_flags_vertical = 8
-texture = ExtResource("2_yjv10")
-stretch_mode = 2
+offset_right = 608.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 60
+text = "Unblocked Chain"
+horizontal_alignment = 1
 
-[node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer/TextureRect"]
+[node name="Player" type="AnimatedSprite2D" parent="MarginContainer/Control"]
+position = Vector2(62, 272)
+sprite_frames = SubResource("SpriteFrames_am8vq")
+autoplay = "default"
+frame_progress = 0.292339
+
+[node name="Boss" type="AnimatedSprite2D" parent="MarginContainer/Control"]
+position = Vector2(536, 268)
+sprite_frames = SubResource("SpriteFrames_fcmef")
+autoplay = "default"
+frame_progress = 0.983867
+flip_h = true
+
+[node name="Settings" type="Button" parent="MarginContainer/Control"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 236.0
+offset_top = -134.0
+offset_right = 360.0
+offset_bottom = -81.0
+grow_vertical = 0
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Start")
+theme_override_font_sizes/font_size = 24
+text = "Settings
+"
+
+[node name="Start" type="Button" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 236.0
+offset_top = -191.0
+offset_right = 360.0
+offset_bottom = -138.0
+grow_vertical = 0
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Settings")
+theme_override_font_sizes/font_size = 24
+text = "start"
+
+[node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_vertical = 8
 nine_patch_stretch = true
 stretch_margin_left = 36
@@ -68,6 +222,32 @@ texture_progress = ExtResource("3_msvvf")
 tint_under = Color(0.980392, 0.415686, 0.0392157, 1)
 tint_progress = Color(1, 0.988235, 0.25098, 1)
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/ProgressBar"]
+z_index = -1
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 614.0
+offset_bottom = 40.0
+size_flags_vertical = 8
+texture = ExtResource("2_yjv10")
+stretch_mode = 2
+
+[node name="Loading" type="Label" parent="MarginContainer/Control/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = -5.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Loading..."
+
 [node name="ErrorDialog" type="AcceptDialog" parent="MarginContainer"]
 unique_name_in_owner = true
 title = "Error"
@@ -75,5 +255,16 @@ initial_position = 2
 size = Vector2i(301, 100)
 dialog_text = "There was an error loading the game"
 
-[connection signal="pressed" from="MarginContainer/Start" to="." method="_start"]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_of4io")
+autoplay = true
+bus = &"BGM"
+
+[node name="Settings" parent="." instance=ExtResource("7_tfyev")]
+layer = 2
+visible = false
+
+[connection signal="pressed" from="MarginContainer/Control/Settings" to="Settings" method="set_visible" binds= [true]]
+[connection signal="pressed" from="MarginContainer/Control/Start" to="." method="_start"]
 [connection signal="confirmed" from="MarginContainer/ErrorDialog" to="." method="_quit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://708w06x6vyhm"]
+[gd_scene load_steps=60 format=3 uid="uid://708w06x6vyhm"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
@@ -12,9 +12,11 @@
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="5_dg6fa"]
 [ext_resource type="Texture2D" uid="uid://clfcysqgo5sdo" path="res://characters/player/attack-fx.png" id="5_owe7q"]
 [ext_resource type="AnimationLibrary" uid="uid://cpfsuxckowqi2" path="res://characters/player/player_anim.tres" id="5_uxnwd"]
+[ext_resource type="Script" path="res://characters/attack_data.gd" id="6_cho08"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="6_ibckf"]
 [ext_resource type="Resource" uid="uid://d2wxoxvj5ek10" path="res://characters/player/transition_inputs/move_to_idle.tres" id="6_mqcb5"]
 [ext_resource type="Script" path="res://characters/states/move.gd" id="6_trf1k"]
+[ext_resource type="Material" uid="uid://blr0eahn5fck0" path="res://vfx/player_parry.tres" id="7_os7r3"]
 [ext_resource type="Resource" uid="uid://blh14n7cpno06" path="res://characters/player/transition_inputs/idle_to_melee1.tres" id="7_psxkn"]
 [ext_resource type="Resource" uid="uid://d0gftf7tcommo" path="res://characters/player/transition_inputs/move_to_melee1.tres" id="8_36fom"]
 [ext_resource type="Resource" uid="uid://7ue6qxsw8yfr" path="res://characters/player/transition_inputs/idle_to_move.tres" id="9_xdwag"]
@@ -32,6 +34,7 @@
 [ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="23_lewwa"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="24_jfn1f"]
+[ext_resource type="AudioStream" uid="uid://bx3l6n0nkflpx" path="res://sfx/parry.wav" id="26_7rnip"]
 [ext_resource type="Resource" uid="uid://eaja252cgkb" path="res://characters/player/transition_inputs/launch_condition.tres" id="26_pilw5"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
 [ext_resource type="Script" path="res://characters/states/dead.gd" id="28_u1obv"]
@@ -43,6 +46,19 @@ radius = 13.0384
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lsym3"]
 size = Vector2(43, 23)
+
+[sub_resource type="Resource" id="Resource_rer3x"]
+script = ExtResource("6_cho08")
+name = "Counter"
+damage = 50.0
+knockback = 99.0
+interrupt_strength = 50.0
+attack_hitstop_frames = 50
+victim_hitstop_frames = 50
+effects = {}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jt3va"]
+radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yu3m"]
 radius = 16.0
@@ -326,6 +342,30 @@ tracks/17/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Facing/Counter/CollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Facing/Counter/CollisionShape2D/GPUParticles2D:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
@@ -371,6 +411,26 @@ visible = false
 texture = ExtResource("5_owe7q")
 hframes = 3
 vframes = 2
+
+[node name="Counter" type="Area2D" parent="Facing"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_nvhi5")
+attack_data = SubResource("Resource_rer3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/Counter"]
+shape = SubResource("CircleShape2D_jt3va")
+disabled = true
+debug_color = Color(0.262147, 0.624758, 0.319747, 0.113725)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Facing/Counter/CollisionShape2D"]
+emitting = false
+amount = 200
+process_material = ExtResource("7_os7r3")
+lifetime = 0.24
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
 
 [node name="Melee2" type="Area2D" parent="Facing"]
 visible = false
@@ -434,8 +494,11 @@ speed_curve = ExtResource("20_jnfrs")
 anim_name = &"player/dash"
 valid_transitions = Array[ExtResource("4_i2kgi")]([SubResource("Resource_vbbw1"), SubResource("Resource_btrpv")])
 
-[node name="Parry" type="Node" parent="States"]
+[node name="Parry" type="Node" parent="States" node_paths=PackedStringArray("counter", "sfx_player")]
 script = ExtResource("15_xjqrg")
+counter = NodePath("../../Facing/Counter")
+sfx_player = NodePath("../../sfx")
+sfx = ExtResource("26_7rnip")
 anim_name = &"player/parry"
 valid_transitions = Array[ExtResource("4_i2kgi")]([ExtResource("15_qnv6l"), ExtResource("16_u2ul6"), ExtResource("17_q04ht"), ExtResource("18_tl358")])
 
@@ -492,6 +555,10 @@ libraries = {
 emitting = false
 process_material = SubResource("ShaderMaterial_gbwgd")
 
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 8
+
 [connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
+[connection signal="body_entered" from="Facing/Counter" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
 [connection signal="body_entered" from="Facing/Melee2" to="." method="attack" binds= [NodePath("Facing/Melee2")]]
 [connection signal="area_entered" from="Parry" to="States/Parry" method="_on_parry_area_entered"]

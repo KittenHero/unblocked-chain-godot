@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpdrsvm2bn7f8"]
+[gd_scene load_steps=19 format=3 uid="uid://dpdrsvm2bn7f8"]
 
 [ext_resource type="Script" path="res://ui/player_hud/miner_ui.gd" id="1_hoyx6"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="1_mqb0t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2e2iviv3v2o5" path="res://ui/player_hud/slot.png" id="4_mdngn"]
 [ext_resource type="AudioStream" uid="uid://dyp8u0k1j3imm" path="res://sfx/wheel_stop_1.wav" id="6_2deu4"]
 [ext_resource type="AudioStream" uid="uid://f1pw80no6sth" path="res://sfx/slot_win.wav" id="6_cw3am"]
+[ext_resource type="AudioStream" uid="uid://cxve0hvavbqjq" path="res://sfx/slot_spin.wav" id="6_qd2po"]
 [ext_resource type="AudioStream" uid="uid://djwo3qc5gpw4h" path="res://sfx/wheel_stop_2.wav" id="7_183m4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3t4gb"]
@@ -130,12 +131,18 @@ unique_name_in_owner = true
 z_index = -1
 curve = SubResource("Curve2D_wv4u4")
 
+[node name="WheelSpinSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_qd2po")
+bus = &"SlotMachine"
+
 [node name="WinSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_cw3am")
+bus = &"SlotMachine"
 
 [node name="WheelStopSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_jhcef")
 max_polyphony = 3
-bus = &"SFX"
+bus = &"SlotMachine"

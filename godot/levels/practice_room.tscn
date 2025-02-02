@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://du2gsahh62fny"]
+[gd_scene load_steps=14 format=3 uid="uid://du2gsahh62fny"]
 
 [ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b38se0pqvos72" path="res://characters/minions/minion.tscn" id="4_hbp2t"]
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="5_0bntq"]
 [ext_resource type="Script" path="res://levels/camera_follow.gd" id="6_5bm6y"]
+[ext_resource type="PackedScene" uid="uid://cpfav1tokyjas" path="res://ui/settings.tscn" id="6_dkeds"]
 [ext_resource type="PackedScene" uid="uid://708w06x6vyhm" path="res://characters/player/player.tscn" id="7_7q118"]
 [ext_resource type="PackedScene" uid="uid://cad4amhotirt4" path="res://levels/alley.tscn" id="7_8h3so"]
 [ext_resource type="PackedScene" uid="uid://kld4o36nej6t" path="res://characters/crim_boss/boss.tscn" id="7_a1cet"]
@@ -34,7 +35,13 @@ max_intensity = 4.0
 
 [node name="LiveDebug" parent="." instance=ExtResource("2_7fjiu")]
 
+[node name="Settings" parent="." instance=ExtResource("6_dkeds")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
 [node name="World" type="Node2D" parent="."]
+unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="Jack" parent="World" instance=ExtResource("4_hbp2t")]
