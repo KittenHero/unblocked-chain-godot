@@ -1,7 +1,7 @@
 extends ActionLeaf
 
 
-func tick(actor: Node, _blackboard: Blackboard) -> int:
+func tick(actor: Node, blackboard: Blackboard) -> int:
 	var players := get_tree().get_nodes_in_group("players")
 	if players.is_empty():
 		return FAILURE

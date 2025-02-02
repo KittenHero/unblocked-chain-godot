@@ -57,6 +57,7 @@ y_sort_enabled = true
 [node name="Jack" parent="World" instance=ExtResource("4_hbp2t")]
 position = Vector2(166, 271)
 texture = ExtResource("5_0bntq")
+speed = 0.0
 stats = ExtResource("10_e1mct")
 
 [node name="Alley" parent="World" instance=ExtResource("7_8h3so")]
@@ -71,4 +72,5 @@ position = Vector2(384, 255)
 
 [node name="Jim" parent="World" instance=ExtResource("4_hbp2t")]
 position = Vector2(185, 232)
+speed = 0.0
 stats = ExtResource("8_grwuk")

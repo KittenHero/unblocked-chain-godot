@@ -137,6 +137,14 @@ func reset_damaged_state() -> void:
 
 func update_debug() -> void:
 	pass
+	#if self.is_in_group("boss"):
+		#var minion_controller: EnemyController = input_controller
+		#LiveDebug.update_group({
+			#"minion": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
+			#"minion_input": "{0} {1}".format([minion_controller.current_action, minion_controller.current_state]),
+			#"minion_move": str(minion_controller.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")),
+			#"minion_aim": str(minion_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down"))
+		#})
 	#if self.is_in_group("players"):
 		#var buffered: BufferedCharacterController = input_controller
 		#LiveDebug.update_group({
@@ -147,14 +155,6 @@ func update_debug() -> void:
 			##"input_buffer": str(buffered.buffer.map(func (event: TimedInput) -> String: return "1" if event.event.is_pressed() else "0")),
 		#})
 	#if self.is_in_group("minions"):
-		#var minion_controller: EnemyController = input_controller
-		#LiveDebug.update_group({
-			#"minion": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
-			#"minion_input": "{0} {1}".format([minion_controller.current_action, minion_controller.current_state]),
-			#"minion_move": str(minion_controller.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")),
-			#"minion_aim": str(minion_controller.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down"))
-		#})
-	#if self.is_in_group("boss"):
 		#var minion_controller: EnemyController = input_controller
 		#LiveDebug.update_group({
 			#"minion": "{0} {1}".format([current_state.name, AnimationState.States.find_key(animation_state)]),
