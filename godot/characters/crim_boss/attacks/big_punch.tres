@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_g21ay")
 name = "BigPunch"
-damage = 5.0
+damage = 30.0
 knockback = 50.0
 interrupt_strength = 20.0
 attack_hitstop_frames = 15

@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("2_nnxs3")
+crit_rate_mult = 100.0
+crit_dmg_mult = 1.5
 icon = ExtResource("1_h2ns3")
 duration = 10.0
 name = "AttackUp"
