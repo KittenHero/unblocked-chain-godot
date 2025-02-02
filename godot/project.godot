@@ -43,6 +43,10 @@ window/size/window_height_override=720
 window/energy_saving/keep_screen_on.editor_hint=true
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Unblocked Chain"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

@@ -1,20 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bo2gc8qxhcln0"]
+[gd_scene load_steps=25 format=3 uid="uid://bo2gc8qxhcln0"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
 [ext_resource type="Texture2D" uid="uid://dexuktuqkh4lb" path="res://ui/title.png" id="2_0g1sj"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="2_qbhfh"]
+[ext_resource type="PackedScene" uid="uid://r3x1x48hosdb" path="res://ui/menu_bg.tscn" id="2_rthtg"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="2_yjv10"]
 [ext_resource type="Texture2D" uid="uid://colvv3b2tf486" path="res://characters/crim_boss/boss.png" id="3_cd6ku"]
 [ext_resource type="Texture2D" uid="uid://duoogjt041fbr" path="res://ui/player_hud/mining-bar.png" id="3_msvvf"]
 [ext_resource type="AudioStream" uid="uid://dqgfcbtfff1fu" path="res://bgm/no_rush.ogg" id="4_of4io"]
 [ext_resource type="PackedScene" uid="uid://cpfav1tokyjas" path="res://ui/settings.tscn" id="7_tfyev"]
-
-[sub_resource type="Gradient" id="Gradient_t5dnr"]
-colors = PackedColorArray(0, 0, 0, 1, 0.0504515, 0.00616229, 0.0090515, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_holui"]
-gradient = SubResource("Gradient_t5dnr")
-fill_from = Vector2(0.034188, 1)
 
 [sub_resource type="Theme" id="Theme_kbr2o"]
 MarginContainer/constants/margin_bottom = 16
@@ -129,15 +123,7 @@ main_scene = "res://levels/practice_room.tscn"
 metadata/_edit_horizontal_guides_ = [180.0]
 metadata/_edit_vertical_guides_ = [320.0]
 
-[node name="Control" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = SubResource("GradientTexture2D_holui")
+[node name="Control" parent="." instance=ExtResource("2_rthtg")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

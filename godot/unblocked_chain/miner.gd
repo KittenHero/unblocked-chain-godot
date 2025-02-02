@@ -13,9 +13,6 @@ var cooldown_timer := 0.0
 
 signal mined(reward: UnblockChainReward);
 
-func _physics_process(delta: float) -> void:
-	mine(delta)
-
 func overclock(duration: float) -> void:
 	overclock_duration += duration
 

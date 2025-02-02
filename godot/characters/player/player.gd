@@ -13,7 +13,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
+	if current_state.name != "Dead":
+		change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
+		miner.mine(delta)
 	if OS.is_debug_build(): update_debug()
 
 # Stats
