@@ -8,8 +8,8 @@ var bosses : Array[WorldData.Characters] = [
 	WorldData.Characters.JIM,
 	WorldData.Characters.BOSS
 ]
-@export var retry_scene: PackedScene = preload("res://ui/retry_or_menu.tscn")
-@export var victory_scene: PackedScene = preload("res://ui/victory.tscn")
+@onready var death_screen : Node = %DeathScreen
+@onready var credits_screen : Node = %Credits
 
 func _ready() -> void:
 	SignalManager.boss_died.connect(_on_boss_died)
@@ -44,7 +44,7 @@ func _on_timer_timeout() -> void:
 func _on_boss_died(boss_name: WorldData.Characters) -> void:
 	bosses.erase(boss_name)
 	if len(bosses) == 0:
-		SceneLoader.switch_to_scene(victory_scene)
+		credits_screen.show()
 
 func _on_player_died() -> void:
-	SceneLoader.switch_to_scene(retry_scene)
+	death_screen.show()

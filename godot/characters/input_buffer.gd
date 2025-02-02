@@ -106,7 +106,7 @@ func trim_buffer() -> void:
 		func(t: TimedInput) -> bool: return t.created + held >= current_time
 	)
 	for action : String in pressing.keys():
-		if not Input.is_action_pressed(action):
+		if not action.begins_with("aim") and not Input.is_action_pressed(action):
 			pressing.erase(action)
 
 func consume() -> void:

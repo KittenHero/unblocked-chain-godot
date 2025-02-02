@@ -10,7 +10,6 @@ func _ready() -> void:
 	bgm_slider.value = Settings.bgm_volume
 	sfx_slider.value = Settings.sfx_volume
 	slot_slider.value = Settings.slot_volume
-	self.visibility_changed.connect(self.grab_focus)
 
 func _on_slot_slider_value_changed(value: float) -> void:
 	Settings.slot_volume = value

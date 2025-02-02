@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://du2gsahh62fny"]
+[gd_scene load_steps=16 format=3 uid="uid://du2gsahh62fny"]
 
 [ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://708w06x6vyhm" path="res://characters/player/player.tscn" id="7_7q118"]
 [ext_resource type="PackedScene" uid="uid://cad4amhotirt4" path="res://levels/alley.tscn" id="7_8h3so"]
 [ext_resource type="PackedScene" uid="uid://kld4o36nej6t" path="res://characters/crim_boss/boss.tscn" id="7_a1cet"]
+[ext_resource type="PackedScene" uid="uid://b4kwwvbjejek0" path="res://ui/death_screen.tscn" id="7_nuo4m"]
+[ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits.tscn" id="8_b1xol"]
 [ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
 [ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
 
@@ -38,6 +40,14 @@ max_intensity = 4.0
 [node name="Settings" parent="." instance=ExtResource("6_dkeds")]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
+
+[node name="DeathScreen" parent="." instance=ExtResource("7_nuo4m")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource("8_b1xol")]
+unique_name_in_owner = true
 visible = false
 
 [node name="World" type="Node2D" parent="."]

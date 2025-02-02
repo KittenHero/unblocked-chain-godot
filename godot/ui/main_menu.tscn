@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bo2gc8qxhcln0"]
+[gd_scene load_steps=26 format=3 uid="uid://bo2gc8qxhcln0"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_40rt2"]
+[ext_resource type="Texture2D" uid="uid://dexuktuqkh4lb" path="res://ui/title.png" id="2_0g1sj"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="2_qbhfh"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="2_yjv10"]
 [ext_resource type="Texture2D" uid="uid://colvv3b2tf486" path="res://characters/crim_boss/boss.png" id="3_cd6ku"]
@@ -9,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cpfav1tokyjas" path="res://ui/settings.tscn" id="7_tfyev"]
 
 [sub_resource type="Gradient" id="Gradient_t5dnr"]
-colors = PackedColorArray(0, 0, 0.290196, 1, 0.0964682, 0.370504, 0.537813, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0504515, 0.00616229, 0.0090515, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_holui"]
 gradient = SubResource("Gradient_t5dnr")
@@ -125,6 +126,8 @@ animations = [{
 process_mode = 3
 script = ExtResource("1_40rt2")
 main_scene = "res://levels/practice_room.tscn"
+metadata/_edit_horizontal_guides_ = [180.0]
+metadata/_edit_vertical_guides_ = [320.0]
 
 [node name="Control" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -147,13 +150,9 @@ theme = SubResource("Theme_kbr2o")
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_right = 608.0
-offset_bottom = 83.0
-theme_override_font_sizes/font_size = 60
-text = "Unblocked Chain"
-horizontal_alignment = 1
+[node name="Label" type="Sprite2D" parent="MarginContainer/Control"]
+position = Vector2(303, 83)
+texture = ExtResource("2_0g1sj")
 
 [node name="Player" type="AnimatedSprite2D" parent="MarginContainer/Control"]
 position = Vector2(62, 272)
