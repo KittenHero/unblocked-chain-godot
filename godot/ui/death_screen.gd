@@ -5,8 +5,6 @@ extends CanvasLayer
 @onready var retry_button: Button = %Retry
 @onready var menu_button: Button = %Menu
 
-@onready var error_popup: AcceptDialog = %ErrorDialog
-
 func _retry() -> void:
 	get_tree().reload_current_scene()
 

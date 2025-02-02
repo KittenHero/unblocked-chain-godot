@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @export_file("*.tscn", "*.scn") var main_scene : String
 @onready var menu_button: Button = %Menu
-@onready var error_popup: AcceptDialog = %ErrorDialog
 
 func _ready() -> void:
 	var err: Error
@@ -11,9 +10,6 @@ func _ready() -> void:
 		SceneLoader.load_completed.connect(_on_scene_loaded)
 	else:
 		err = ERR_INVALID_DATA
-	print(err)
-	if err != OK:
-		error_popup.show()
 
 func _on_scene_loaded(path: String) -> void:
 	if path != main_scene: return
