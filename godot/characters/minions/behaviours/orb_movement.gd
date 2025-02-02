@@ -11,7 +11,7 @@ func tick(actor:Node, _blackboard:Blackboard) -> int:
 	var orbit_radius: float = actor.get("orbit_radius")
 
 	var minion : Character = actor
-	var controller: MinionController = minion.input_controller
+	var controller: EnemyController = minion.input_controller
 	
 	var nearest: Character = players[0]
 	for p: Character in players:

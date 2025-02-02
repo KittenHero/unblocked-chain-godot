@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnxsbhymcqxcp"]
+
+[ext_resource type="PackedScene" uid="uid://b35eg8lxj1ylg" path="res://ui/player_hud/HPStaminaView.tscn" id="1_8xym4"]
+
+[node name="PlayerHud" type="CanvasLayer"]
+offset = Vector2(30, 30)
+transform = Transform2D(1, 0, 0, 1, 30, 30)
+
+[node name="HpstaminaView" parent="." instance=ExtResource("1_8xym4")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

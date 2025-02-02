@@ -1,0 +1,142 @@
+[gd_scene load_steps=22 format=3 uid="uid://ceoeiax5pkaxn"]
+
+[ext_resource type="Script" path="res://ui/enemy_hud/boss_hp_view.gd" id="1_k6gfv"]
+[ext_resource type="Shader" path="res://ui/shaders/player_hp.gdshader" id="3_kitgc"]
+[ext_resource type="Texture2D" uid="uid://dksuwcqx7e1ti" path="res://assets/enemy-hp-avatar.png" id="3_n5b2p"]
+[ext_resource type="Texture2D" uid="uid://b6dhdeo6t45uq" path="res://ui/avatars.png" id="4_coy7u"]
+[ext_resource type="Shader" path="res://ui/shaders/boss_hp_background.gdshader" id="4_hci3s"]
+[ext_resource type="Texture2D" uid="uid://ct8jl1p0te18t" path="res://assets/enemy-hp-full-bar.png" id="4_idpb8"]
+[ext_resource type="Script" path="res://ui/enemy_hud/avatar.gd" id="4_rfeav"]
+[ext_resource type="Texture2D" uid="uid://cvumft4pyq5dc" path="res://assets/boss-hp-bars.png" id="5_r1esp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rarj5"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j5pg"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eh8n"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbg12"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yrjr"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvmfr"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kydq"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3avoo"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd5yo"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(384, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e67d"]
+atlas = ExtResource("3_n5b2p")
+region = Rect2(432, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg7lc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rarj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j5pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eh8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbg12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yrjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvmfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kydq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3avoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd5yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e67d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kydq")
+}],
+"loop": false,
+"name": &"avatar",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3he5j"]
+shader = ExtResource("4_hci3s")
+shader_parameter/color_modifier = Color(0.2, 0, 0, 1)
+shader_parameter/progress = 0.0
+shader_parameter/extra_height = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fi45b"]
+shader = ExtResource("3_kitgc")
+shader_parameter/progress = 0.0
+shader_parameter/flip = true
+
+[node name="BossHpView" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6gfv")
+metadata/_edit_horizontal_guides_ = [180.0]
+metadata/_edit_vertical_guides_ = [320.0]
+
+[node name="Avatar" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_qg7lc")
+animation = &"avatar"
+script = ExtResource("4_rfeav")
+target_avatar_frame = 8
+
+[node name="Profile" type="Sprite2D" parent="Avatar"]
+position = Vector2(-2, -3)
+texture = ExtResource("4_coy7u")
+vframes = 5
+
+[node name="HPBarBackground" type="Sprite2D" parent="Avatar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_3he5j")
+position = Vector2(-172, 0)
+texture = ExtResource("4_idpb8")
+
+[node name="HPBarFill" type="Sprite2D" parent="Avatar/HPBarBackground"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fi45b")
+position = Vector2(-3.5, 0)
+texture = ExtResource("5_r1esp")
+
+[connection signal="profile_shown" from="Avatar" to="." method="complete_animation"]

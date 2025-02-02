@@ -41,6 +41,10 @@ window/size/window_height_override=720
 window/energy_saving/keep_screen_on.editor_hint=true
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Unblocked Chain"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -55,6 +59,7 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 camera-follow=""
 minions=""
 players=""
+boss=""
 
 [input]
 
@@ -157,5 +162,6 @@ aim_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

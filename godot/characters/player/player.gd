@@ -4,13 +4,14 @@ class_name PlayerCharacter
 @export var player_stats: PlayerStats
 
 func _ready() -> void:
-	player_stats.health_changed.connect(_on_health_changed)
 	player_stats.stamina_changed.connect(_on_stamina_changed)
+	player_stats.health_changed.connect(_on_health_changed)
 	super()
-	await get_tree().create_timer(5).timeout
-	change_health(-20)
-	change_stamina(-30)
-	
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	player_stats.change_stamina(player_stats.stamina_regen * delta * player_stats.max_stamina)
+
 # Stats
 func can_parry() -> bool:
 	return player_stats.stamina > player_stats.parry_stamina_cost
@@ -27,7 +28,7 @@ func _on_stamina_changed(new_stamina: float) -> void:
 
 func _on_health_changed(new_health: float) -> void:
 	SignalManager.emit_player_stat_change('health', new_health)
-	
+
 func update_debug() -> void:
 	pass
 	#if self.is_in_group("players"):
