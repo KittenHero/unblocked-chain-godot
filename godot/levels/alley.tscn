@@ -1818,3 +1818,31 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map Boundaries/Keep Left"]
 position = Vector2(639, 0)
 shape = SubResource("WorldBoundaryShape2D_0klem")
+
+[node name="Left Zone" type="Node2D" parent="."]
+
+[node name="BottomLeft" type="Marker2D" parent="Left Zone" groups=["left_quadrant_training"]]
+position = Vector2(40, 344)
+
+[node name="BottomRight" type="Marker2D" parent="Left Zone" groups=["left_quadrant_training"]]
+position = Vector2(200, 344)
+
+[node name="TopRight" type="Marker2D" parent="Left Zone" groups=["left_quadrant_training"]]
+position = Vector2(200, 208)
+
+[node name="TopLeft" type="Marker2D" parent="Left Zone" groups=["left_quadrant_training"]]
+position = Vector2(40, 208)
+
+[node name="Right Zone" type="Node2D" parent="."]
+
+[node name="BottomRight" type="Marker2D" parent="Right Zone" groups=["right_quadrant_training"]]
+position = Vector2(600, 344)
+
+[node name="BottomLeft" type="Marker2D" parent="Right Zone" groups=["right_quadrant_training"]]
+position = Vector2(440, 344)
+
+[node name="TopLeft" type="Marker2D" parent="Right Zone" groups=["right_quadrant_training"]]
+position = Vector2(440, 208)
+
+[node name="TopRight" type="Marker2D" parent="Right Zone" groups=["right_quadrant_training"]]
+position = Vector2(600, 208)

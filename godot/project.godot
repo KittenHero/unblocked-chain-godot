@@ -57,7 +57,8 @@ camera-follow=""
 minions=""
 players=""
 boss=""
-layers=""
+left_quadrant_training="Left Quadrant Markers Training Room"
+right_quadrant_training="Right Quadrant Markers Training Room "
 
 [input]
 

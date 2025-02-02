@@ -20,7 +20,7 @@ func recieve_attack(attack_data: AttackData,  direction: Vector2) -> void:
 
 func attack(target: Node2D, attack_node: NodePath) -> void:
 	#var attack_data : AttackData = (get_node(attack_node) as Attack).attack_data
-	## Only 1 strike taken
+	# Only 1 strike taken
 	#if attack_data.name.contains("Punch"):
 		#call_deferred("punch_collision.disabled", true)
 	super(target, attack_node)
