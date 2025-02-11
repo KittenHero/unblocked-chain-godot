@@ -99,6 +99,7 @@ shader_parameter/extra_height = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fi45b"]
 shader = ExtResource("3_kitgc")
 shader_parameter/progress = 0.0
+shader_parameter/bar_color = Color(1, 1, 1, 1)
 shader_parameter/flip = true
 
 [node name="BossHpView" type="Control"]
