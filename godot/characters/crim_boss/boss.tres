@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://characters/stats.gd" id="1_gvmj4"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_gvmj4")
 id = 1
 name = 3

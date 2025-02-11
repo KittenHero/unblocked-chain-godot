@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://d6onh81wq223" path="res://sfx/boss_walk_2.wav" id="10_jeuvi"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="11_w7xid"]
 [ext_resource type="AudioStream" uid="uid://c8yjcjrerg40g" path="res://sfx/hit_2.wav" id="11_w78r8"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="13_r7k2m"]
 [ext_resource type="Script" path="res://characters/dead.gd" id="14_exeoq"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="15_vl5jf"]
@@ -706,6 +706,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.620662, 3.1285e-07, 0.303968, 1)
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="body_entered" from="BigPunch" to="." method="attack" binds= [NodePath("BigPunch")]]
 [connection signal="body_entered" from="Charge" to="." method="attack" binds= [NodePath(" Charge")]]

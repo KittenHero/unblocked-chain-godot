@@ -5,7 +5,6 @@ class_name PlayerCharacter
 @export var miner : UnblockChainMiner
 
 func _ready() -> void:
-	player_stats.change_health(player_stats.max_health)
 	player_stats.stamina_changed.connect(_on_stamina_changed)
 	player_stats.health_changed.connect(_on_health_changed)
 	# TODO: this should connect to combo counter instead

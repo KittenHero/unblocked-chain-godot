@@ -557,6 +557,7 @@ process_material = SubResource("ShaderMaterial_gbwgd")
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 8
+bus = &"SFX"
 
 [connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
 [connection signal="body_entered" from="Facing/Counter" to="." method="attack" binds= [NodePath("Facing/Melee1")]]

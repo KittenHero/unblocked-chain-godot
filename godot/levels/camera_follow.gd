@@ -6,9 +6,9 @@ extends Camera2D
 @export var max_target_offset : Vector2
 @export var speed : float = 200.0
 @export_category("Camera Shake")
-@export_range(0, 1, 0.01) var intensity_multiplier: float = 0.1
+@export_range(0, 1, 0.01) var intensity_multiplier: float = 0.2
 @export var min_intensity: float = 0.1
-@export var max_intensity: float = 5.0
+@export var max_intensity: float = 10.0
 
 var target : Vector2
 

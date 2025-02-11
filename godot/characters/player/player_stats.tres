@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://characters/player/player_stats.gd" id="1_oi0bs"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_oi0bs")
 stamina = 200.0
 max_stamina = 200.0

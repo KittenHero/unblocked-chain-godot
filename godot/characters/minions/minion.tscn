@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://characters/transition_input.gd" id="5_wgs0m"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
 [ext_resource type="Resource" uid="uid://b7wa54jccbfgj" path="res://characters/minions/attacks/uppercut.tres" id="6_dmrnv"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="7_6en44"]
 [ext_resource type="Script" path="res://characters/input_state.gd" id="7_pr2ds"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
@@ -475,7 +475,7 @@ script = ExtResource("4_ixan0")
 
 [node name="BeehaveTree" type="Node" parent="InputController" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("5_gffjc")
-blackboard = NodePath("@Node@57550")
+blackboard = NodePath("@Node@22293")
 actor = NodePath("../..")
 
 [node name="SelectorRandomComposite" type="Node" parent="InputController/BeehaveTree"]
@@ -563,6 +563,7 @@ debug_color = Color(0.945662, 4.62055e-06, 0.591423, 0.42)
 [node name="BloodParticles" parent="." instance=ExtResource("25_stl8q")]
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="body_entered" from="cross" to="." method="attack" binds= [NodePath("cross")]]
 [connection signal="body_entered" from="uppercut" to="." method="attack" binds= [NodePath("uppercut")]]

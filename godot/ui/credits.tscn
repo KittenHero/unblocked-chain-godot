@@ -93,7 +93,7 @@ uri = "https://kan0nx.itch.io/"
 [node name="Music & SFX" type="Label" parent="Control/MarginContainer/ScrollContainer/VBoxContainer/DevTeamList"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Art & Character Design"
+text = "Music & SFX"
 horizontal_alignment = 2
 
 [node name="kanserau" type="LinkButton" parent="Control/MarginContainer/ScrollContainer/VBoxContainer/DevTeamList"]
