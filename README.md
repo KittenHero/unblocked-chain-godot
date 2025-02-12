@@ -2,4 +2,4 @@
 
 A topdown brawler game
 
-[play here]([itch.io/KitenHero/](https://petakitten.itch.io/unblocked-chain)
+[play here](https://petakitten.itch.io/unblocked-chain)
