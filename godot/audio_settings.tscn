@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxo24l48nvfpp"]
+
+[ext_resource type="Script" path="res://ui/audio_settings.gd" id="1_s6aqd"]
+[ext_resource type="AudioStream" uid="uid://b66xvrapxm2f5" path="res://sfx/ui_click.wav" id="2_d8xy7"]
+[ext_resource type="AudioStream" uid="uid://cxve0hvavbqjq" path="res://sfx/slot_spin.wav" id="3_v6l2j"]
+
+[node name="Audio" type="MarginContainer" node_paths=PackedStringArray("template_label", "template_slider", "container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_s6aqd")
+template_label = NodePath("GridContainer/TemplateLabel")
+template_slider = NodePath("GridContainer/TemplateSlider")
+container = NodePath("GridContainer")
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="TemplateLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="TemplateSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Samples" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="Samples"]
+stream = ExtResource("2_d8xy7")
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="Slot" type="AudioStreamPlayer" parent="Samples"]
+stream = ExtResource("3_v6l2j")
+bus = &"Slot Machine"
+
+[node name="Debouncer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

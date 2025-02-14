@@ -3,6 +3,7 @@ class_name PlayerCharacter
 
 @export var player_stats: PlayerStats
 @export var miner : UnblockChainMiner
+@onready var sfx : AudioStreamPlayer2D = $sfx
 
 func _ready() -> void:
 	player_stats.stamina_changed.connect(_on_stamina_changed)
@@ -34,8 +35,8 @@ func _on_health_changed(new_health: float) -> void:
 
 func attack(target: Node2D, attack_node: NodePath) -> void:
 	super(target, attack_node)
-	$sfx.stream = preload("res://sfx/hit_2.wav")
-	$sfx.play()
+	sfx.stream = preload("res://sfx/hit_2.wav")
+	sfx.play()
 	if miner != null:
 		# TODO: duration based on attack
 		var duration : float = 0.5

@@ -13,10 +13,19 @@
 [ext_resource type="PackedScene" uid="uid://kld4o36nej6t" path="res://characters/crim_boss/boss.tscn" id="7_a1cet"]
 [ext_resource type="PackedScene" uid="uid://b4kwwvbjejek0" path="res://ui/death_screen.tscn" id="7_nuo4m"]
 [ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits/credits.tscn" id="8_b1xol"]
-[ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
-[ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
 [ext_resource type="Script" path="res://characters/stats.gd" id="14_0oudt"]
 [ext_resource type="Script" path="res://characters/player/player_stats.gd" id="16_qm0rg"]
+
+[sub_resource type="Resource" id="Resource_om7dd"]
+resource_local_to_scene = true
+script = ExtResource("14_0oudt")
+id = 0
+name = 1
+health = 180.0
+max_health = 180.0
+crit_rate = 0.05
+crit_damage = 1.5
+defense = 5.0
 
 [sub_resource type="Resource" id="Resource_20x6h"]
 resource_local_to_scene = true
@@ -39,6 +48,17 @@ id = 1
 name = 0
 health = 200.0
 max_health = 200.0
+crit_rate = 0.05
+crit_damage = 1.5
+defense = 5.0
+
+[sub_resource type="Resource" id="Resource_q611a"]
+resource_local_to_scene = true
+script = ExtResource("14_0oudt")
+id = 0
+name = 2
+health = 180.0
+max_health = 180.0
 crit_rate = 0.05
 crit_damage = 1.5
 defense = 5.0
@@ -84,7 +104,7 @@ y_sort_enabled = true
 [node name="Jack" parent="World" instance=ExtResource("4_hbp2t")]
 position = Vector2(166, 271)
 texture = ExtResource("5_0bntq")
-stats = ExtResource("10_e1mct")
+stats = SubResource("Resource_om7dd")
 
 [node name="Alley" parent="World" instance=ExtResource("7_8h3so")]
 metadata/_edit_lock_ = true
@@ -101,4 +121,4 @@ stats = SubResource("Resource_wp3g1")
 
 [node name="Jim" parent="World" instance=ExtResource("4_hbp2t")]
 position = Vector2(185, 232)
-stats = ExtResource("8_grwuk")
+stats = SubResource("Resource_q611a")
