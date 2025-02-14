@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cad4amhotirt4" path="res://levels/alley.tscn" id="7_8h3so"]
 [ext_resource type="PackedScene" uid="uid://kld4o36nej6t" path="res://characters/crim_boss/boss.tscn" id="7_a1cet"]
 [ext_resource type="PackedScene" uid="uid://b4kwwvbjejek0" path="res://ui/death_screen.tscn" id="7_nuo4m"]
-[ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits.tscn" id="8_b1xol"]
+[ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits/credits.tscn" id="8_b1xol"]
 [ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
 [ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
 [ext_resource type="Script" path="res://characters/stats.gd" id="14_0oudt"]

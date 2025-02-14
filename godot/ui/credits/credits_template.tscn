@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://8j6f8gikfrrd"]
+
+[ext_resource type="Script" path="res://ui/credits/credits_parser.gd" id="1_fue2n"]
+
+[node name="CreditsTemplate" type="VBoxContainer" node_paths=PackedStringArray("template_title", "template_label", "template_link", "template_section")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+script = ExtResource("1_fue2n")
+credits_file = "res://ui/credits/credits.cfg"
+template_title = NodePath("Template Title")
+template_label = NodePath("Template Section/Template Label")
+template_link = NodePath("Template Section/Template Link")
+template_section = NodePath("Template Section")
+
+[node name="Template Title" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Title"
+horizontal_alignment = 1
+
+[node name="Template Section" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Template Label" type="Label" parent="Template Section"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Label"
+horizontal_alignment = 2
+
+[node name="Template Link" type="LinkButton" parent="Template Section"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Link"
