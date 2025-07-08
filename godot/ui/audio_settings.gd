@@ -13,7 +13,6 @@ func _ready() -> void:
 		var slider : Slider = template_slider.duplicate()
 		slider.value = db_to_linear(AudioServer.get_bus_volume_db(i))
 		slider.value_changed.connect(self.on_volume_value_changed.bind(i))
-
 		container.add_child(label)
 		container.add_child(slider)
 
@@ -24,7 +23,6 @@ func _ready() -> void:
 		samples[AudioServer.get_bus_index(sound.bus)] = sound
 		debouncer.timeout.connect(sound.stop)
 	debouncer.timeout.connect(Settings.save_data)
-
 
 func on_volume_value_changed(volume: float, bus: int) -> void:
 	AudioServer.set_bus_volume_db(bus, linear_to_db(volume))

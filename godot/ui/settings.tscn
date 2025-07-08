@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpfav1tokyjas"]
 
-[ext_resource type="Script" path="res://ui/settings.gd" id="1_ty2wr"]
+[ext_resource type="Script" uid="uid://dihpvnftf4jxs" path="res://ui/settings.gd" id="1_ty2wr"]
 [ext_resource type="PackedScene" uid="uid://cxo24l48nvfpp" path="res://audio_settings.tscn" id="2_0rxbo"]
-[ext_resource type="Script" path="res://ui/action_remap_button.gd" id="2_n22im"]
+[ext_resource type="Script" uid="uid://b1d6pqxmhne61" path="res://ui/action_remap_button.gd" id="2_n22im"]
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_ty2wr")

@@ -13,7 +13,7 @@ config_version=5
 config/name="Unblocked Chain"
 config/version="0.2"
 run/main_scene="res://ui/main_menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.png"
 
 [autoload]
@@ -40,8 +40,9 @@ window/size/viewport_height=360
 window/size/borderless=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/energy_saving/keep_screen_on.editor_hint=true
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+window/energy_saving/keep_screen_on.editor_hint=true
 
 [dotnet]
 
@@ -170,3 +171,4 @@ aim_down={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

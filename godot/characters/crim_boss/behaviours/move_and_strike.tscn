@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcefkdx7pls88"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_01n17"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/agent_move.gd" id="2_sw0iy"]
-[ext_resource type="Script" path="res://characters/minions/behaviours/attack.gd" id="3_3re2t"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="4_rk0h1"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_38c04"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/is_attacking.gd" id="6_uc311"]
+[ext_resource type="Script" uid="uid://bq4ogbbe5qckk" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_01n17"]
+[ext_resource type="Script" uid="uid://bdb00wmy4qs7q" path="res://characters/crim_boss/behaviours/agent_move.gd" id="2_sw0iy"]
+[ext_resource type="Script" uid="uid://dwikh501iuunf" path="res://characters/minions/behaviours/attack.gd" id="3_3re2t"]
+[ext_resource type="Script" uid="uid://b2lfgks5ppc2k" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="4_rk0h1"]
+[ext_resource type="Script" uid="uid://b1k67gaw0axps" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_38c04"]
+[ext_resource type="Script" uid="uid://dxrncipb4h0rs" path="res://characters/crim_boss/behaviours/is_attacking.gd" id="6_uc311"]
 
 [node name="SequenceComposite" type="Node"]
 script = ExtResource("1_01n17")

@@ -1,28 +1,28 @@
 [gd_scene load_steps=46 format=3 uid="uid://b38se0pqvos72"]
 
-[ext_resource type="Script" path="res://characters/minions/minion.gd" id="1_kpvmy"]
+[ext_resource type="Script" uid="uid://cvq3rcwsshv8s" path="res://characters/minions/minion.gd" id="1_kpvmy"]
 [ext_resource type="Texture2D" uid="uid://t754r5p3o0ah" path="res://characters/minions/jim.png" id="2_wflah"]
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="3_yts4b"]
-[ext_resource type="Script" path="res://characters/states/character_state.gd" id="4_63x1n"]
-[ext_resource type="Script" path="res://characters/enemy_controller.gd" id="4_ixan0"]
-[ext_resource type="Script" path="res://characters/attack.gd" id="4_ryjoj"]
+[ext_resource type="Script" uid="uid://c4fcjr6qih4x4" path="res://characters/states/character_state.gd" id="4_63x1n"]
+[ext_resource type="Script" uid="uid://b4wlqk0piyi6l" path="res://characters/enemy_controller.gd" id="4_ixan0"]
+[ext_resource type="Script" uid="uid://digfv3ad1hmxl" path="res://characters/attack.gd" id="4_ryjoj"]
 [ext_resource type="Resource" uid="uid://d02dke6x3scpn" path="res://characters/minions/attacks/cross.tres" id="5_auogg"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="5_gffjc"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="5_wgs0m"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
+[ext_resource type="Script" uid="uid://raqlokwh0b8g" path="res://addons/beehave/nodes/beehave_tree.gd" id="5_gffjc"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="5_wgs0m"]
+[ext_resource type="Script" uid="uid://dcw44da2ou5e4" path="res://addons/beehave/nodes/composites/selector_random.gd" id="6_3sced"]
 [ext_resource type="Resource" uid="uid://b7wa54jccbfgj" path="res://characters/minions/attacks/uppercut.tres" id="6_dmrnv"]
 [ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="6_k8tgn"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="7_6en44"]
-[ext_resource type="Script" path="res://characters/input_state.gd" id="7_pr2ds"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
-[ext_resource type="Script" path="res://characters/states/move.gd" id="8_4sdl6"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="7_pr2ds"]
+[ext_resource type="Script" uid="uid://wfbxub1snuo" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="7_yatif"]
+[ext_resource type="Script" uid="uid://3qasp4bobjhp" path="res://characters/states/move.gd" id="8_4sdl6"]
 [ext_resource type="Resource" uid="uid://bu8rdy7t068tc" path="res://characters/minions/transitions/move_to_idle.tres" id="8_l5e00"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="9_hxknx"]
 [ext_resource type="PackedScene" uid="uid://8yytsd82hfmn" path="res://characters/minions/trees/move_and_attack.tscn" id="9_js4t1"]
-[ext_resource type="Script" path="res://characters/minions/behaviours/idle.gd" id="11_w1eq3"]
-[ext_resource type="Script" path="res://characters/minions/behaviours/orb_movement.gd" id="16_rcxqo"]
+[ext_resource type="Script" uid="uid://bmucgdwpqvbl4" path="res://characters/minions/behaviours/idle.gd" id="11_w1eq3"]
+[ext_resource type="Script" uid="uid://84gddayf4uqs" path="res://characters/minions/behaviours/orb_movement.gd" id="16_rcxqo"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="19_8d1jk"]
-[ext_resource type="Script" path="res://characters/dead.gd" id="19_hwk2p"]
+[ext_resource type="Script" uid="uid://fa81iaisspte" path="res://characters/dead.gd" id="19_hwk2p"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="20_c2hey"]
 [ext_resource type="AudioStream" uid="uid://dcafpgq5333dj" path="res://sfx/telegrph_1.wav" id="22_wtpel"]
 [ext_resource type="AudioStream" uid="uid://b0qn27spxkp4a" path="res://sfx/attack_whiff_2.wav" id="23_fprc3"]
@@ -150,7 +150,7 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yywjl"]
 _data = {
-"RESET": SubResource("Animation_ovrja")
+&"RESET": SubResource("Animation_ovrja")
 }
 
 [sub_resource type="Animation" id="Animation_dwt2x"]
@@ -435,11 +435,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sgi7r"]
 _data = {
-"attack": SubResource("Animation_dwt2x"),
-"dead": SubResource("Animation_35w5a"),
-"flinch": SubResource("Animation_r4isw"),
-"idle": SubResource("Animation_kh771"),
-"move": SubResource("Animation_femco")
+&"attack": SubResource("Animation_dwt2x"),
+&"dead": SubResource("Animation_35w5a"),
+&"flinch": SubResource("Animation_r4isw"),
+&"idle": SubResource("Animation_kh771"),
+&"move": SubResource("Animation_femco")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkwh8"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TransitionCondition" load_steps=2 format=3 uid="uid://b8r56rftv6xnj"]
 
-[ext_resource type="Script" path="res://characters/transition_expression.gd" id="1_tivx7"]
+[ext_resource type="Script" uid="uid://dg7ii85it0gjy" path="res://characters/transition_expression.gd" id="1_tivx7"]
 
 [resource]
 script = ExtResource("1_tivx7")

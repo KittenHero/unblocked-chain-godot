@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxo24l48nvfpp"]
 
-[ext_resource type="Script" path="res://ui/audio_settings.gd" id="1_s6aqd"]
+[ext_resource type="Script" uid="uid://cxgep27bmyyvy" path="res://ui/audio_settings.gd" id="1_s6aqd"]
 [ext_resource type="AudioStream" uid="uid://b66xvrapxm2f5" path="res://sfx/ui_click.wav" id="2_d8xy7"]
 [ext_resource type="AudioStream" uid="uid://cxve0hvavbqjq" path="res://sfx/slot_spin.wav" id="3_v6l2j"]
 

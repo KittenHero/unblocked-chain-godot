@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bb1t5n7oyouc5" path="res://status/stamina_up.tres" id="1_exn8n"]
 [ext_resource type="Texture2D" uid="uid://5cn635bs1lud" path="res://unblocked_chain/stamina_up_icon.tres" id="2_1isg3"]
-[ext_resource type="Script" path="res://unblocked_chain/buff_reward.gd" id="3_m0yp2"]
+[ext_resource type="Script" uid="uid://bademfhti5i1n" path="res://unblocked_chain/buff_reward.gd" id="3_m0yp2"]
 
 [resource]
 script = ExtResource("3_m0yp2")

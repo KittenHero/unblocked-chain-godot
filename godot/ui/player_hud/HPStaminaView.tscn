@@ -1,14 +1,14 @@
 [gd_scene load_steps=34 format=3 uid="uid://b35eg8lxj1ylg"]
 
-[ext_resource type="Script" path="res://ui/player_hud/player_hp_stamina_view.gd" id="1_1vcff"]
+[ext_resource type="Script" uid="uid://cj2h0wesssfn5" path="res://ui/player_hud/player_hp_stamina_view.gd" id="1_1vcff"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_fxs3w"]
 [ext_resource type="Texture2D" uid="uid://cuwd0cyvx7mbn" path="res://assets/player-hp-stamina.png" id="3_yprsa"]
-[ext_resource type="Shader" path="res://ui/shaders/player_hp.gdshader" id="4_364mr"]
+[ext_resource type="Shader" uid="uid://dsw7igpe4hrv1" path="res://ui/shaders/player_hp.gdshader" id="4_364mr"]
 [ext_resource type="Texture2D" uid="uid://b6dhdeo6t45uq" path="res://ui/avatars.png" id="4_b2cpc"]
-[ext_resource type="Script" path="res://ui/player_hud/background.gd" id="4_yasgo"]
+[ext_resource type="Script" uid="uid://dg4lnvu5gkuct" path="res://ui/player_hud/background.gd" id="4_yasgo"]
 [ext_resource type="Texture2D" uid="uid://cu171dus3cvlj" path="res://assets/hp-bars.png" id="5_wytvi"]
 [ext_resource type="Texture2D" uid="uid://dg3bpdfpyq2bb" path="res://assets/stamina-bars.png" id="6_pevpi"]
-[ext_resource type="Script" path="res://ui/player_hud/status_ui.gd" id="9_dcric"]
+[ext_resource type="Script" uid="uid://44w85onyo32t" path="res://ui/player_hud/status_ui.gd" id="9_dcric"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie544"]
 atlas = ExtResource("3_yprsa")

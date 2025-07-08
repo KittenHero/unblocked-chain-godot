@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://xvan0x35q0mh"]
 
-[ext_resource type="Script" path="res://characters/input_state.gd" id="1_fk4qj"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="1_fk4qj"]
 [ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="1_pemgd"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_15hds"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="2_15hds"]
 
 [sub_resource type="Resource" id="Resource_1c4ub"]
 script = ExtResource("1_fk4qj")

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://bjrfii4ymht8a"]
 
 [ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="1_a1lme"]
-[ext_resource type="Script" path="res://characters/input_state.gd" id="1_hfsp3"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_k5lh7"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="1_hfsp3"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="2_k5lh7"]
 
 [sub_resource type="Resource" id="Resource_ok6ft"]
 script = ExtResource("1_hfsp3")
