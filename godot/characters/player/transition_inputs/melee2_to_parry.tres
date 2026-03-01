@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://xvan0x35q0mh"]
+[gd_resource type="Resource" script_class="TransitionInput" format=3 uid="uid://xvan0x35q0mh"]
 
 [ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="1_fk4qj"]
 [ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="1_pemgd"]
@@ -7,11 +7,9 @@
 [sub_resource type="Resource" id="Resource_1c4ub"]
 script = ExtResource("1_fk4qj")
 input_name = &"parry"
-input_type = 0
 
 [resource]
 script = ExtResource("2_15hds")
 from_anim = &"player/melee2"
-anim_state = 0
 input_combo = Array[ExtResource("1_fk4qj")]([SubResource("Resource_1c4ub")])
 condition = ExtResource("1_pemgd")

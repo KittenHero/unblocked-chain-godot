@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://du2gsahh62fny"]
+[gd_scene format=3 uid="uid://du2gsahh62fny"]
 
 [ext_resource type="Script" uid="uid://b8ra46r8h22rv" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
@@ -16,18 +16,15 @@
 [ext_resource type="Script" uid="uid://cg8kp6u2h04n2" path="res://characters/stats.gd" id="14_0oudt"]
 [ext_resource type="Script" uid="uid://d0ffl8dbbs7ue" path="res://characters/player/player_stats.gd" id="16_qm0rg"]
 
-[sub_resource type="Resource" id="Resource_om7dd"]
+[sub_resource type="Resource" id="Resource_atqf0"]
 resource_local_to_scene = true
 script = ExtResource("14_0oudt")
-id = 0
 name = 1
 health = 180.0
 max_health = 180.0
-crit_rate = 0.05
-crit_damage = 1.5
 defense = 5.0
 
-[sub_resource type="Resource" id="Resource_20x6h"]
+[sub_resource type="Resource" id="Resource_w44g3"]
 resource_local_to_scene = true
 script = ExtResource("14_0oudt")
 id = 1
@@ -38,35 +35,28 @@ crit_rate = 0.0
 crit_damage = 0.0
 defense = 20.0
 
-[sub_resource type="Resource" id="Resource_wp3g1"]
+[sub_resource type="Resource" id="Resource_d85sn"]
 resource_local_to_scene = true
 script = ExtResource("16_qm0rg")
 stamina = 200.0
 max_stamina = 200.0
-stamina_regen = 0.1
 id = 1
-name = 0
 health = 200.0
 max_health = 200.0
-crit_rate = 0.05
-crit_damage = 1.5
 defense = 5.0
 
-[sub_resource type="Resource" id="Resource_q611a"]
+[sub_resource type="Resource" id="Resource_un2y6"]
 resource_local_to_scene = true
 script = ExtResource("14_0oudt")
-id = 0
 name = 2
 health = 180.0
 max_health = 180.0
-crit_rate = 0.05
-crit_damage = 1.5
 defense = 5.0
 
-[node name="PracticeRoom" type="Node2D"]
+[node name="PracticeRoom" type="Node2D" unique_id=2111619981]
 script = ExtResource("1_wcmue")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=689361637]
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -78,47 +68,47 @@ intensity_multiplier = 0.09
 min_intensity = 0.5
 max_intensity = 4.0
 
-[node name="HUD" parent="." instance=ExtResource("3_o6d5o")]
+[node name="HUD" parent="." unique_id=781298587 instance=ExtResource("3_o6d5o")]
 
-[node name="EnemyHud" parent="." instance=ExtResource("4_1c0wv")]
+[node name="EnemyHud" parent="." unique_id=715952821 instance=ExtResource("4_1c0wv")]
 
-[node name="LiveDebug" parent="." instance=ExtResource("2_7fjiu")]
+[node name="LiveDebug" parent="." unique_id=2103672068 instance=ExtResource("2_7fjiu")]
 
-[node name="Settings" parent="." instance=ExtResource("6_dkeds")]
+[node name="Settings" parent="." unique_id=1669429583 instance=ExtResource("6_dkeds")]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
 
-[node name="DeathScreen" parent="." instance=ExtResource("7_nuo4m")]
+[node name="DeathScreen" parent="." unique_id=1821497982 instance=ExtResource("7_nuo4m")]
 unique_name_in_owner = true
 visible = false
 
-[node name="Credits" parent="." instance=ExtResource("8_b1xol")]
+[node name="Credits" parent="." unique_id=1462821770 instance=ExtResource("8_b1xol")]
 unique_name_in_owner = true
 visible = false
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=1878782407]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Jack" parent="World" instance=ExtResource("4_hbp2t")]
+[node name="Jack" parent="World" unique_id=1180634266 instance=ExtResource("4_hbp2t")]
 position = Vector2(166, 271)
 texture = ExtResource("5_0bntq")
-stats = SubResource("Resource_om7dd")
+stats = SubResource("Resource_atqf0")
 
-[node name="Alley" parent="World" instance=ExtResource("7_8h3so")]
+[node name="Alley" parent="World" unique_id=1584549784 instance=ExtResource("7_8h3so")]
 metadata/_edit_lock_ = true
 
-[node name="Boss" parent="World" groups=["boss"] instance=ExtResource("7_a1cet")]
+[node name="Boss" parent="World" unique_id=931272101 groups=["boss"] instance=ExtResource("7_a1cet")]
 position = Vector2(93, 244)
-stats = SubResource("Resource_20x6h")
+stats = SubResource("Resource_w44g3")
 
-[node name="Player" parent="World" groups=["camera-follow"] instance=ExtResource("7_7q118")]
+[node name="Player" parent="World" unique_id=808114897 groups=["camera-follow"] instance=ExtResource("7_7q118")]
 y_sort_enabled = true
 position = Vector2(384, 255)
-player_stats = SubResource("Resource_wp3g1")
-stats = SubResource("Resource_wp3g1")
+player_stats = SubResource("Resource_d85sn")
+stats = SubResource("Resource_d85sn")
 
-[node name="Jim" parent="World" instance=ExtResource("4_hbp2t")]
+[node name="Jim" parent="World" unique_id=1555961361 instance=ExtResource("4_hbp2t")]
 position = Vector2(185, 232)
-stats = SubResource("Resource_q611a")
+stats = SubResource("Resource_un2y6")
