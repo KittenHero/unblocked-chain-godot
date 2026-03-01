@@ -1,0 +1,13 @@
+- Simple 
+- Should have dates
+- Use gifs, images - make sure you have something to show
+- One person to post
+- Fun, should aim to fix such issues
+- Feel compelled to continue
+- Attention gathered around game is a powerful thing
+- Make sure your coherent idea is doable
+- Lead with something concrete, for engagement
+- Be honest about struggles
+- Structure loosely around accomplished, what you found interesting, and what's next
+- Short
+- Close with planning next or questions
