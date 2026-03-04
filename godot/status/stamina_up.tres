@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StaminaUp" load_steps=3 format=3 uid="uid://bb1t5n7oyouc5"]
 
 [ext_resource type="Texture2D" uid="uid://p8ysp5rf6aqu" path="res://status/stamina_up_icon.tres" id="1_k0enu"]
-[ext_resource type="Script" path="res://status/stamina_up.gd" id="2_evten"]
+[ext_resource type="Script" uid="uid://ck6r53b6naruf" path="res://status/stamina_up.gd" id="2_evten"]
 
 [resource]
 script = ExtResource("2_evten")

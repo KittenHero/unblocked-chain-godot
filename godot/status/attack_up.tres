@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AttackUp" load_steps=3 format=3 uid="uid://t4xk5vxplok8"]
 
 [ext_resource type="Texture2D" uid="uid://b8tq6pirsvd4a" path="res://status/attack_up_icon.tres" id="1_h2ns3"]
-[ext_resource type="Script" path="res://status/attack_up.gd" id="2_nnxs3"]
+[ext_resource type="Script" uid="uid://di0myx0m4pkbs" path="res://status/attack_up.gd" id="2_nnxs3"]
 
 [resource]
 script = ExtResource("2_nnxs3")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c44vc0a8g8x1u"]
 
-[ext_resource type="Script" path="res://autoload/live_debug/live_debug_display.gd" id="1_jbsrb"]
+[ext_resource type="Script" uid="uid://dpsbkihp7hrpc" path="res://autoload/live_debug/live_debug_display.gd" id="1_jbsrb"]
 
 [node name="LiveDebug" type="CanvasLayer"]
 

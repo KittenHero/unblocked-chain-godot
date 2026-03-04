@@ -1,21 +1,21 @@
 [gd_scene load_steps=60 format=3 uid="uid://708w06x6vyhm"]
 
-[ext_resource type="Script" path="res://characters/player/player.gd" id="1_b864y"]
+[ext_resource type="Script" uid="uid://dkmfipjyif270" path="res://characters/player/player.gd" id="1_b864y"]
 [ext_resource type="Resource" uid="uid://ddi03kv40d52h" path="res://characters/player/player_stats.tres" id="2_7ryw2"]
-[ext_resource type="Script" path="res://characters/input_buffer.gd" id="2_rj1di"]
+[ext_resource type="Script" uid="uid://onmwx1vpm8g3" path="res://characters/input_buffer.gd" id="2_rj1di"]
 [ext_resource type="Texture2D" uid="uid://cgpsm6trejtv0" path="res://characters/player/player.png" id="3_e8t2w"]
-[ext_resource type="Script" path="res://characters/states/character_state.gd" id="3_ftd67"]
-[ext_resource type="Script" path="res://characters/attack.gd" id="3_nvhi5"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="4_i2kgi"]
+[ext_resource type="Script" uid="uid://c4fcjr6qih4x4" path="res://characters/states/character_state.gd" id="3_ftd67"]
+[ext_resource type="Script" uid="uid://digfv3ad1hmxl" path="res://characters/attack.gd" id="3_nvhi5"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="4_i2kgi"]
 [ext_resource type="Resource" uid="uid://dotx8jyroet6c" path="res://characters/player/attacks/melee_one.tres" id="4_pfkb3"]
 [ext_resource type="Resource" uid="uid://df4yubob40y2s" path="res://characters/player/attacks/melee_two.tres" id="5_4f4n3"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="5_dg6fa"]
 [ext_resource type="Texture2D" uid="uid://clfcysqgo5sdo" path="res://characters/player/attack-fx.png" id="5_owe7q"]
 [ext_resource type="AnimationLibrary" uid="uid://cpfsuxckowqi2" path="res://characters/player/player_anim.tres" id="5_uxnwd"]
-[ext_resource type="Script" path="res://characters/attack_data.gd" id="6_cho08"]
+[ext_resource type="Script" uid="uid://d2r6oa0wnhr1h" path="res://characters/attack_data.gd" id="6_cho08"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="6_ibckf"]
 [ext_resource type="Resource" uid="uid://d2wxoxvj5ek10" path="res://characters/player/transition_inputs/move_to_idle.tres" id="6_mqcb5"]
-[ext_resource type="Script" path="res://characters/states/move.gd" id="6_trf1k"]
+[ext_resource type="Script" uid="uid://3qasp4bobjhp" path="res://characters/states/move.gd" id="6_trf1k"]
 [ext_resource type="Material" uid="uid://blr0eahn5fck0" path="res://vfx/player_parry.tres" id="7_os7r3"]
 [ext_resource type="Resource" uid="uid://blh14n7cpno06" path="res://characters/player/transition_inputs/idle_to_melee1.tres" id="7_psxkn"]
 [ext_resource type="Resource" uid="uid://d0gftf7tcommo" path="res://characters/player/transition_inputs/move_to_melee1.tres" id="8_36fom"]
@@ -23,21 +23,21 @@
 [ext_resource type="Resource" uid="uid://bjrfii4ymht8a" path="res://characters/player/transition_inputs/melee2_to_melee1.tres" id="10_ghlts"]
 [ext_resource type="Resource" uid="uid://bergcbsab64gk" path="res://characters/player/transition_inputs/melee1_to_melee2.tres" id="10_opg22"]
 [ext_resource type="Resource" uid="uid://cdeicq36xnwhq" path="res://characters/player/transition_inputs/move_to_parry.tres" id="15_qnv6l"]
-[ext_resource type="Script" path="res://characters/states/parry.gd" id="15_xjqrg"]
+[ext_resource type="Script" uid="uid://b25aev54t57g8" path="res://characters/states/parry.gd" id="15_xjqrg"]
 [ext_resource type="Resource" uid="uid://dleyc13cwg5dt" path="res://characters/player/transition_inputs/melee1_to_parry.tres" id="16_u2ul6"]
 [ext_resource type="Resource" uid="uid://xvan0x35q0mh" path="res://characters/player/transition_inputs/melee2_to_parry.tres" id="17_q04ht"]
 [ext_resource type="Resource" uid="uid://ck54srcd1wwb7" path="res://characters/player/transition_inputs/idle_to_parry.tres" id="18_tl358"]
-[ext_resource type="Script" path="res://characters/states/dash.gd" id="19_416my"]
+[ext_resource type="Script" uid="uid://bsxllx5gc4grs" path="res://characters/states/dash.gd" id="19_416my"]
 [ext_resource type="Curve" uid="uid://uda0n67g0hfe" path="res://characters/player/player_dash_curve.tres" id="20_jnfrs"]
 [ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="21_6l47k"]
-[ext_resource type="Script" path="res://characters/states/launch.gd" id="23_5ty87"]
-[ext_resource type="Shader" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
+[ext_resource type="Script" uid="uid://dwb5xgdr5kp45" path="res://characters/states/launch.gd" id="23_5ty87"]
+[ext_resource type="Shader" uid="uid://8dfyalgl0xjs" path="res://characters/player/blood_splatter.gdshader" id="23_gxp7c"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="23_lewwa"]
-[ext_resource type="Script" path="res://characters/input_state.gd" id="24_jfn1f"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="24_jfn1f"]
 [ext_resource type="AudioStream" uid="uid://bx3l6n0nkflpx" path="res://sfx/parry.wav" id="26_7rnip"]
 [ext_resource type="Resource" uid="uid://eaja252cgkb" path="res://characters/player/transition_inputs/launch_condition.tres" id="26_pilw5"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="27_543js"]
-[ext_resource type="Script" path="res://characters/states/dead.gd" id="28_u1obv"]
+[ext_resource type="Script" uid="uid://c4qmdhkmo8lk6" path="res://characters/states/dead.gd" id="28_u1obv"]
 [ext_resource type="Resource" uid="uid://brv4wxlvysk61" path="res://characters/player/transition_inputs/spin_condition.tres" id="31_cec5i"]
 [ext_resource type="PackedScene" uid="uid://civr1k3bjutis" path="res://unblocked_chain/default_miner.tscn" id="36_bhafg"]
 
@@ -369,7 +369,7 @@ tracks/19/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lueav"]
 _data = {
-"RESET": SubResource("Animation_vbj3b")
+&"RESET": SubResource("Animation_vbj3b")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwgd"]
@@ -557,6 +557,7 @@ process_material = SubResource("ShaderMaterial_gbwgd")
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 8
+bus = &"SFX"
 
 [connection signal="body_entered" from="Facing/Melee1" to="." method="attack" binds= [NodePath("Facing/Melee1")]]
 [connection signal="body_entered" from="Facing/Counter" to="." method="attack" binds= [NodePath("Facing/Melee1")]]

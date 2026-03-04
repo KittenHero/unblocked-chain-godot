@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh7wbsr5equwx"]
 
-[ext_resource type="Script" path="res://ui/enemy_hud/enemy_hud.gd" id="1_uf7s8"]
+[ext_resource type="Script" uid="uid://48sp1oie20ur" path="res://ui/enemy_hud/enemy_hud.gd" id="1_uf7s8"]
 [ext_resource type="PackedScene" uid="uid://ceoeiax5pkaxn" path="res://ui/enemy_hud/BossHPView.tscn" id="2_nbu27"]
 
 [node name="EnemyHud" type="CanvasLayer"]

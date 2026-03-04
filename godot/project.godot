@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Unblocked Chain"
 config/version="0.2"
 run/main_scene="res://ui/main_menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,8 +25,8 @@ config/icon="res://icon.png"
 SceneLoader="*res://autoload/scene_loader.gd"
 LiveDebug="*res://autoload/live_debug/live_debug.gd"
 SignalManager="*res://autoload/signal_manager.gd"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+BeehaveGlobalMetrics="*uid://balhci6eaxbq0"
+BeehaveGlobalDebugger="*uid://ch6doq5ff54hq"
 CombatManager="*res://autoload/combat_manager.gd"
 Settings="*res://autoload/settings.gd"
 
@@ -40,8 +44,9 @@ window/size/viewport_height=360
 window/size/borderless=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/energy_saving/keep_screen_on.editor_hint=true
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+window/energy_saving/keep_screen_on.editor_hint=true
 
 [dotnet]
 
@@ -170,3 +175,4 @@ aim_down={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

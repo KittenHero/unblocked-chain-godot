@@ -18,8 +18,7 @@ func _on_scene_loaded(path: String) -> void:
 	SceneLoader.load_completed.disconnect(_on_scene_loaded)
 
 func _retry() -> void:
-	#get_tree().unload_current_scene()
-	SceneLoader.switch_to_path_scene(main_scene)
+	SceneLoader.reload_current_scene()
 
 func _menu() -> void:
 	SceneLoader.switch_to_scene(main_menu)

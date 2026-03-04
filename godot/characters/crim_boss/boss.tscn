@@ -1,34 +1,34 @@
 [gd_scene load_steps=51 format=3 uid="uid://kld4o36nej6t"]
 
-[ext_resource type="Script" path="res://characters/crim_boss/boss.gd" id="1_ogpyq"]
+[ext_resource type="Script" uid="uid://d35o1gbieraj4" path="res://characters/crim_boss/boss.gd" id="1_ogpyq"]
 [ext_resource type="Resource" uid="uid://sj4em7pd0xte" path="res://characters/crim_boss/boss.tres" id="2_1ia2a"]
 [ext_resource type="Texture2D" uid="uid://colvv3b2tf486" path="res://characters/crim_boss/boss.png" id="2_173tk"]
 [ext_resource type="PackedScene" uid="uid://pyde4b7dg8ds" path="res://vfx/BloodParticles.tscn" id="3_d0fhv"]
-[ext_resource type="Script" path="res://characters/attack.gd" id="3_hfoi3"]
+[ext_resource type="Script" uid="uid://digfv3ad1hmxl" path="res://characters/attack.gd" id="3_hfoi3"]
 [ext_resource type="Resource" uid="uid://bo2v43mupw4i7" path="res://characters/crim_boss/attacks/big_punch.tres" id="4_1cmk4"]
-[ext_resource type="Script" path="res://characters/enemy_controller.gd" id="4_j8ebd"]
+[ext_resource type="Script" uid="uid://b4wlqk0piyi6l" path="res://characters/enemy_controller.gd" id="4_j8ebd"]
 [ext_resource type="Texture2D" uid="uid://r000ur7s0y6s" path="res://characters/crim_boss/boss-fx.png" id="4_td2fv"]
 [ext_resource type="Resource" uid="uid://2n1tyrp6jnbh" path="res://characters/crim_boss/attacks/charge.tres" id="5_qeo1a"]
-[ext_resource type="Script" path="res://characters/states/character_state.gd" id="6_7c4of"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_jsi6p"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="7_6s5ek"]
+[ext_resource type="Script" uid="uid://c4fcjr6qih4x4" path="res://characters/states/character_state.gd" id="6_7c4of"]
+[ext_resource type="Script" uid="uid://raqlokwh0b8g" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_jsi6p"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="7_6s5ek"]
 [ext_resource type="AudioStream" uid="uid://bcntoqog87wft" path="res://sfx/telegraph_2.wav" id="7_u6b23"]
 [ext_resource type="Resource" uid="uid://1ccvoneiyvd2" path="res://characters/player/transition_inputs/idle.tres" id="8_dx0v5"]
 [ext_resource type="AudioStream" uid="uid://crs78gunr2egh" path="res://sfx/boss_slam.wav" id="8_hrstx"]
 [ext_resource type="Resource" uid="uid://bu8rdy7t068tc" path="res://characters/minions/transitions/move_to_idle.tres" id="9_3x4ly"]
 [ext_resource type="AudioStream" uid="uid://cc4n876m4rk6v" path="res://sfx/boss_walk_1.wav" id="9_64kkh"]
-[ext_resource type="Script" path="res://characters/states/move.gd" id="10_6j2g7"]
+[ext_resource type="Script" uid="uid://3qasp4bobjhp" path="res://characters/states/move.gd" id="10_6j2g7"]
 [ext_resource type="AudioStream" uid="uid://d6onh81wq223" path="res://sfx/boss_walk_2.wav" id="10_jeuvi"]
 [ext_resource type="Resource" uid="uid://bfvpq3rdhnr1e" path="res://characters/player/transition_inputs/move.tres" id="11_w7xid"]
 [ext_resource type="AudioStream" uid="uid://c8yjcjrerg40g" path="res://sfx/hit_2.wav" id="11_w78r8"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
-[ext_resource type="Script" path="res://characters/input_state.gd" id="13_r7k2m"]
-[ext_resource type="Script" path="res://characters/dead.gd" id="14_exeoq"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="12_6r3pi"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="13_r7k2m"]
+[ext_resource type="Script" uid="uid://fa81iaisspte" path="res://characters/dead.gd" id="14_exeoq"]
 [ext_resource type="Resource" uid="uid://d3lmulkniikm6" path="res://characters/player/transition_inputs/death_condition.tres" id="15_vl5jf"]
 [ext_resource type="Resource" uid="uid://ctac4ej8bqu5h" path="res://characters/player/transition_inputs/flinch_condition.tres" id="16_v8k1h"]
-[ext_resource type="Script" path="res://characters/crim_boss/states/charge.gd" id="18_5tvxi"]
+[ext_resource type="Script" uid="uid://ctc4p8rkavl07" path="res://characters/crim_boss/states/charge.gd" id="18_5tvxi"]
 [ext_resource type="PackedScene" uid="uid://dcefkdx7pls88" path="res://characters/crim_boss/behaviours/move_and_strike.tscn" id="20_77ni2"]
-[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="27_xgy8b"]
+[ext_resource type="Script" uid="uid://pxnmtkpyu2u3" path="res://addons/beehave/blackboard.gd" id="27_xgy8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8v73t"]
 radius = 8.0
@@ -216,7 +216,7 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8dafj"]
 _data = {
-"RESET": SubResource("Animation_i3ga3")
+&"RESET": SubResource("Animation_i3ga3")
 }
 
 [sub_resource type="Animation" id="Animation_5l58b"]
@@ -541,11 +541,11 @@ tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lp3ro"]
 _data = {
-"big_punch": SubResource("Animation_5l58b"),
-"charge": SubResource("Animation_im6j3"),
-"flinch": SubResource("Animation_ih3rb"),
-"idle": SubResource("Animation_18bfe"),
-"walk": SubResource("Animation_ga7u1")
+&"big_punch": SubResource("Animation_5l58b"),
+&"charge": SubResource("Animation_im6j3"),
+&"flinch": SubResource("Animation_ih3rb"),
+&"idle": SubResource("Animation_18bfe"),
+&"walk": SubResource("Animation_ga7u1")
 }
 
 [sub_resource type="Resource" id="Resource_cbm7a"]
@@ -706,6 +706,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.620662, 3.1285e-07, 0.303968, 1)
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="body_entered" from="BigPunch" to="." method="attack" binds= [NodePath("BigPunch")]]
 [connection signal="body_entered" from="Charge" to="." method="attack" binds= [NodePath(" Charge")]]

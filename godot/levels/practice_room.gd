@@ -8,8 +8,8 @@ var bosses : Array[WorldData.Characters] = [
 	WorldData.Characters.JIM,
 	WorldData.Characters.BOSS
 ]
-@onready var death_screen : Node = %DeathScreen
-@onready var credits_screen : Node = %Credits
+@onready var death_screen : CanvasLayer = %DeathScreen
+@onready var credits_screen : CanvasLayer = %Credits
 
 func _ready() -> void:
 	SignalManager.boss_died.connect(_on_boss_died)

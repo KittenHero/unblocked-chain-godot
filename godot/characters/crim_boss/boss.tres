@@ -1,8 +1,9 @@
 [gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://sj4em7pd0xte"]
 
-[ext_resource type="Script" path="res://characters/stats.gd" id="1_gvmj4"]
+[ext_resource type="Script" uid="uid://cg8kp6u2h04n2" path="res://characters/stats.gd" id="1_gvmj4"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_gvmj4")
 id = 1
 name = 3

@@ -1,17 +1,15 @@
-[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://cdeicq36xnwhq"]
+[gd_resource type="Resource" script_class="TransitionInput" format=3 uid="uid://cdeicq36xnwhq"]
 
 [ext_resource type="Resource" uid="uid://cbjcbjnqah53e" path="res://characters/player/transition_inputs/has_required_stamina.tres" id="1_gkuao"]
-[ext_resource type="Script" path="res://characters/input_state.gd" id="1_w6kpu"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_2tm7a"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="1_w6kpu"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="2_2tm7a"]
 
 [sub_resource type="Resource" id="Resource_4iuf6"]
 script = ExtResource("1_w6kpu")
 input_name = &"parry"
-input_type = 0
 
 [resource]
 script = ExtResource("2_2tm7a")
 from_anim = &"player/move"
-anim_state = 0
 input_combo = Array[ExtResource("1_w6kpu")]([SubResource("Resource_4iuf6")])
 condition = ExtResource("1_gkuao")
