@@ -5,13 +5,13 @@ extends CharacterState
 @export var sfx_player : AudioStreamPlayer2D
 @export var sfx : AudioStream
 var parried_attack: AttackData = null
-var char : Character
+var _char : Character
 
 func enter(character: Character) -> void:
 	super(character)
 	(character as PlayerCharacter).change_stamina(-stamina_cost)
 	parried_attack = null
-	char = character
+	_char = character
 
 func update(delta: float, character: Character, _input: InputController) -> void:
 	character.slow_down(delta)

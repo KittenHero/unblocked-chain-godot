@@ -72,8 +72,8 @@ func spin(wheel_data: Array[UnblockChainReward], reward: UnblockChainReward, whe
 		var pos := PathFollow2D.new()
 		pos.cubic_interp = false
 		pos.rotates = false
-		pos.progress_ratio = 0
 		wheel.add_child(pos)
+		pos.progress_ratio = 0
 		var sprite := Sprite2D.new()
 		sprite.texture = r.icon
 		pos.add_child(sprite)
