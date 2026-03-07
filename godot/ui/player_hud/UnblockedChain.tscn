@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://dpdrsvm2bn7f8"]
 
-[ext_resource type="Script" path="res://ui/player_hud/miner_ui.gd" id="1_hoyx6"]
+[ext_resource type="Script" uid="uid://d4hut04sjca0q" path="res://ui/player_hud/miner_ui.gd" id="1_hoyx6"]
 [ext_resource type="Texture2D" uid="uid://djm7nroeat46w" path="res://ui/player_hud/mining-chip.png" id="1_mqb0t"]
 [ext_resource type="Texture2D" uid="uid://duoogjt041fbr" path="res://ui/player_hud/mining-bar.png" id="2_ta5gq"]
-[ext_resource type="Shader" path="res://ui/player_hud/miner.gdshader" id="3_47wes"]
+[ext_resource type="Shader" uid="uid://bdg16s0s1ak4h" path="res://ui/player_hud/miner.gdshader" id="3_47wes"]
 [ext_resource type="Texture2D" uid="uid://2e2iviv3v2o5" path="res://ui/player_hud/slot.png" id="4_mdngn"]
 [ext_resource type="AudioStream" uid="uid://dyp8u0k1j3imm" path="res://sfx/wheel_stop_1.wav" id="6_2deu4"]
 [ext_resource type="AudioStream" uid="uid://f1pw80no6sth" path="res://sfx/slot_win.wav" id="6_cw3am"]
@@ -25,8 +25,8 @@ noise = SubResource("FastNoiseLite_3t4gb")
 shader = ExtResource("3_47wes")
 shader_parameter/speed_multiplier = 1.0
 shader_parameter/default_speed = 0.2
-shader_parameter/noise_scale = 0.4
 shader_parameter/noise = SubResource("NoiseTexture2D_ihume")
+shader_parameter/noise_scale = 0.4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjfft"]
 atlas = ExtResource("4_mdngn")

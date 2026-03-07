@@ -1,3 +1,4 @@
+@tool
 extends ActionLeaf
 
 @export var threshold : float = 5.0

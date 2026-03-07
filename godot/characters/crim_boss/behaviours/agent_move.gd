@@ -1,8 +1,9 @@
+@tool
 extends ActionLeaf
 
 @export var offset : Vector2
 
-func tick(actor: Node, blackboard: Blackboard) -> int:
+func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var players := get_tree().get_nodes_in_group("players")
 	if players.is_empty():
 		return FAILURE

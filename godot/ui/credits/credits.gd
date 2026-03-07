@@ -4,12 +4,12 @@ extends CanvasLayer
 @onready var menu_button: Button = %Menu
 
 func _ready() -> void:
-	var err: Error
+	var _err: Error
 	if main_scene:
-		err = SceneLoader.background_load(main_scene)
+		_err = SceneLoader.background_load(main_scene)
 		SceneLoader.load_completed.connect(_on_scene_loaded)
 	else:
-		err = ERR_INVALID_DATA
+		_err = ERR_INVALID_DATA
 
 func _on_scene_loaded(path: String) -> void:
 	if path != main_scene: return

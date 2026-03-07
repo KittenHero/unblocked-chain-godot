@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cutcpb0uwg8n2"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="1_e6bhn"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/is_player_close.gd" id="2_0y4tl"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/failer.gd" id="3_o0fwn"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/create_orbit_path.gd" id="4_fgmcy"]
-[ext_resource type="Script" path="res://characters/crim_boss/behaviours/orbit_patrol.gd" id="5_2chve"]
+[ext_resource type="Script" uid="uid://d3p6im4fptvmx" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="1_e6bhn"]
+[ext_resource type="Script" uid="uid://biduilliv4wyl" path="res://characters/crim_boss/behaviours/is_player_close.gd" id="2_0y4tl"]
+[ext_resource type="Script" uid="uid://dk56v1er4ws3v" path="res://addons/beehave/nodes/decorators/failer.gd" id="3_o0fwn"]
+[ext_resource type="Script" uid="uid://di65q4qewxt0n" path="res://characters/crim_boss/behaviours/create_orbit_path.gd" id="4_fgmcy"]
+[ext_resource type="Script" uid="uid://c6af4echyrwgh" path="res://characters/crim_boss/behaviours/orbit_patrol.gd" id="5_2chve"]
 
 [node name="Patrol" type="Node"]
 script = ExtResource("1_e6bhn")

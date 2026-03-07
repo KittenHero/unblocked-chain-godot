@@ -32,6 +32,11 @@ func switch_to_path_scene(path: String) -> void:
 	switch_to_scene(get_packed_scene(path))
 
 func switch_to_scene(packed_scene: PackedScene) -> void:
-	if packed_scene == null:
-		get_tree().call_deferred("unload_current_scene")
+	get_tree().call_deferred("unload_current_scene")
 	get_tree().call_deferred("change_scene_to_packed", packed_scene)
+
+func reload_current_scene() -> void:
+	var tree := get_tree()
+	var scene_path := tree.current_scene.scene_file_path
+	tree.call_deferred("unload_current_scene")
+	tree.call_deferred("change_scene_to_file", scene_path)

@@ -1,25 +1,62 @@
-[gd_scene load_steps=16 format=3 uid="uid://du2gsahh62fny"]
+[gd_scene format=3 uid="uid://du2gsahh62fny"]
 
-[ext_resource type="Script" path="res://levels/practice_room.gd" id="1_wcmue"]
+[ext_resource type="Script" uid="uid://b8ra46r8h22rv" path="res://levels/practice_room.gd" id="1_wcmue"]
 [ext_resource type="PackedScene" uid="uid://c44vc0a8g8x1u" path="res://autoload/live_debug/live_debug.tscn" id="2_7fjiu"]
 [ext_resource type="PackedScene" uid="uid://dnxsbhymcqxcp" path="res://ui/player_hud/PlayerHUD.tscn" id="3_o6d5o"]
 [ext_resource type="PackedScene" uid="uid://bh7wbsr5equwx" path="res://ui/enemy_hud/EnemyHUD.tscn" id="4_1c0wv"]
 [ext_resource type="PackedScene" uid="uid://b38se0pqvos72" path="res://characters/minions/minion.tscn" id="4_hbp2t"]
 [ext_resource type="Texture2D" uid="uid://ciya26eu1q35p" path="res://characters/minions/jack.png" id="5_0bntq"]
-[ext_resource type="Script" path="res://levels/camera_follow.gd" id="6_5bm6y"]
+[ext_resource type="Script" uid="uid://cj6t8ariuabct" path="res://levels/camera_follow.gd" id="6_5bm6y"]
 [ext_resource type="PackedScene" uid="uid://cpfav1tokyjas" path="res://ui/settings.tscn" id="6_dkeds"]
 [ext_resource type="PackedScene" uid="uid://708w06x6vyhm" path="res://characters/player/player.tscn" id="7_7q118"]
 [ext_resource type="PackedScene" uid="uid://cad4amhotirt4" path="res://levels/alley.tscn" id="7_8h3so"]
 [ext_resource type="PackedScene" uid="uid://kld4o36nej6t" path="res://characters/crim_boss/boss.tscn" id="7_a1cet"]
 [ext_resource type="PackedScene" uid="uid://b4kwwvbjejek0" path="res://ui/death_screen.tscn" id="7_nuo4m"]
-[ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits.tscn" id="8_b1xol"]
-[ext_resource type="Resource" uid="uid://bv851nmcf53tx" path="res://characters/minions/jim.tres" id="8_grwuk"]
-[ext_resource type="Resource" uid="uid://bbq3e2fbag6wa" path="res://characters/minions/jack.tres" id="10_e1mct"]
+[ext_resource type="PackedScene" uid="uid://df5d8x1cn55mn" path="res://ui/credits/credits.tscn" id="8_b1xol"]
+[ext_resource type="Script" uid="uid://cg8kp6u2h04n2" path="res://characters/stats.gd" id="14_0oudt"]
+[ext_resource type="Script" uid="uid://d0ffl8dbbs7ue" path="res://characters/player/player_stats.gd" id="16_qm0rg"]
 
-[node name="PracticeRoom" type="Node2D"]
+[sub_resource type="Resource" id="Resource_atqf0"]
+resource_local_to_scene = true
+script = ExtResource("14_0oudt")
+name = 1
+health = 180.0
+max_health = 180.0
+defense = 5.0
+
+[sub_resource type="Resource" id="Resource_w44g3"]
+resource_local_to_scene = true
+script = ExtResource("14_0oudt")
+id = 1
+name = 3
+health = 250.0
+max_health = 250.0
+crit_rate = 0.0
+crit_damage = 0.0
+defense = 20.0
+
+[sub_resource type="Resource" id="Resource_d85sn"]
+resource_local_to_scene = true
+script = ExtResource("16_qm0rg")
+stamina = 200.0
+max_stamina = 200.0
+id = 1
+health = 200.0
+max_health = 200.0
+defense = 5.0
+
+[sub_resource type="Resource" id="Resource_un2y6"]
+resource_local_to_scene = true
+script = ExtResource("14_0oudt")
+name = 2
+health = 180.0
+max_health = 180.0
+defense = 5.0
+
+[node name="PracticeRoom" type="Node2D" unique_id=2111619981]
 script = ExtResource("1_wcmue")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=689361637]
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -31,44 +68,47 @@ intensity_multiplier = 0.09
 min_intensity = 0.5
 max_intensity = 4.0
 
-[node name="HUD" parent="." instance=ExtResource("3_o6d5o")]
+[node name="HUD" parent="." unique_id=781298587 instance=ExtResource("3_o6d5o")]
 
-[node name="EnemyHud" parent="." instance=ExtResource("4_1c0wv")]
+[node name="EnemyHud" parent="." unique_id=715952821 instance=ExtResource("4_1c0wv")]
 
-[node name="LiveDebug" parent="." instance=ExtResource("2_7fjiu")]
+[node name="LiveDebug" parent="." unique_id=2103672068 instance=ExtResource("2_7fjiu")]
 
-[node name="Settings" parent="." instance=ExtResource("6_dkeds")]
+[node name="Settings" parent="." unique_id=1669429583 instance=ExtResource("6_dkeds")]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
 
-[node name="DeathScreen" parent="." instance=ExtResource("7_nuo4m")]
+[node name="DeathScreen" parent="." unique_id=1821497982 instance=ExtResource("7_nuo4m")]
 unique_name_in_owner = true
 visible = false
 
-[node name="Credits" parent="." instance=ExtResource("8_b1xol")]
+[node name="Credits" parent="." unique_id=1462821770 instance=ExtResource("8_b1xol")]
 unique_name_in_owner = true
 visible = false
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=1878782407]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Jack" parent="World" instance=ExtResource("4_hbp2t")]
+[node name="Jack" parent="World" unique_id=1180634266 instance=ExtResource("4_hbp2t")]
 position = Vector2(166, 271)
 texture = ExtResource("5_0bntq")
-stats = ExtResource("10_e1mct")
+stats = SubResource("Resource_atqf0")
 
-[node name="Alley" parent="World" instance=ExtResource("7_8h3so")]
+[node name="Alley" parent="World" unique_id=1584549784 instance=ExtResource("7_8h3so")]
 metadata/_edit_lock_ = true
 
-[node name="Boss" parent="World" groups=["boss"] instance=ExtResource("7_a1cet")]
+[node name="Boss" parent="World" unique_id=931272101 groups=["boss"] instance=ExtResource("7_a1cet")]
 position = Vector2(93, 244)
+stats = SubResource("Resource_w44g3")
 
-[node name="Player" parent="World" groups=["camera-follow"] instance=ExtResource("7_7q118")]
+[node name="Player" parent="World" unique_id=808114897 groups=["camera-follow"] instance=ExtResource("7_7q118")]
 y_sort_enabled = true
 position = Vector2(384, 255)
+player_stats = SubResource("Resource_d85sn")
+stats = SubResource("Resource_d85sn")
 
-[node name="Jim" parent="World" instance=ExtResource("4_hbp2t")]
+[node name="Jim" parent="World" unique_id=1555961361 instance=ExtResource("4_hbp2t")]
 position = Vector2(185, 232)
-stats = ExtResource("8_grwuk")
+stats = SubResource("Resource_un2y6")

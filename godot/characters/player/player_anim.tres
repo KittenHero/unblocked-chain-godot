@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=19 format=3 uid="uid://cpfsuxckowqi2"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://cpfsuxckowqi2"]
 
 [ext_resource type="AudioStream" uid="uid://baghmgmjlh6e" path="res://sfx/attack_whiff_3.wav" id="1_ade5m"]
 [ext_resource type="AudioStream" uid="uid://bsrmpbd726tet" path="res://sfx/dash.wav" id="1_ftak6"]
@@ -751,14 +751,14 @@ tracks/6/keys = {
 
 [resource]
 _data = {
-"dash": SubResource("Animation_qde1i"),
-"dead": SubResource("Animation_0rfd2"),
-"flinch": SubResource("Animation_swntk"),
-"idle": SubResource("Animation_ebm4d"),
-"launch": SubResource("Animation_h1sbu"),
-"melee1": SubResource("Animation_13utj"),
-"melee2": SubResource("Animation_bpogk"),
-"move": SubResource("Animation_grahk"),
-"parry": SubResource("Animation_57sjn"),
-"spin": SubResource("Animation_7741u")
+&"dash": SubResource("Animation_qde1i"),
+&"dead": SubResource("Animation_0rfd2"),
+&"flinch": SubResource("Animation_swntk"),
+&"idle": SubResource("Animation_ebm4d"),
+&"launch": SubResource("Animation_h1sbu"),
+&"melee1": SubResource("Animation_13utj"),
+&"melee2": SubResource("Animation_bpogk"),
+&"move": SubResource("Animation_grahk"),
+&"parry": SubResource("Animation_57sjn"),
+&"spin": SubResource("Animation_7741u")
 }

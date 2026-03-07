@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpfav1tokyjas"]
+[gd_scene load_steps=4 format=3 uid="uid://cpfav1tokyjas"]
 
-[ext_resource type="Script" path="res://ui/settings.gd" id="1_ty2wr"]
-[ext_resource type="Script" path="res://ui/audio_settings.gd" id="1_urc3c"]
-[ext_resource type="Script" path="res://ui/action_remap_button.gd" id="2_n22im"]
-[ext_resource type="AudioStream" uid="uid://b66xvrapxm2f5" path="res://sfx/ui_click.wav" id="3_w8tnq"]
-[ext_resource type="AudioStream" uid="uid://cxve0hvavbqjq" path="res://sfx/slot_spin.wav" id="4_6d3sy"]
+[ext_resource type="Script" uid="uid://dihpvnftf4jxs" path="res://ui/settings.gd" id="1_ty2wr"]
+[ext_resource type="PackedScene" uid="uid://cxo24l48nvfpp" path="res://audio_settings.tscn" id="2_0rxbo"]
+[ext_resource type="Script" uid="uid://b1d6pqxmhne61" path="res://ui/action_remap_button.gd" id="2_n22im"]
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_ty2wr")
@@ -39,84 +37,13 @@ horizontal_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 
-[node name="Audio" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Audio" parent="Panel/MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("2_0rxbo")]
+visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-script = ExtResource("1_urc3c")
-metadata/_tab_index = 0
-
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio"]
-layout_mode = 2
-theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 10
-columns = 2
-
-[node name="Master" type="Label" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-layout_mode = 2
-text = "Master"
-
-[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="BGM" type="Label" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-layout_mode = 2
-text = "BGM
-"
-
-[node name="BGMSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="SFX" type="Label" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-layout_mode = 2
-text = "SFX
-"
-
-[node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SFXSlider"]
-stream = ExtResource("3_w8tnq")
-bus = &"SFX"
-
-[node name="Slot" type="Label" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-layout_mode = 2
-text = "Slot Machine
-"
-
-[node name="SlotSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider"]
-stream = ExtResource("4_6d3sy")
-bus = &"SlotMachine"
 
 [node name="Controls" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -240,12 +167,4 @@ alignment = 2
 layout_mode = 2
 text = "Back"
 
-[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/MasterSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/BGMSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_bgm_slider_value_changed"]
-[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SFXSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_sfx_slider_value_changed"]
-[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SFXSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SFXSlider/AudioStreamPlayer" method="play" unbinds=1]
-[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider/AudioStreamPlayer" method="stop" unbinds=1]
-[connection signal="drag_started" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider/AudioStreamPlayer" method="play"]
-[connection signal="focus_exited" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider/AudioStreamPlayer" method="stop"]
-[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/TabContainer/Audio/GridContainer/SlotSlider" to="Panel/MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_slot_slider_value_changed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="set_visible" binds= [false]]

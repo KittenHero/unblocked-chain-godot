@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b4rdbg1dqqc1w" path="res://status/speed_up.tres" id="1_6bxmf"]
 [ext_resource type="Texture2D" uid="uid://cgk2podbisxi6" path="res://unblocked_chain/speed_up_icon.tres" id="2_pvmn1"]
-[ext_resource type="Script" path="res://unblocked_chain/buff_reward.gd" id="3_t5742"]
+[ext_resource type="Script" uid="uid://bademfhti5i1n" path="res://unblocked_chain/buff_reward.gd" id="3_t5742"]
 
 [resource]
 script = ExtResource("3_t5742")

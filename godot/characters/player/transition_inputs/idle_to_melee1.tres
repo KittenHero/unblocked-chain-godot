@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="TransitionInput" load_steps=5 format=3 uid="uid://blh14n7cpno06"]
+[gd_resource type="Resource" script_class="TransitionInput" format=3 uid="uid://blh14n7cpno06"]
 
-[ext_resource type="Script" path="res://characters/input_state.gd" id="1_3wrie"]
-[ext_resource type="Resource" path="res://characters/player/transition_inputs/empty_condition.tres" id="1_ajcrj"]
-[ext_resource type="Script" path="res://characters/transition_input.gd" id="2_laefo"]
+[ext_resource type="Script" uid="uid://cwpcy1xbp7iqh" path="res://characters/input_state.gd" id="1_3wrie"]
+[ext_resource type="Resource" uid="uid://dj07aaywni3j0" path="res://characters/player/transition_inputs/empty_condition.tres" id="1_ajcrj"]
+[ext_resource type="Script" uid="uid://dlmwffja184dh" path="res://characters/transition_input.gd" id="2_laefo"]
 
 [sub_resource type="Resource" id="Resource_2d3r0"]
 script = ExtResource("1_3wrie")
 input_name = &"attack"
-input_type = 0
 
 [resource]
 script = ExtResource("2_laefo")
 from_anim = &"player/idle"
-anim_state = 0
 input_combo = Array[ExtResource("1_3wrie")]([SubResource("Resource_2d3r0")])
-condition = ExtResource("1_ajcrj")

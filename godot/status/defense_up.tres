@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DefenseUp" load_steps=3 format=3 uid="uid://rdjv2j07rm1s"]
 
 [ext_resource type="Texture2D" uid="uid://dfuc1yag2ergv" path="res://status/defence_up_icon.tres" id="1_6sdlp"]
-[ext_resource type="Script" path="res://status/defense_up.gd" id="2_v3gob"]
+[ext_resource type="Script" uid="uid://v1wht47ot0pr" path="res://status/defense_up.gd" id="2_v3gob"]
 
 [resource]
 script = ExtResource("2_v3gob")

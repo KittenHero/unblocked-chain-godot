@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://drf03uybruwcp"]
 
-[ext_resource type="Shader" path="res://vfx/explosion.gdshader" id="1_txt8j"]
-[ext_resource type="Script" path="res://vfx/explosion.gd" id="2_gkt6w"]
+[ext_resource type="Shader" uid="uid://1ik0hhg8esh6" path="res://vfx/explosion.gdshader" id="1_txt8j"]
+[ext_resource type="Script" uid="uid://do8ngh6kk7ljh" path="res://vfx/explosion.gd" id="2_gkt6w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fhb4j"]
 resource_local_to_scene = true
@@ -18,8 +18,8 @@ shader_parameter/angular_velocity_min = 0.0
 shader_parameter/angular_velocity_max = 0.0
 shader_parameter/orbit_velocity_min = -0.1
 shader_parameter/orbit_velocity_max = 0.1
-shader_parameter/radial_velocity_min = null
-shader_parameter/radial_velocity_max = null
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
 shader_parameter/linear_accel_min = 0.0
 shader_parameter/linear_accel_max = 0.0
 shader_parameter/radial_accel_min = 0.0
@@ -42,7 +42,7 @@ shader_parameter/lifetime_randomness = 0.0
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
-shader_parameter/emission_box_extents = null
+shader_parameter/emission_box_extents = Vector3(0, 0, 0)
 shader_parameter/color_value = Color(1, 1, 1, 1)
 shader_parameter/gravity = Vector3(0, 0, 0)
 shader_parameter/hframes = 1

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Regen" load_steps=3 format=3 uid="uid://dsl7exk5uwy1f"]
 
 [ext_resource type="Texture2D" uid="uid://ceu1bi7xw3nf0" path="res://status/regen_icon.tres" id="1_1jv7v"]
-[ext_resource type="Script" path="res://status/regen.gd" id="2_dlqfm"]
+[ext_resource type="Script" uid="uid://ddfyvnewudgcu" path="res://status/regen.gd" id="2_dlqfm"]
 
 [resource]
 script = ExtResource("2_dlqfm")
