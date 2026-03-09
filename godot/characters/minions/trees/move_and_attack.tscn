@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8yytsd82hfmn"]
+[gd_scene format=3 uid="uid://8yytsd82hfmn"]
 
 [ext_resource type="Script" uid="uid://bq4ogbbe5qckk" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_cs5vm"]
 [ext_resource type="Script" uid="uid://cadn2kxvr3ov1" path="res://characters/minions/behaviours/move_to_player.gd" id="2_ivm7f"]
@@ -7,27 +7,27 @@
 [ext_resource type="Script" uid="uid://b1k67gaw0axps" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_iel5h"]
 [ext_resource type="Script" uid="uid://c1lnwnq0qokmj" path="res://characters/minions/behaviours/is_attacking.gd" id="6_ebaev"]
 
-[node name="SequenceComposite" type="Node"]
+[node name="SequenceComposite" type="Node" unique_id=2093611036]
 script = ExtResource("1_cs5vm")
 
-[node name="MoveToPlayer" type="Node" parent="."]
+[node name="MoveToPlayer" type="Node" parent="." unique_id=1877169814]
 script = ExtResource("2_ivm7f")
 offset = Vector2(60, 0)
 
-[node name="Attack" type="Node" parent="."]
+[node name="StartAttacking" type="Node" parent="." unique_id=339439136]
 script = ExtResource("3_70p32")
 
-[node name="UntilFailDecorator" type="Node" parent="."]
+[node name="WaitTilAttackAnimationStarts" type="Node" parent="." unique_id=1043396662]
 script = ExtResource("4_jmet2")
 
-[node name="InverterDecorator" type="Node" parent="UntilFailDecorator"]
+[node name="InverterDecorator" type="Node" parent="WaitTilAttackAnimationStarts" unique_id=1897221389]
 script = ExtResource("5_iel5h")
 
-[node name="IsAttacking" type="Node" parent="UntilFailDecorator/InverterDecorator"]
+[node name="IsAttacking" type="Node" parent="WaitTilAttackAnimationStarts/InverterDecorator" unique_id=949701385]
 script = ExtResource("6_ebaev")
 
-[node name="UntilFailDecorator2" type="Node" parent="."]
+[node name="WaitTillAttackAnimFinish" type="Node" parent="." unique_id=1678880472]
 script = ExtResource("4_jmet2")
 
-[node name="IsAttacking" type="Node" parent="UntilFailDecorator2"]
+[node name="IsAttacking" type="Node" parent="WaitTillAttackAnimFinish" unique_id=949921925]
 script = ExtResource("6_ebaev")
