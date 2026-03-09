@@ -57,6 +57,7 @@ defense = 5.0
 script = ExtResource("1_wcmue")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=689361637]
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -92,23 +93,24 @@ unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="Jack" parent="World" unique_id=1180634266 instance=ExtResource("4_hbp2t")]
-position = Vector2(166, 271)
+position = Vector2(126, 193)
 texture = ExtResource("5_0bntq")
 stats = SubResource("Resource_atqf0")
 
 [node name="Alley" parent="World" unique_id=1584549784 instance=ExtResource("7_8h3so")]
+scale = Vector2(0.667, 0.667)
 metadata/_edit_lock_ = true
 
 [node name="Boss" parent="World" unique_id=931272101 groups=["boss"] instance=ExtResource("7_a1cet")]
-position = Vector2(93, 244)
+position = Vector2(53, 166)
 stats = SubResource("Resource_w44g3")
 
 [node name="Player" parent="World" unique_id=808114897 groups=["camera-follow"] instance=ExtResource("7_7q118")]
 y_sort_enabled = true
-position = Vector2(384, 255)
+position = Vector2(344, 177)
 player_stats = SubResource("Resource_d85sn")
 stats = SubResource("Resource_d85sn")
 
 [node name="Jim" parent="World" unique_id=1555961361 instance=ExtResource("4_hbp2t")]
-position = Vector2(185, 232)
+position = Vector2(100, 168)
 stats = SubResource("Resource_un2y6")
